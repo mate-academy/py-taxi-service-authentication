@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if not user.is_authinticated %}
+        <div>
+            <p>Login</p>
+            {% if form.errors %}
+                Login failed
+            {% endif %}
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="submit">
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

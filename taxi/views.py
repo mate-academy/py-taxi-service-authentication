@@ -16,20 +16,22 @@ def index(request):
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
 
-    visits = request.session.get('num_visit', 0)
-    request.session['num_visit'] = visits + 1
-
+    visits = visits = int(request.COOKIES.get('visits', '0'))
 
     context = {
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
+        "visits": visits + 1
     }
 
-    return render(request, "taxi/index.html", context=context)
+    response = render(request, "taxi/index.html", context=context)
+    response.set_cookie('visits', visits + 1)
+
+    return response
 
 
-class ManufacturerListView( LoginRequiredMixin, generic.ListView):
+class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     model = Manufacturer
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "taxi",
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -48,9 +49,15 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
+    "debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
 
 ROOT_URLCONF = "taxi_service.urls"
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 TEMPLATES = [
     {
@@ -101,6 +108,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = "taxi.Driver"
+
+LOGIN_REDIRECT_URL = "/taxi/"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

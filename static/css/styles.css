@@ -1,3 +1,15 @@
 body {
     margin-top: 20px;
 }
+
+.sidebar-nav {
+    list-style-type: none;
+    padding: 0;
+}
+
+.user-info {
+    font-size: 20px;
+    margin-bottom: 15px;
+    background-color: lightgoldenrodyellow;
+    border-radius: 10px;
+}

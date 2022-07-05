@@ -1,3 +1,25 @@
 body {
-    margin-top: 20px;
+    font-family: Verdana, serif;
+    background-color: floralwhite;
+    margin-top: 30px;
+}
+
+h1 {
+    color: darkgreen;
+}
+
+.sidebar-nav {
+    list-style-type: none;
+    padding: 0;
+}
+
+.user-info {
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.pagination {
+    margin-top: 50px;
 }

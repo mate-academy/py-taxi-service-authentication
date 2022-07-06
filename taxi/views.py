@@ -54,25 +54,3 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.all().prefetch_related("cars__manufacturer")
-
-
-def login_view(request):
-    if request.method == "GET":
-        return render(request, "registration/login.html")
-    elif request.method == "POST":
-        username = request.POST("username")
-        password = request.POST("password")
-        user = authenticate(username=username, password=password)
-
-        if user:
-            login(request, user)
-            return HttpResponseRedirect(reverse("taxi:index"))
-        else:
-            error_context = {
-                "errors": "Invalid data"
-            }
-            return render(request, "registration/login.html", context=error_context)
-
-
-def logout_view(request):
-    return render(request, "registration/login.html")

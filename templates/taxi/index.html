@@ -11,7 +11,6 @@
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
     <br>
-    {% if user.is_authenticated %}
         <p>{{ user.first_name }} {{ user.last_name }} visit this site: {{ num_visit }} time{{ num_visit|pluralize }}</p>
-    {% endif %}
+
 {% endblock %}

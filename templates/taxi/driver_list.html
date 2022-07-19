@@ -2,11 +2,14 @@
 
 {% block content %}
     <h1 class="title_view_list"> Driver List </h1>
+    <br>
     {% if driver_list %}
         <ul class="rounded-top">
         {% for driver in driver_list %}
             <li>
-                <a href="{% url 'taxi:driver_detail'  pk=driver.pk %}">{{ driver.username }}</a>
+                <a href="{% url 'taxi:driver_detail'  pk=driver.pk %}">
+                    {{ driver.username }} {% if user.username == driver.username %} (Me) {% endif %}
+                </a>
             </li>
         {% endfor %}
         </ul>

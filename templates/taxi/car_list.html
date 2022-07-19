@@ -2,11 +2,12 @@
 
 {% block content %}
     <h1 class="title_view_list"> Car List </h1>
+    <br>
     {% if car_list %}
         <ul class="rounded-top">
         {% for car in car_list %}
             <li>
-                <a href="{% url 'taxi:car_detail'  pk=car.pk %}">{{ car.model }}</a>
+                <a href="{% url 'taxi:car_detail'  pk=car.pk %}">{{ car.manufacturer }}, {{ car.model }}</a>
             </li>
         {% endfor %}
         </ul>

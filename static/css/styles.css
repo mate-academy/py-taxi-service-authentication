@@ -1,3 +1,37 @@
 body {
     margin-top: 20px;
 }
+/*sidebar CSS*/
+.sidebar {
+    height: 220px;
+    width: 150px;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    margin-left: 35px;
+}
+
+.sidebar a {
+    padding: 10px;
+    font-size: 15px;
+    display: block;
+    text-decoration: none;
+    border: 1px solid darkgrey;
+}
+
+.content {
+    margin-left: 270px;
+    font-size: 18px;
+}
+
+.content li{
+    padding-bottom: 4px;
+}
+.content h2{
+    margin-top: 30px;
+}
+
+.content h1{
+    margin-bottom: 0;
+    margin-top: 30px;
+}

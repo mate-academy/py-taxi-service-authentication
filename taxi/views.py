@@ -46,13 +46,11 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
 
 
-class DriverListView(LoginRequiredMixin, generic.ListView):
+class DriverListView(generic.ListView):
     model = Driver
-    template_name = "taxi/driver_list.html"
-    context_object_name = "driver_list"
     paginate_by = 5
-    queryset = Driver.objects.all().prefetch_related("cars__manufacturer")
 
 
-class DriverDetailView(LoginRequiredMixin, generic.DetailView):
+class DriverDetailView(generic.DetailView):
     model = Driver
+    queryset = Driver.objects.all().prefetch_related("cars__manufacturer")

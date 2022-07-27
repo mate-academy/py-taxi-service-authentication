@@ -39,7 +39,7 @@ class CarListView(LoginRequiredMixin, generic.ListView):
     template_name = "taxi/car_list.html"
     context_object_name = "car_list"
     paginate_by = 5
-    queryset = Car.objects.all().prefetch_related("manufacturer")
+    queryset = Car.objects.all().select_related("manufacturer")
 
 
 class CarDetailView(LoginRequiredMixin, generic.DetailView):

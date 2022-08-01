@@ -1,3 +1,16 @@
+*{
+    background-color: plum;
+}
+
 body {
     margin-top: 20px;
+}
+
+.sidebar {
+    padding: 5px;
+    font-size: 20px;
+}
+
+.sidebar-nav{
+    list-style-type: none;
 }

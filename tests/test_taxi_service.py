@@ -9,17 +9,17 @@ TestCase.fixtures = ['tests/taxi_service_db_data.json', ]
 
 class PublicTests(TestCase):
     def test_car_list_login_required(self):
-        response = self.client.get(reverse("taxi:car-list"))
+        response = self.client.get(reverse("taxi:car_list"))
 
         self.assertNotEqual(response.status_code, 200)
 
     def test_manufacturer_list_login_required(self):
-        response = self.client.get(reverse("taxi:manufacturer-list"))
+        response = self.client.get(reverse("taxi:manufacturer_list"))
 
         self.assertNotEqual(response.status_code, 200)
 
     def test_driver_login_required(self):
-        response = self.client.get(reverse("taxi:driver-list"))
+        response = self.client.get(reverse("taxi:driver_list"))
 
         self.assertNotEqual(response.status_code, 200)
 
@@ -58,7 +58,7 @@ class PrivateManufacturerTests(TestCase):
         self.client.force_login(get_user_model().objects.get(id=1))
 
     def test_manufacturer_list(self):
-        response = self.client.get(reverse("taxi:manufacturer-list"))
+        response = self.client.get(reverse("taxi:manufacturer_list"))
         manufacturers = Manufacturer.objects.all()
 
         self.assertEqual(response.status_code, 200)
@@ -76,7 +76,7 @@ class PrivateCarTests(TestCase):
         self.client.force_login(get_user_model().objects.get(id=1))
 
     def test_car_list(self):
-        response = self.client.get(reverse("taxi:car-list"))
+        response = self.client.get(reverse("taxi:car_list"))
         cars = Car.objects.all()
 
         self.assertEqual(response.status_code, 200)
@@ -87,7 +87,7 @@ class PrivateCarTests(TestCase):
         self.assertTemplateUsed(response, "taxi/car_list.html")
 
     def test_car_detail(self):
-        response = self.client.get(reverse("taxi:car-detail", args=[1]))
+        response = self.client.get(reverse("taxi:car_detail", args=[1]))
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "taxi/car_detail.html")
@@ -98,7 +98,7 @@ class PrivateDriverTests(TestCase):
         self.client.force_login(get_user_model().objects.get(id=1))
 
     def test_driver_list(self):
-        response = self.client.get(reverse("taxi:driver-list"))
+        response = self.client.get(reverse("taxi:driver_list"))
         drivers = Driver.objects.all()
 
         self.assertEqual(response.status_code, 200)
@@ -109,7 +109,7 @@ class PrivateDriverTests(TestCase):
         self.assertTemplateUsed(response, "taxi/driver_list.html")
 
     def test_driver_detail(self):
-        response = self.client.get(reverse("taxi:driver-detail", args=[1]))
+        response = self.client.get(reverse("taxi:driver_detail", args=[1]))
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "taxi/driver_detail.html")

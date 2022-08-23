@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 
-from .models import Driver, Car, Manufacturer
-
+from taxi.models import Driver, Car, Manufacturer
 
 
 def index(request):
@@ -12,10 +11,14 @@ def index(request):
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
 
+    sessions_counter = request.session.get("num_visits", 1)
+    request.session["num_visits"] = sessions_counter + 1
+
     context = {
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
+        "sessions_counter": sessions_counter
     }
 
     return render(request, "taxi/index.html", context=context)

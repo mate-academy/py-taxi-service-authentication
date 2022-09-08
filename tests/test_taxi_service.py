@@ -4,7 +4,7 @@ from django.urls import reverse
 
 from taxi.models import Car, Manufacturer, Driver
 
-TestCase.fixtures = ["tests/taxi_service_db_data.json", ]
+TestCase.fixtures = ["taxi_service_db_data.json", ]
 
 
 class PublicTests(TestCase):

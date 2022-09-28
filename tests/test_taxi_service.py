@@ -29,10 +29,10 @@ class PublicTests(TestCase):
         self.assertNotEqual(response.status_code, 200)
 
     def test_login(self):
-        response = self.client.get(reverse("login"))
+        response = self.client.get(reverse("login.html"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "registration/login.html")
+        self.assertTemplateUsed(response, "registration/login.html.html")
 
 
 class PrivateHomeTests(TestCase):
@@ -121,7 +121,7 @@ class LogInTest(TestCase):
 
     def test_login(self):
         response = self.client.post(
-            reverse("login"),
+            reverse("login.html"),
             self.credentials,
             follow=True
         )

@@ -4,7 +4,7 @@ from django.urls import reverse
 
 from taxi.models import Car, Manufacturer, Driver
 
-TestCase.fixtures = ["taxi_service_db_data.json", ]
+TestCase.fixtures = ["taxi_service_db_data.json"]
 
 
 class PublicTests(TestCase):
@@ -64,9 +64,11 @@ class PrivateManufacturerTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             list(response.context["manufacturer_list"]),
-            list(manufacturers[0:len(
-                list(response.context["manufacturer_list"])
-            )])
+            list(
+                manufacturers[
+                    0 : len(list(response.context["manufacturer_list"]))
+                ]
+            ),
         )
         self.assertTemplateUsed(response, "taxi/manufacturer_list.html")
 
@@ -82,7 +84,7 @@ class PrivateCarTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             list(response.context["car_list"]),
-            list(cars[0:len(list(response.context["car_list"]))])
+            list(cars[0 : len(list(response.context["car_list"]))]),
         )
         self.assertTemplateUsed(response, "taxi/car_list.html")
 
@@ -104,7 +106,7 @@ class PrivateDriverTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             list(response.context["driver_list"]),
-            list(drivers[0:len(list(response.context["driver_list"]))])
+            list(drivers[0 : len(list(response.context["driver_list"]))]),
         )
         self.assertTemplateUsed(response, "taxi/driver_list.html")
 
@@ -121,9 +123,7 @@ class LogInTest(TestCase):
 
     def test_login(self):
         response = self.client.post(
-            reverse("login"),
-            self.credentials,
-            follow=True
+            reverse("login"), self.credentials, follow=True
         )
         self.assertTrue(response.context["user"].is_active)
         print(response.context["user"])

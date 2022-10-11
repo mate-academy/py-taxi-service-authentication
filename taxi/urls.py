@@ -4,6 +4,7 @@ from .views import index, CarListView, CarDetailView, DriverListView, DriverDeta
 
 urlpatterns = [
     path("", index, name="index"),
+    path("taxi/", index, name="index"),
     path("manufacturers/", ManufacturerListView.as_view(), name="manufacturer_list"),
     path("cars/", CarListView.as_view(), name="car_list"),
     path("cars/<int:pk>/", CarDetailView.as_view(), name="car_detail"),

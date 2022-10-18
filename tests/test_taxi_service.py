@@ -121,7 +121,7 @@ class LogInTest(TestCase):
 
     def test_login(self):
         response = self.client.post(
-            reverse("login.html"),
+            reverse("login"),
             self.credentials,
             follow=True
         )

@@ -13,7 +13,7 @@ Feel free to add more data using admin panel, if needed.
 In this task, you will implement a visit counter, login/logout functionality, and make your site available only 
 authenticated users.
 
-1. Implement a visit counter on the home screen (use the `num_visits` variable name). It should show how many times a user visited the home page before.
+**1. Implement a visit counter on the home screen (use the `num_visits` variable name). It should show how many times a user visited the home page before.**
 
 2. Create login/logout screens. Provide authentication to your project using built-in Django authentication.
 

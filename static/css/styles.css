@@ -1,3 +1,15 @@
 body {
     margin-top: 20px;
 }
+
+.log {
+    list-style: none;
+}
+
+.error {
+    color: red;
+}
+
+.user {
+    color: green;
+}

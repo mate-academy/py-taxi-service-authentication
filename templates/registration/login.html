@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form method="post" action="{% url 'login' %}" class="p-3 mb-2 bg-white text-dark">
+  {% csrf_token %}
+{% if form.errors %}
+    <p style="color: red" class="lead"> Please, input correct username/password</p>
+{% endif %}
+
+  <div class="form-group">
+    <label>Username:</label>
+    <input type="text" class="form-control" name="username">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password:</label>
+    <input type="password" class="form-control" name="password">
+    <small class="form-text text-muted">We'll never share your password with anyone else.</small>
+  </div>
+  <button type="submit" class="btn btn-outline-primary" value="submit">Submit</button>
+  <input type="hidden" name="next" value={{ next }}>
+</form>
+
+{% endblock %}

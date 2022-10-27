@@ -1,13 +1,13 @@
 <ul class="sidebar-nav">
   {% if user.is_authenticated %}
-  <li class="log user">
+  <li class="user">
     User: {{ user.username }}
   </li>
-  <li class="log">
+  <li>
     <a href="{% url 'logout' %}">Logout</a>
   </li>
   {% else %}
-    <li class="log">
+    <li>
       <a href="{% url 'login' %}">Login</a>
     </li>
   {% endif %}

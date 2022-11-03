@@ -8,4 +8,4 @@ urlpatterns = [
 
 ]
 
-app_name = "accounts"
+app_name = "registration"

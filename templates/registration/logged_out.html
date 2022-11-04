@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Logged out</h1>
+  <br>
+
+  <a class="btn btn-outline-primary" href={% url "login" %}>
+    Click here to log in
+  </a>
+{% endblock %}

@@ -8,6 +8,9 @@
     <ul>
     {% for driver in car.drivers.all %}
       <li>{{ driver.first_name }} {{ driver.last_name }}</li>
+
+    {% empty %}
+      <p>No drivers!</p>
     {% endfor %}
     </ul>
   {% endblock %}

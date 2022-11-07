@@ -18,5 +18,5 @@
 
   {% endblock %}
 {% else %}
-  <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+  <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
 {% endif %}

@@ -1,18 +1,30 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
- <p><strong>
-    {{ driver.first_name }} {{ driver.last_name }}.</strong>
-    License number: {{ driver.license_number }}
-  </p>
-  {% for car in driver.cars.all %}
-    <hr>
-    <p><strong>Id:</strong>{{ car.id }}
-      <strong>Car model:</strong> {{ car.model }}
-    </p>
-
-  {% empty %}
-    <p>No cars!</p>
-  {% endfor %}
+  <h1 class="display-4">
+    {% if driver.username == user.username %}<strong>(Me)</strong>{% endif %} {{ driver.username }}'s cars:
+  </h1>
+  <div class="table-responsive bg-white">
+    <table class="table mb-0">
+      <thead>
+      <tr>
+        <th scope="col">MODEL</th>
+        <th scope="col">MANUFACTURER</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% if driver.cars.all %}
+        {% for car in driver.cars.all %}
+          <tr>
+            <th scope="row" style="color: #666666;">{{ car.model }}</th>
+            <td>{{ car.manufacturer.name }}</td>
+          </tr>
+        {% endfor %}
+      {% else %}
+        <th scope="row" style="color: #666666;">{{ driver.username }} don't have any cars :(</th>
+      {% endif %}
+      </tbody>
+    </table>
+  </div>
 
 {% endblock %}

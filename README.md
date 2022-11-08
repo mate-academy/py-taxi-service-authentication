@@ -1,6 +1,6 @@
 # Taxi service home page
 
-- Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
+Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
 - Use the following command to load prepared data from fixture to test and debug your code:
 
   ```python manage.py loaddata taxi_service_db_data.json```.
@@ -58,3 +58,5 @@ Create `sidebar.html` there. Inside `sidebar.html`:
 2) It's important to **attach images** not links to them. See example:
 
 ![image](https://mate-academy-images.s3.eu-central-1.amazonaws.com/python_pr_with_images.png)
+
+### Note: Check your code using this [checklist](checklist.md) before pushing your solution.

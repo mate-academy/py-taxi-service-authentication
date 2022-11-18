@@ -46,6 +46,6 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
 
 
-class DriverDetailView(LoginRequiredMixin,  generic.DetailView):
+class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")

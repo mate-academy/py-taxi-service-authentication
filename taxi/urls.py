@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path, include
 
 from .views import (
@@ -11,7 +13,7 @@ from .views import (
 
 urlpatterns = [
     path("", index, name="index"),
-    path("index/", index, name="index"),
+    path("taxi/", index, name="index"),
     path(
         "manufacturers/",
         ManufacturerListView.as_view(),
@@ -23,8 +25,6 @@ urlpatterns = [
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver_detail"
     ),
-    path("accounts/", include("django.contrib.auth.urls")),
-
 ]
 
 app_name = "taxi"

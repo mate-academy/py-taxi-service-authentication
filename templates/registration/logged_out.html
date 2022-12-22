@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>You are logged out!</h1>
+  <p><a class="text-warning link" href="{% url 'login' %}">
+    Click here to login again
+  </a></p>
+{% endblock %}

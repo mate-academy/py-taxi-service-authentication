@@ -1,6 +1,35 @@
 <ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer_list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car_list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver_list" %}">Drivers</a></li>
+  {% if user.is_authenticated %}
+    <li>User: {{ user.username }}</li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+  {% else %}
+    <li><a href="{% url 'login' %}">Login</a></li>
+  {% endif %}
+
+  <br>
+
+  <li>
+    <a href="{% url 'taxi:index' %}" class="active">
+      <span class="icon"><i class="fas fa-home"></i></span>
+      <span class="item">Home page</span>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'taxi:driver_list' %}">
+      <span class="icon"><i class="fas fa-user-friends"></i></span>
+      <span class="item">Drivers</span>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'taxi:car_list' %}">
+      <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+      <span class="item">Cars</span>
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'taxi:manufacturer_list' %}">
+      <span class="icon"><i class="fas fa-database"></i></span>
+      <span class="item">Manufacturers</span>
+    </a>
+  </li>
 </ul>

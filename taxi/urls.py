@@ -1,4 +1,6 @@
-from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import path, include
 
 from .views import (
     index,
@@ -11,6 +13,7 @@ from .views import (
 
 urlpatterns = [
     path("", index, name="index"),
+    path("taxi/", index, name="index"),
     path(
         "manufacturers/",
         ManufacturerListView.as_view(),

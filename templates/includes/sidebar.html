@@ -1,6 +1,42 @@
 <ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer_list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car_list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver_list" %}">Drivers</a></li>
+  {% if user.is_authenticated %}
+    <li>
+      <a type="button" class="btn btn-outline-warning btn-lg btn-block" href="{% url 'taxi:driver_detail' pk=user.id %}">
+        <strong>User:</strong> {{ user.username }}
+      </a>
+    </li>
+    <li>
+      <a type="button" class="btn btn-outline-warning btn-lg btn-block" href="{% url 'logout' %}">
+        Logout
+      </a>
+    </li>
+  {% else %}
+    <a type="button" class="btn btn-outline-warning btn-lg btn-block" href="{% url 'login' %}">
+      Login
+    </a>
+  {% endif %}
+  <br>
+  <li>
+    <a type="button" class="btn btn-outline-warning btn-lg btn-block" href="{% url 'taxi:index' %}">
+      Home page
+    </a>
+  </li>
+  {% if user.is_authenticated %}
+    <li>
+      <a type="button" class="btn btn-outline-warning btn-lg btn-block" href="{% url 'taxi:manufacturer_list' %}">
+        Manufacturers
+      </a>
+    </li>
+    <li>
+      <a type="button" class="btn btn-outline-warning btn-lg btn-block" href="{% url 'taxi:car_list' %}">
+        Cars
+      </a>
+    </li>
+    <li>
+      <a type="button" class="btn btn-outline-warning btn-lg btn-block" href="{% url 'taxi:driver_list' %}">
+        Drivers
+      </a>
+    </li>
+  {% endif %}
+
 </ul>

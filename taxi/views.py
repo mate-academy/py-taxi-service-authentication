@@ -54,22 +54,3 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
-
-
-def login_view(request):
-    if request.method == "GET":
-        return render(request, "registration/login.html")
-    elif request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(username=username, password=password)
-
-        if user:
-            login(request, user)
-            return HttpResponseRedirect(reverse("index"))
-        return render(request, "registration/login.html")
-
-
-def logout_view(request):
-    logout(request)
-    return render(request, "registration/logged_out.html")

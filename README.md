@@ -59,4 +59,6 @@ Create `sidebar.html` there. Inside `sidebar.html`:
 
 ![image](https://mate-academy-images.s3.eu-central-1.amazonaws.com/python_pr_with_images.png)
 
+**Note:** the `-` hyphen usage in URLs names is the best practice in Django, whilst the `_` underscore is the best practice in DRF.
+
 ### Note: Check your code using this [checklist](checklist.md) before pushing your solution.

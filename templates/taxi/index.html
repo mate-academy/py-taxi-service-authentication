@@ -10,4 +10,9 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+  <div>
+    <h3>
+      You have visit this page {{ num_visits }} time{{ num_visits|pluralize }}
+    </h3>
+  </div>
 {% endblock %}

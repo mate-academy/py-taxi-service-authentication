@@ -39,7 +39,7 @@ class CarListView(LoginRequiredMixin, generic.ListView):
     queryset = Car.objects.select_related("manufacturer")
 
 
-class CarDetailView(generic.DetailView):
+class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
 
 
@@ -48,7 +48,7 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
 
 
-class DriverDetailView(generic.DetailView):
+class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
 
@@ -57,5 +57,5 @@ def test_session_view(request):
     # request.session["car"] = "Test session car"
     return HttpResponse(
         "<h1>Test session</h1>"
-        f"<h14>Session data: {request.session['car']}</h4>"
+        f"<h4>Session data: {request.session['car']}</h4>"
     )

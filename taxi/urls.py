@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from .views import (
     index,
@@ -7,10 +7,17 @@ from .views import (
     DriverListView,
     DriverDetailView,
     ManufacturerListView,
+    test_session_view,
 )
 
 urlpatterns = [
     path("", index, name="index"),
+    path(
+        "test-session/",
+        test_session_view,
+        name="test-session"
+    ),
+    # path('accounts/taxi', include('django.contrib.auth.urls')),
     path(
         "manufacturers/",
         ManufacturerListView.as_view(),

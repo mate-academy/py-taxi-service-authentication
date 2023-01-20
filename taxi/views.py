@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import generic
 
@@ -51,11 +50,3 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
-
-
-def test_session_view(request):
-    # request.session["car"] = "Test session car"
-    return HttpResponse(
-        "<h1>Test session</h1>"
-        f"<h4>Session data: {request.session['car']}</h4>"
-    )

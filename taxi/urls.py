@@ -31,7 +31,8 @@ urlpatterns = [
     path(
         "drivers/",
         DriverListView.as_view(),
-        name="driver-list"),
+        name="driver-list"
+    ),
     path(
         "drivers/<int:pk>/",
         DriverDetailView.as_view(),

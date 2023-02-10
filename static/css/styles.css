@@ -1,3 +1,8 @@
 body {
     margin-top: 20px;
 }
+
+span.user-me {
+    color: red;
+    font-weight: bold;
+}

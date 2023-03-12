@@ -7,10 +7,12 @@ from .views import (
     DriverListView,
     DriverDetailView,
     ManufacturerListView,
+    logged_view,
 )
 
 urlpatterns = [
     path("", index, name="index"),
+    path("logged_out/", logged_view, name="logged-out"),
     path(
         "manufacturers/",
         ManufacturerListView.as_view(),

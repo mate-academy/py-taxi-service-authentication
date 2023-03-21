@@ -1,9 +1,9 @@
 {% if user.is_authenticated %}
   <p><strong>Username:</strong> <a href="{% url 'taxi:driver-detail' pk=user.id%}">{{ user.username }}</a></p>
 
-  <a href="{% url "taxi:logout" %}">Logout</a>
+  <a href="{% url "logout" %}">Logout</a>
 {% else %}
-  <a href="{% url "taxi:login" %}">Login</a>
+  <a href="{% url "login" %}">Login</a>
 {% endif %}
 <hr>
 

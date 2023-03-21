@@ -1,6 +1,6 @@
 <ul class="sidebar-nav">
   {% if user.is_authenticated %}
-    <li>User: {{ user.username }}</li>
+    <li>User: <a href="{% url "taxi:driver-detail" pk=user.pk %}">{{ user.username }}</a></li>
     <li><a href="{% url "logout" %}">Logout</a></li>
    {% else %}
     <li><a href="{% url "login" %}">Login</a></li>

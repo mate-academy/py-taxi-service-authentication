@@ -1,3 +1,12 @@
+{% if user.is_authenticated %}
+  <h3>User: <a href="{% url "taxi:driver-detail" pk=user.id %}">{{ user.username }}</a></h3>
+  <a type="button" class="btn btn-primary" href="{% url "logout" %}">Logout</a>
+{% else %}
+  <a type="button" class="btn btn-primary" href="{% url "login" %}">Login</a>
+{% endif %}
+
+<br>
+
 <ul class="sidebar-nav">
   <li><a href="{% url "taxi:index" %}">Home page</a></li>
   <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>

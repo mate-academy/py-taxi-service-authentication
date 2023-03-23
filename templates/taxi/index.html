@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <p class="visit">You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</p>
   <h1>Taxi Service Home</h1>
   <p>Welcome to Best Taxi Ever!</p>
   <h2>Dynamic content</h2>
@@ -11,3 +12,5 @@
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
 {% endblock %}
+
+

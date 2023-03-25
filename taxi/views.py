@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.sessions.models import Session
 from django.shortcuts import render
 from django.views import generic
 
@@ -18,11 +17,14 @@ def index(request):
     num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
 
+    user = request.user
+
     context = {
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
         "num_visits": num_visits + 1,
+        "user": user
     }
 
     return render(request, "taxi/index.html", context=context)

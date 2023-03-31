@@ -8,3 +8,4 @@ venv/
 **__pycache__/
 *.sqlite
 *.db3
+*.sqlite3

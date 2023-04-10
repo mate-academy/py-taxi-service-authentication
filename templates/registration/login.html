@@ -11,10 +11,12 @@
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit">
-    <input
+    {% if next %}
+      <input
         type="hidden"
         name="next"
         value={{ next }}
-    />
+      />
+    {% endif %}
   </form>
 {% endblock %}

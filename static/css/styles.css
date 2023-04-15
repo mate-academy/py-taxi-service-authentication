@@ -1,3 +1,39 @@
 body {
     margin-top: 20px;
 }
+
+.sidebar-nav {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav a, .car-link {
+    font-size: 20px;
+    color: #444444;
+}
+
+.login-style {
+    background-color: #cecece;
+    border-radius: 10px;
+    text-align: center;
+
+}
+
+.logout-style {
+    position: absolute;
+    right: 20px;
+    top: 35px;
+}
+
+.logout-style a:hover {
+    background-color: #ffd8d8;
+    text-decoration: none;
+}
+
+.logout-style a {
+    background-color: #ffe8e8;
+    border-radius: 8px;
+    padding: 2px 5px 5px;
+    color: red;
+    font-size: 15px;
+}

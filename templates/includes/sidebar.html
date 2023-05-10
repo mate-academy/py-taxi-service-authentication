@@ -1,5 +1,6 @@
 <ul class="sidebar-nav">
   {% if user.is_authenticated %}
+    <button type="button" class="btn btn-primary btn-lg btn-block">{{ user.username }}</button><p></p>
     <button type="button" class="btn btn-warning"><a href="{% url "logout" %}"> Logout </a></button><br>
 
   {% else %}

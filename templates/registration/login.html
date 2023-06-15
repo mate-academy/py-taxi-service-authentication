@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Login form</h1>
+
+  {% if form.erros %}
+    <p style="color: #a13434">Invalid data</p>
+  {% endif %}
+
+  <form method="POST" name="login" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Login">
+    <input type="hidden" name="next" value="{{ next }}">
+  </form>
+{% endblock %}

@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+  <div class="text-right visit-counter-container">
+    <p class="visit-counter">Number of visits: {{ num_visits }}</p>
+  </div>
+
   <h1>Taxi Service Home</h1>
   <p>Welcome to Best Taxi Ever!</p>
   <h2>Dynamic content</h2>
@@ -10,4 +15,5 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+
 {% endblock %}

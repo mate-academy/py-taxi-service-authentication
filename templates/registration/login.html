@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if form.errors %}
+    <p class="warning">Your credentials are wrong. Please, enter valid username and password!</p>
+  {% endif %}
+
+  <form action="{% url 'login' %}" method="post" class="login_form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}

@@ -1,3 +1,35 @@
 body {
     margin-top: 20px;
 }
+
+.warning {
+  color: red;
+  margin: 0 100px;
+}
+
+.login_form {
+  border: 2px solid rgb(86, 86, 107);
+  padding: 20px;
+  display: inline-block;
+  margin: 0 100px;
+  text-align: center;
+}
+
+.profile_items {
+  list-style: none;
+  color: black;
+  margin: 5px 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #d6d1d1;
+}
+
+.profile_items:hover {
+  background-color: #b4b1b1;
+}
+
+.profile_items a {
+  text-decoration: none;
+  color: black;
+}

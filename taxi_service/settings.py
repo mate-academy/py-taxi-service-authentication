@@ -75,6 +75,9 @@ WSGI_APPLICATION = "taxi_service.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 DATABASES = {
     "default": {
@@ -108,6 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "taxi.Driver"
 
+LOGIN_REDIRECT_URL = "/"
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 

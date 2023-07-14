@@ -1,3 +1,25 @@
 body {
+    padding: 0;
     margin-top: 20px;
+    background: bisque;
+}
+
+.sidebar-nav{
+    list-style: none;
+    background: gray;
+    padding: 5px;
+}
+
+.nav-item{
+
+    text-align: center;
+    align-content: center;
+    margin: 5px;
+}
+
+.nav-link{
+    text-align: center;
+    background: darkgray;
+    color: black;
+    padding: 1em;
 }

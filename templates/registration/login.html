@@ -3,7 +3,7 @@
 {% block content %}
 
   {%  if form.errors %}
-    <p style="color: red">Bad boy/girl, try again)</p>
+    <p style="color: red">Incorrect input, try again)</p>
   {% endif %}
 
   <form method="post" action="{% url 'login' %}">

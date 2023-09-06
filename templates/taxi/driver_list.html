@@ -3,6 +3,7 @@
 {% block content %}
   <h1>Driver list</h1>
   {% if driver_list %}
+    <p>Total number of drivers: {{ paginator.count }}</p>
     <ul>
       {% for driver in driver_list%}
         <li>

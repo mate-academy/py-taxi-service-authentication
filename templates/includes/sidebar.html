@@ -1,9 +1,3 @@
-{#{% if user.is_authenticated %}#}
-{#  <h5>Username: <a href="{% url "taxi:driver-detail" pk=user.id %}">{{ user.username }}</a></h5>#}
-{#  <a href="{% url 'logout' %}">Logout</a>#}
-{#{% else %}#}
-{#  <h5><a href="{% url 'login' %}">Login</a> to use this website</h5>#}
-{#{% endif %}#}
 {% if user.is_authenticated %}
   <div class="user-info">
     <h5>Username: <a class="user-link" href="{% url "taxi:driver-detail" pk=user.id %}">{{ user.username }}</a></h5>

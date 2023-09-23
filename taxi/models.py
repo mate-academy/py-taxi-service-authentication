@@ -21,6 +21,7 @@ class Driver(AbstractUser):
         verbose_name_plural = "drivers"
 
     def __str__(self):
+        # user.username
         return f"{self.username} ({self.first_name} {self.last_name})"
 
 

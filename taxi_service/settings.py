@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
+    "django.contrib.sessions.middleware",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "taxi",

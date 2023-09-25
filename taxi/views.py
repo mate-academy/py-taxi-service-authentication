@@ -9,8 +9,8 @@ from .models import Driver, Car, Manufacturer
 @login_required
 def index(request):
     """View function for the home page of the site."""
-    num_visited = request.session.get("num_visited", 0) + 1
-    request.session["num_visited"] = num_visited
+    num_visits = request.session.get("num_visits", 0) + 1
+    request.session["num_visits"] = num_visits
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
@@ -19,7 +19,7 @@ def index(request):
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
-        "num_visited": num_visited,
+        "num_visits": num_visits,
     }
 
     return render(request, "taxi/index.html", context=context)

@@ -14,10 +14,7 @@ def index(request):
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
 
-    if "num_visits" not in request.session:
-        request.session["num_visits"] = 0
-    request.session["num_visits"] += 1
-    num_visits = request.session["num_visits"]
+    num_visits = request.session.setdefault("num_visits", 0)
 
     context = {
         "num_drivers": num_drivers,

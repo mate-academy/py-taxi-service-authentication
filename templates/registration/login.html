@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1> Login form </h1>
+  <br>
+  {% if form.errors %}
+    <span class="badge badge-warning">
+      Please enter correct data!
+    </span>
+    <br><br>
+  {% endif %}
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="Submit">
+    <input type="hidden" name="next" value={{ next }}>
+  </form>
+{% endblock %}

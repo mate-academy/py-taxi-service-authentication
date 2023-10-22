@@ -1,9 +1,10 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 
 from .models import Driver, Car, Manufacturer
@@ -56,28 +57,11 @@ class DriverDetailView(generic.DetailView):
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
 
 
-def login_view(request):
-    if request.method == "GET":
-        return render(request, "registration/login.html")
-    elif request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(username=username, password=password)
-
-        if user:
-            login(request, user)
-            return HttpResponseRedirect(reverse("taxi:index"))
-        else:
-            error_context = {
-                "error_message": "Invalid values"
-            }
-            return render(
-                request,
-                "registration/login.html",
-                context=error_context
-            )
+class UserLoginView(LoginView):
+    template_name = "registration/login.html"
+    success_url = reverse_lazy("taxi:index")
 
 
-def logout_view(request):
-    logout(request)
-    return render(request, "registration/login.html")
+class UserLogoutView(LogoutView):
+    template_name = "registration/login.html"
+    success_url = reverse_lazy("taxi:index")

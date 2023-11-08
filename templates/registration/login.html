@@ -7,7 +7,7 @@
     <p style="color: red">Invalid credentials</p>
   {% endif %}
 
-  <form method="post" action="{% url 'taxi:login' %}">
+  <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit">

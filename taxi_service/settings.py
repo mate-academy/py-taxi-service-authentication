@@ -70,6 +70,10 @@ TEMPLATES = [
     },
 ]
 
+
+LOGIN_REDIRECT_URL = "/"
+
+
 WSGI_APPLICATION = "taxi_service.wsgi.application"
 
 

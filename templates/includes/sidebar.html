@@ -1,6 +1,8 @@
 {% if user.is_authenticated %}
     <ul type="none">
-      <li><span>{{ user.username }}</span></li>
+      <li><span>
+        <a href="{% url 'taxi:driver-detail' pk=user.id %}">{{ user.username }}</a>
+      </span></li>
       <li><span><a href="{% url 'logout' %}">Log out</a></span></li>
     </ul>
   {% else %}<a href="{% url 'login' %}">Log in</a>

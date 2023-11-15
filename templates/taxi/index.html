@@ -10,4 +10,9 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+  {% if user.is_authenticated %}
+    {% block visit_counter %}
+      {% include "includes/visit_counter.html" %}
+    {% endblock %}
+  {% endif %}
 {% endblock %}

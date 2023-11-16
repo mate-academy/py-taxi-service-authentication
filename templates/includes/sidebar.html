@@ -1,6 +1,63 @@
-<ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-</ul>
+{#<ul class="sidebar-nav">#}
+{#  {% if user.is_authenticated %}#}
+{#    <li>User: <a href="{% url 'taxi:driver-detail' pk=user.id %}">{{ user.username }}</a></li>#}
+{#    <li><a href="{% url 'logout' %}">Logout</a></li>#}
+{#  {% else %}#}
+{#    <li><a href="{% url 'login' %}">Login</a></li>#}
+{#  {% endif %}#}
+{#  <hr>#}
+{#  <li><a href="{% url "taxi:index" %}">Home page</a></li>#}
+{#  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>#}
+{#  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>#}
+{#  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>#}
+{#</ul>#}
+
+<div class="d-flex flex-column flex-shrink-0 p-3 pt-1 bg-light h-100" style="width: 100%;">
+  {% if user.is_authenticated %}
+    <div class="d-flex align-items-center">
+    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">
+      account_circle
+    </span>
+      <a href="{% url 'taxi:driver-detail' pk=user.id %}"
+         class="fs-4 mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">{{ user.username }}</a>
+    </div>
+    <div class="d-flex align-items-center">
+    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">
+      input
+    </span>
+      <a class="fs-5 mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" href="{% url 'logout' %}">
+        Logout
+      </a>
+    </div>
+  {% else %}
+    <div class="d-flex align-items-center">
+    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">
+      input
+    </span>
+      <a class="fs-5 mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" href="{% url 'login' %}">
+        Login
+      </a>
+    </div>
+  {% endif %}
+  <hr>
+  {% with request.resolver_match.url_name as url_name %}
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="{% url "taxi:index" %}"
+           class="nav-link {% if url_name == 'index' %}active{% else %}link-dark{% endif %}">Home page</a>
+      </li>
+      <li>
+        <a href="{% url "taxi:manufacturer-list" %}"
+           class="nav-link {% if url_name == 'manufacturer-list' %}active{% else %}link-dark{% endif %}">Manufacturers</a>
+      </li>
+      <li>
+        <a href="{% url "taxi:car-list" %}"
+           class="nav-link {% if url_name == 'car-list' %}active{% else %}link-dark{% endif %}">Cars</a>
+      </li>
+      <li>
+        <a href="{% url "taxi:driver-list" %}"
+           class="nav-link {% if url_name == 'driver-list' %}active{% else %}link-dark{% endif %}">Drivers</a>
+      </li>
+    </ul>
+  {% endwith %}
+</div>

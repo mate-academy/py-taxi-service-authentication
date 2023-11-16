@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  <div style="width:500px; padding: 200px 0; margin: auto auto" class="container">
+    <div class="text-center">
+      {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+          <strong>Error!</strong> Please correct the following errors:
+          <ul>
+            {% for field in form %}
+              {% for error in field.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      <form class="form-signin" method="post">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+        {{ form.as_p }}
+        <button style="margin: 20px 0" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+    </div>
+  </div>
+{% endblock content %}
+

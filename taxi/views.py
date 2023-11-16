@@ -1,6 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views import generic
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Driver, Car, Manufacturer
@@ -20,7 +20,7 @@ def index(request):
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
-        "num_visits": request.session["num_visits"]
+        "num_visits": num_visits + 1
     }
 
     return render(request, "taxi/index.html", context=context)
@@ -33,7 +33,7 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
 
 
-class CarListView(generic.ListView):
+class CarListView(LoginRequiredMixin, generic.ListView):
     model = Car
     paginate_by = 5
     queryset = Car.objects.select_related("manufacturer")

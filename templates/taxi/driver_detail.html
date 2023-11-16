@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
- <p><strong>
-    {{ driver.first_name }} {{ driver.last_name }}.</strong>
-    License number: {{ driver.license_number }}
-  </p>
+  <p>
+    {% if  driver.first_name %}
+      <strong>{{ driver.first_name }} {{ driver.last_name }}</strong>
+    {% else %}
+      <p>No user data available</p>
+    {% endif %}
+  License number: {{ driver.license_number }}
+  {% if not driver.license_number %}
+    No license number data available
+  {% endif %}
   {% for car in driver.cars.all %}
     <hr>
     <p><strong>Id:</strong>{{ car.id }}
@@ -12,7 +18,7 @@
     </p>
 
   {% empty %}
-    <p>No cars!</p>
+    <p><strong>Cars:</strong> No data available</p>
   {% endfor %}
 
 {% endblock %}

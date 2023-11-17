@@ -3,11 +3,10 @@
 {% block content %}
   <h1>Car list</h1>
   {% if car_list %}
-    <ul>
+    <ul class="list-group col-4 col-md-6 mb-3">
       {% for car in car_list %}
-        <li>
-          <a href="{% url "taxi:car-detail" pk=car.id %} ">{{ car.id }}</a>
-          {{ car.model }} ({{ car.manufacturer.name }})
+        <li class="list-group-item list-group-item-action">
+          <a href="{% url "taxi:car-detail" pk=car.id %} " class="link-dark text-decoration-none">{{ car.id }}. {{ car.model }} ({{ car.manufacturer.name }})</a>
         </li>
       {% endfor %}
     </ul>

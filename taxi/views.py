@@ -1,8 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
 from django.views import generic
 
 from .models import Driver, Car, Manufacturer
@@ -21,7 +19,7 @@ def index(request):
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
-        "num_visits": num_visits + 1
+        "num_visits": num_visits + 1,
     }
 
     return render(request, "taxi/index.html", context=context)

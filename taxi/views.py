@@ -55,4 +55,4 @@ class DriverDetailView(LoginRequiredMixin, generic.DetailView):
 
 def login_view(request) -> HttpResponse:
     # your view logic here
-    return render(request, 'registration/login.html')
+    return render(request, "registration/login.html")

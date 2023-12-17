@@ -1,6 +1,6 @@
 <block>
   {% if user.is_authenticated %}
-    <p class="alert alert-success" style="font-weight: bold">User: <a href="{% url "taxi:driver-detail" pk=user.id %}">{{{ user.username }}</a></p>
+    <p class="alert alert-success" style="font-weight: bold">User: <a href="{% url "taxi:driver-detail" pk=user.id %}">{{ user.username }}</a></p>
     <p class="alert alert-success"><a class="alert-link" href="{% url 'logout' %}">Logout</a></p>
   {% else %}
     <p class="alert alert-success"><a class="alert-link" href="{% url 'login' %}">Login</a></p>

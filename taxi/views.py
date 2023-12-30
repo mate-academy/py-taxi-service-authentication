@@ -14,14 +14,13 @@ def index(request):
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
     request.session["test"] = "test session"
-    num_visits = request.session.get("num_visits", 0) + 1
-    request.session["num_visits"] = num_visits
+    request.session["num_visits"] = request.session.get("num_visits", 0) + 1
 
     context = {
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
-        "num_visits": num_visits,
+        "num_visits": request.session["num_visits"],
     }
 
     return render(request, "taxi/index.html", context=context)

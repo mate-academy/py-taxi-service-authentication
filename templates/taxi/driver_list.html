@@ -6,11 +6,9 @@
     <ul>
       {% for driver in driver_list%}
         <li>
-          {% if driver.username == request.user.username %}
-            <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }} (Me)</a>
-          {% else %}
-            <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-          {% endif %}
+          <a href="{% url 'taxi:driver-detail' pk=driver.id %}">
+            {{ driver.username }}{% if driver.username == user.username %} (Me){% endif %}
+          </a>
         </li>
       {% endfor %}
     </ul>

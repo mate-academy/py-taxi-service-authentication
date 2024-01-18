@@ -1,13 +1,38 @@
+{#{% extends "base.html" %}#}
+{##}
+{#{% block content %}#}
+{#  <h1>Driver list</h1>#}
+{#  {% if driver_list %}#}
+{#    <ul>#}
+{#      {% for driver in driver_list %}#}
+{#        <li>#}
+{#          {% if driver.user == request.user %}#}
+{#            {{ driver.first_name }} {{ driver.last_name }}(Me)#}
+{#          {% else %}#}
+{#            <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>#}
+{#          {% endif %}#}
+{#          ({{ driver.first_name }} {{ driver.last_name }})#}
+{#        </li>#}
+{#      {% endfor %}#}
+{#    </ul>#}
+{#  {% else %}#}
+{#    <p>There are no drivers in taxi</p>#}
+{#  {% endif %}#}
+{#{% endblock %}#}
 {% extends "base.html" %}
 
 {% block content %}
   <h1>Driver list</h1>
   {% if driver_list %}
     <ul>
-      {% for driver in driver_list%}
+      {% for driver in driver_list %}
         <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-          ({{ driver.first_name }} {{ driver.last_name }})
+          {% if driver.username == request.user.username %}
+            {{ driver.username }} (Me)
+          {% else %}
+            {{ driver.username }} 
+          {% endif %}
+          {{ driver.first_name }} {{ driver.last_name }}
         </li>
       {% endfor %}
     </ul>

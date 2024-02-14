@@ -1,0 +1,39 @@
+{% if user.is_authenticated %}
+  <div style="
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 200px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+  ">
+    <p>User: {{ user.username }}</p>
+    <a
+      class="btn btn-outline-danger"
+      style="
+        display: block;
+        margin-top: 10px;"
+        href="{% url "logout" %}"
+    >Logout</a>
+  </div>
+{% else %}
+  <div style="
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 2;"
+  >
+    <a
+      class="btn btn-outline-success"
+      style="display: block;" href="{% url "login" %}"
+    >Login</a>
+  </div>
+{% endif %}

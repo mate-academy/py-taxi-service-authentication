@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from .views import (
     index,
@@ -21,7 +21,7 @@ urlpatterns = [
     path("drivers/", DriverListView.as_view(), name="driver-list"),
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
-    ),
+    ), path("", include("django.contrib.auth.urls")),
 ]
 
 app_name = "taxi"

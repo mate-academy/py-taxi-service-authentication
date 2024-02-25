@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "taxi",
+    "django_bootstrap_icons",
 ]
 
 MIDDLEWARE = [
@@ -105,6 +106,8 @@ AUTH_PASSWORD_VALIDATORS = [
         "NumericPasswordValidator",
     },
 ]
+
+LOGIN_REDIRECT_URL = "/"
 
 AUTH_USER_MODEL = "taxi.Driver"
 

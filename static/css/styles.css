@@ -24,6 +24,13 @@ ul {
   padding: 0;
 }
 
+li {
+  margin-top: 10px;
+}
+
+.sidebar-nav a {
+  color: whitesmoke;
+}
 
 .sidebar{
     color: white;
@@ -36,10 +43,6 @@ ul {
   position: fixed;
   top: 15px;
   text-align: left;
-}
-
-li {
-  margin-top: 10px;
 }
 
 .col-sm-10 {
@@ -56,8 +59,4 @@ li {
   height: 15px;
   color: white;
   text-align: center;
-}
-
-.sidebar-nav a {
-  color: whitesmoke;
 }

@@ -3,6 +3,8 @@
 {% block content %}
   <h1>Taxi Service Home</h1>
   <p>Welcome to Best Taxi Ever!</p>
+  <img
+      src="https://media.istockphoto.com/id/1475457222/vector/taxi-car-with-large-roof-plate-vector-stock-illustration.jpg?s=612x612&w=0&k=20&c=Gntn8kN02IxKgul32DXGGzcAX1FVGXRKohZNBvR8WV4=">
   <h2>Dynamic content</h2>
   <p>The Taxi service has the following record counts:</p>
   <ul>
@@ -10,4 +12,6 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+  <br>
+  <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
 {% endblock %}

@@ -1,3 +1,25 @@
 body {
     margin-top: 20px;
+    padding: 0;
+    background: #121212;
+}
+
+.style_me {
+    color: #818FB4;
+}
+
+.side_text {
+    color: #00ff00;
+}
+
+.header1 {
+    color: #DCF2F1;
+}
+
+.header2 {
+    color: #B25068;
+}
+
+.text {
+    color: #D6D5A8;
 }

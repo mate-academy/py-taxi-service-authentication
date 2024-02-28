@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Car list</h1>
+  <h1 class="header1">Car list</h1>
   {% if car_list %}
-    <ul>
+    <ul class="text">
       {% for car in car_list %}
         <li>
           <a href="{% url "taxi:car-detail" pk=car.id %} ">{{ car.id }}</a>
@@ -12,6 +12,6 @@
       {% endfor %}
     </ul>
   {% else %}
-    <p>There are no cars in taxi</p>
+    <p class="text">There are no cars in taxi</p>
   {% endif %}
 {% endblock %}

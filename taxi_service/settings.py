@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "taxi",
 ]
 
-LOGIN_REDIRECT_URL = "/taxi/"
+LOGIN_REDIRECT_URL = "/"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

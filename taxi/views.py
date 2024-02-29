@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
@@ -10,7 +11,7 @@ from .models import Driver, Car, Manufacturer
 def index(request):
     """View function for the home page of the site."""
 
-    num_drivers = Driver.objects.count()
+    num_drivers = get_user_model().objects.count()
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
     num_visits = request.session.get("num_visits", 0)
@@ -34,7 +35,6 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
 
 
 class CarListView(LoginRequiredMixin, generic.ListView):
-    model = Car
     paginate_by = 5
     queryset = Car.objects.select_related("manufacturer")
 
@@ -44,10 +44,9 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 
 
 class DriverListView(LoginRequiredMixin, generic.ListView):
-    model = Driver
+    model = get_user_model()
     paginate_by = 5
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Driver
-    queryset = Driver.objects.prefetch_related("cars__manufacturer")
+    queryset = get_user_model().objects.prefetch_related("cars__manufacturer")

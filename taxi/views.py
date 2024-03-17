@@ -1,20 +1,40 @@
-from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, reverse
 from django.views import generic
-
 from .models import Driver, Car, Manufacturer
 
 
-def index(request):
-    """View function for the home page of the site."""
+def login_view(request: HttpRequest) -> HttpResponse:
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse("taxi:index"))
+    return render(request, "registration/login.html")
 
+
+def logout_view(request: HttpRequest) -> HttpResponse:
+    logout(request)
+    return render(request, "registration/logged_out.html")
+
+
+@login_required
+def index(request):
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
+    num_visits = request.session.get("num_visits", 0)
+    request.session["num_visits"] = num_visits + 1
 
     context = {
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
+        "num_visits": num_visits + 1
     }
 
     return render(request, "taxi/index.html", context=context)

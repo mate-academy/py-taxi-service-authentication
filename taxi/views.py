@@ -1,25 +1,15 @@
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
 from django.views import generic
+
 from .models import Driver, Car, Manufacturer
 
 
-def login_view(request: HttpRequest) -> HttpResponse:
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return HttpResponseRedirect(reverse("taxi:index"))
-    return render(request, "registration/login.html")
-
-
-def logout_view(request: HttpRequest) -> HttpResponse:
-    logout(request)
-    return render(request, "registration/logged_out.html")
+@login_required
+def car_list(request):
+    cars = Car.objects.all()
+    return render(request, "taxi/car_list.html", {"cars": cars})
 
 
 @login_required
@@ -40,28 +30,28 @@ def index(request):
     return render(request, "taxi/index.html", context=context)
 
 
-class ManufacturerListView(generic.ListView):
+class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     model = Manufacturer
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"
     paginate_by = 5
 
 
-class CarListView(generic.ListView):
+class CarListView(LoginRequiredMixin, generic.ListView):
     model = Car
     paginate_by = 5
     queryset = Car.objects.select_related("manufacturer")
 
 
-class CarDetailView(generic.DetailView):
+class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
 
 
-class DriverListView(generic.ListView):
+class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
 
 
-class DriverDetailView(generic.DetailView):
+class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")

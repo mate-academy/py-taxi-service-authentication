@@ -27,7 +27,7 @@ urlpatterns = [
         name="driver-detail"
     ),
     path(
-        "accounts/login/",
+        "login/",
         LoginView.as_view(template_name="registration/login.html"),
         name="login"
     ),
@@ -35,5 +35,5 @@ urlpatterns = [
         "logout/",
         LogoutView.as_view(template_name="registration/logged_out.html"),
         name="logout"
-    )
+    ),
 ]

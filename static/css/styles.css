@@ -1,3 +1,14 @@
 body {
     margin-top: 20px;
 }
+
+button {
+    border: 0;
+}
+
+.sidebar-nav {
+    padding: 20px;
+    line-height: 35px;
+    list-style: none;
+    cursor: pointer;
+}

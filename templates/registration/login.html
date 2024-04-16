@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+  <title>Login</title>
+{% endblock %}
+{% block content %}
+  <h1>Login</h1>
+  {% if form.errors %}
+    <p>Invalid login or password</p>
+  {% endif %}
+  <form action="{% url 'taxi:login' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+  <input type="submit" value="Submit">
+  </form>
+{% endblock %}

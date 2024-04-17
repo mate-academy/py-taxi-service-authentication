@@ -7,7 +7,7 @@
   {% if form.errors %}
     <p>Invalid login or password</p>
   {% endif %}
-  <form action="{% url 'taxi:login' %}" method="post">
+  <form action="{% url 'login' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
   <input type="submit" value="Submit">

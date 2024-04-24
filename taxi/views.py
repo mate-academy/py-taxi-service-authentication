@@ -21,7 +21,6 @@ def index(request):
         "num_manufacturers": num_manufacturers,
         "num_visits": num_visits + 1,
     }
-
     return render(
         request,
         "taxi/index.html",

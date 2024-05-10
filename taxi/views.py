@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views import generic
 
@@ -39,9 +38,6 @@ class CarListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
     queryset = Car.objects.select_related("manufacturer")
 
-    # def get_queryset(self):
-    #     return Car.objects.all().order_by("model")
-
 
 class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
@@ -50,9 +46,6 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
-
-    # def get_queryset(self):
-    #     return Driver.objects.all().order_by("first_name")
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

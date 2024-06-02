@@ -13,6 +13,7 @@ class Manufacturer(models.Model):
     def __str__(self):
         return f"{self.name} {self.country}"
 
+
 class Driver(AbstractUser):
     license_number = models.CharField(max_length=255, unique=True)
 
@@ -31,7 +32,6 @@ class Car(models.Model):
 
     def __str__(self):
         return self.model
-    
+
     def get_absolute_url(self):
         return reverse("taxi:car-detail", kwargs={"pk": self.id})
-    

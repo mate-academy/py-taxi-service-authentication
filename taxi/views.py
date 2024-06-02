@@ -5,6 +5,7 @@ from django.contrib.auth import decorators, mixins
 
 from .models import Driver, Car, Manufacturer
 
+
 @decorators.login_required
 def index(request: HttpRequest) -> HttpResponse:
     num_drivers = Driver.objects.count()

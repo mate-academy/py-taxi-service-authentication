@@ -18,7 +18,8 @@ def login_view(request: HttpRequest) -> HttpResponse:
             error_context = {
                 "message": "Username or password is incorrect.",
             }
-            return render(request, "registration/login.html", context=error_context)
+            return render(request,
+                          "registration/login.html", context=error_context)
 
 
 def logout_view(request: HttpRequest) -> HttpResponse:

@@ -18,9 +18,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+import accounts
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("registration/", include("django.contrib.auth.urls",)),
+    path("registration/", include("accounts.urls", namespace="account")),
     path("", include("taxi.urls", namespace="taxi")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

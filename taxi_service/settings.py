@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "taxi",
-    "accounts"
+
 ]
 
 MIDDLEWARE = [
@@ -135,4 +135,6 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_URL = "/registration/login/"
+
+#LOGIN_URL = "/registration/login/"
+LOGIN_REDIRECT_URL = "/"

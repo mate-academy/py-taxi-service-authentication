@@ -5,7 +5,7 @@
     {% if message %}
         <p style="color: #570808">{{ message }}</p>
     {% endif %}
-    <form action="{% url "registration:login" %}" method="post">
+    <form action="{% url "login" %}" method="post">
         {% csrf_token%}
         <label>Username:
             <input type="text" name="username">

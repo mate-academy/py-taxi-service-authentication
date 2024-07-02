@@ -23,7 +23,6 @@ def index(request: HttpRequest) -> HttpResponse:
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
         "num_visits": request.session.get("num_visits"),
-        "f": request.session.items()
     }
 
     print(request.user)

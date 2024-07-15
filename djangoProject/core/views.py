@@ -2,6 +2,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 
+from core.forms import PersonForm
 from core.models import Person
 
 # Create your views here.
@@ -13,8 +14,8 @@ class PersonListView(ListView):
 
 class PersonCreateView(generic.CreateView):
     model = Person
-    fields = "__all__"
     success_url = reverse_lazy("core:person-list")
     template_name = "core/person_form.html"
+    form_class = PersonForm
 
 

@@ -65,7 +65,7 @@ def home(request):
         request.session.create()
     num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
-    logger.debug(f'num_visits: {num_visits + 1}')  # Добавить логирование
+    logger.debug(f"num_visits: {num_visits + 1}")  # Добавить логирование
     return render(request, "taxi/index.html", {"num_visits": num_visits + 1})
 
 

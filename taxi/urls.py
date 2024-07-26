@@ -1,7 +1,8 @@
 from django.urls import path
+from django.contrib.auth import views as auth_views
 
 from .views import (
-    index,
+    home,
     CarListView,
     CarDetailView,
     DriverListView,
@@ -10,7 +11,7 @@ from .views import (
 )
 
 urlpatterns = [
-    path("", index, name="index"),
+    path("", home, name="index"),
     path(
         "manufacturers/",
         ManufacturerListView.as_view(),
@@ -20,7 +21,26 @@ urlpatterns = [
     path("cars/<int:pk>/", CarDetailView.as_view(), name="car-detail"),
     path("drivers/", DriverListView.as_view(), name="driver-list"),
     path(
-        "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
+        "drivers/<int:pk>/",
+        DriverDetailView.as_view(),
+        name="driver-detail"
+    ),
+    path(
+        "manufacturers/",
+        ManufacturerListView.as_view(),
+        name="manufacturer-list"
+    ),
+    path(
+        "login/",
+        auth_views.LoginView.as_view(
+            template_name="registration/login.html"
+        ), name="login"
+    ),
+    path(
+        "logout/",
+        auth_views.LogoutView.as_view(
+            template_name="registration/logged-out.html"
+        ), name="logout"
     ),
 ]
 

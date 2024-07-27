@@ -2,16 +2,18 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 
 from .views import (
-    home,
+    # home,
     CarListView,
     CarDetailView,
     DriverListView,
     DriverDetailView,
     ManufacturerListView,
+    IndexView,
+
 )
 
 urlpatterns = [
-    path("", home, name="index"),
+    path("", IndexView.as_view(), name="index"),
     path(
         "manufacturers/",
         ManufacturerListView.as_view(),

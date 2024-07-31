@@ -31,9 +31,6 @@ class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = "taxi/driver_detail.html"
 
 
-logger = logging.getLogger(__name__)
-
-
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "taxi/index.html"
 

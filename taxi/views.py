@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.views import generic
 from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from pip._internal.utils import logging
 from .models import Car, Driver, Manufacturer
 
 

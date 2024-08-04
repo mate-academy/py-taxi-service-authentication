@@ -9,7 +9,6 @@ from .models import Driver, Car, Manufacturer
 
 @login_required
 def index(request):
-    """View function for the home page of the site."""
 
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()
@@ -59,14 +58,13 @@ def auth_login(request, user):
 
 
 def signup(request):
-    """Handle user signup."""
-    if request.method == 'POST':
+    if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            auth_login(request, user)  # Log in the user after signup
-            return redirect('taxi:index')  # Redirect to the home page
+            auth_login(request, user)
+            return redirect("taxi:index")
     else:
         form = UserCreationForm()
 
-    return render(request, 'registration/signup.html', {'form': form})
+    return render(request, "registration/signup.html", {"form": form})

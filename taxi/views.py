@@ -53,23 +53,3 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
-
-
-def login_view(request: HttpRequest) -> HttpResponse:
-    if request.method == "GET":
-        form = AuthenticationForm()
-        return render(request, "registration/login.html", {"form": form})
-    elif request.method == "POST":
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return HttpResponseRedirect(reverse("taxi:index"))
-        else:
-            return render(request, "registration/login.html", {"form": form})
-
-
-def logout_view(request) -> HttpResponse:
-    form = AuthenticationForm()
-    logout(request)
-    return render(request, "registration/logged_out.html", {"form": form})

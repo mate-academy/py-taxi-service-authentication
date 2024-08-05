@@ -1,5 +1,7 @@
 from django.urls import path
 
+from django.contrib.auth import views as auth_views
+
 from .views import (
     index,
     CarListView,
@@ -7,10 +9,7 @@ from .views import (
     DriverListView,
     DriverDetailView,
     ManufacturerListView,
-    signup,
 )
-
-app_name = "taxi"
 
 urlpatterns = [
     path("", index, name="index"),
@@ -27,5 +26,6 @@ urlpatterns = [
         "drivers/<int:pk>/",
         DriverDetailView.as_view(), name="driver-detail"
     ),
-    path("signup/", signup, name="signup"),
 ]
+
+app_name = "taxi"

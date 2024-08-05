@@ -1,7 +1,10 @@
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.contrib.auth.forms import AuthenticationForm
+from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
+from django.shortcuts import render
+from django.urls import reverse
 from django.views import generic
 
 from .models import Driver, Car, Manufacturer
@@ -9,18 +12,17 @@ from .models import Driver, Car, Manufacturer
 
 @login_required
 def index(request):
-
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
+
     num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
-
     context = {
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
-        "num_visits": num_visits + 1,
+        "num_visits": request.session["num_visits"],
     }
 
     return render(request, "taxi/index.html", context=context)
@@ -51,20 +53,3 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
-
-
-def auth_login(request, user):
-    pass
-
-
-def signup(request):
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            auth_login(request, user)
-            return redirect("taxi:index")
-    else:
-        form = UserCreationForm()
-
-    return render(request, "registration/signup.html", {"form": form})

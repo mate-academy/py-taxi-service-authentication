@@ -1,6 +1,9 @@
 {% if user.is_authenticated %}
   <p><a href="{% url "taxi:driver-detail" request.user.id %}">{{ request.user.username }}</a></p>
-  <a href="{% url "logout" %}" class="btn-primary">Logout</a>
+   <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Logout</button>
+  </form>
 {% else %}  
   <a href="{% url "login" %}" class="btn-primary">Login</a>
 {% endif %}

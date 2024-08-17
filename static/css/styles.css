@@ -1,3 +1,30 @@
 body {
     margin-top: 20px;
+    background-color: whitesmoke;
+}
+
+.sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #353535;
+    overflow-x: hidden;
+    padding-top: 20px;
+    color: white;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar a {
+    color: antiquewhite;
+}
+
+.content {
+    margin-left: 160px;
+    padding: 20px 10px;
 }

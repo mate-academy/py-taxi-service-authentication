@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Driver, Car, Manufacturer
 
 
-@login_required(login_url='login')
+@login_required(login_url="login")
 def index(request):
     """View function for the home page of the site."""
 
@@ -46,8 +46,6 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
-
-
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

@@ -1,3 +1,4 @@
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views import generic
 
@@ -10,11 +11,14 @@ def index(request):
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
+    num_visits = request.session.get("num_visits", 0)
+    request.session["num_visits"] = num_visits + 1
 
     context = {
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
+        "num_visits": request.session["num_visits"]
     }
 
     return render(request, "taxi/index.html", context=context)
@@ -45,3 +49,10 @@ class DriverListView(generic.ListView):
 class DriverDetailView(generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
+
+
+def test_session_view(request: HttpRequest) -> HttpResponse:
+    return HttpResponse(
+        "<h1>Test Session</h1>"
+        f"<h4>Session data: {request.session['test']}</h4>"
+    )

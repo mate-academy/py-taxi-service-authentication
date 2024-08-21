@@ -6,3 +6,12 @@
 venv/
 .pytest_cache/
 **__pycache__/
+/accounts/migrations/__init__.py
+/accounts/__init__.py
+/accounts/admin.py
+/accounts/apps.py
+/accounts/models.py
+/accounts/tests.py
+/accounts/views.py
+/accounts/urls.py
+/templates/registration/login.html

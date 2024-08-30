@@ -3,6 +3,8 @@
 *.iml
 .env
 .DS_Store
+taxi_service/settings.py
+db.sqlite3
 venv/
 .pytest_cache/
 **__pycache__/

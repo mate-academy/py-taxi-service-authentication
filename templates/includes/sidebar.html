@@ -1,4 +1,16 @@
 <ul class="sidebar-nav">
+  {% if user.is_authenticated %}
+    <h4 class="title"><a href="{% url "taxi:driver-detail" pk=user.id %}">User: {{ user.username }}</a></h4>
+    <h6 class="title"><a href="{% url "logout" %}">Logout</a></h6>
+
+    {% if num_visits %}
+      <p>You have visited home page {{ num_visits }} time{{ num_visits|pluralize }}</p>
+    {% endif %}
+
+  {% else %}
+    <h6 class="title"><a href="{% url "login" %}">Login</a></h6>
+  {% endif %}
+
   <li><a href="{% url "taxi:index" %}">Home page</a></li>
   <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
   <li><a href="{% url "taxi:car-list" %}">Cars</a></li>

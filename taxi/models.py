@@ -23,6 +23,10 @@ class Driver(AbstractUser):
     def __str__(self):
         return f"{self.username} ({self.first_name} {self.last_name})"
 
+    @property
+    def is_driver(self):
+        return True
+
 
 class Car(models.Model):
     model = models.CharField(max_length=255)

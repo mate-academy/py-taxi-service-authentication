@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <ul class="sidebar-nav">
   {% if user.is_authenticated %}
     <li>User: <a href="{% url 'taxi:driver-detail' user.pk %}">{{ user.username }}</a></li>
@@ -11,3 +12,20 @@
   <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
   <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
 </ul>
+=======
+<div class="sidebar">
+    <ul>
+        <li><a href="{% url 'taxi:index' %}">Home page</a></li>
+        <li><a href="{% url 'taxi:manufacturer-list' %}">Manufacturers</a></li>
+        <li><a href="{% url 'taxi:car-list' %}">Cars</a></li>
+        <li><a href="{% url 'taxi:driver-list' %}">Drivers</a></li>
+    </ul>
+
+    {% if user.is_authenticated %}
+        <p>Logged in as <strong>{{ user.username }}</strong></p>
+        <a href="{% url 'taxi:logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'taxi:login' %}">Login</a>
+    {% endif %}
+</div>
+>>>>>>> 9ec6aba500bb01d17ec55bca21b477b65d9d5c38

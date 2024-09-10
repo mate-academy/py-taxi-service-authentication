@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base.html" %}
 
 {% block content %}
@@ -8,3 +9,20 @@
     <button type="submit">Login</button>
   </form>
 {% endblock %}
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
+>>>>>>> 9ec6aba500bb01d17ec55bca21b477b65d9d5c38

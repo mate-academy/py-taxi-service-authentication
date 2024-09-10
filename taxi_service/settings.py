@@ -24,7 +24,7 @@ SECRET_KEY = (
     "django-insecure-8ovil3xu6=eaoqd#-#&ricv159p0pypoh5_lgm*)-dfcjqe=yc"
 )
 
-# SECURITY WARNING: don"t run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -90,20 +90,28 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation."
-        "UserAttributeSimilarityValidator",
+        "NAME": (
+            "django.contrib.auth.password_validation."
+            "UserAttributeSimilarityValidator"
+        ),
     },
     {
-        "NAME": "django.contrib.auth.password_validation."
-        "MinimumLengthValidator",
+        "NAME": (
+            "django.contrib.auth.password_validation."
+            "MinimumLengthValidator"
+        ),
     },
     {
-        "NAME": "django.contrib.auth.password_validation."
-        "CommonPasswordValidator",
+        "NAME": (
+            "django.contrib.auth.password_validation."
+            "CommonPasswordValidator"
+        ),
     },
     {
-        "NAME": "django.contrib.auth.password_validation."
-        "NumericPasswordValidator",
+        "NAME": (
+            "django.contrib.auth.password_validation."
+            "NumericPasswordValidator"
+        ),
     },
 ]
 
@@ -137,6 +145,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "/"
 
+<<<<<<< HEAD
 LOGOUT_REDIRECT_URL = "/login/"
 
 LOGIN_URL = "/login/"
+=======
+LOGOUT_REDIRECT_URL = "/"
+
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
+>>>>>>> 9ec6aba500bb01d17ec55bca21b477b65d9d5c38

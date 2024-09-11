@@ -24,5 +24,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("taxi.urls", namespace="taxi")),
     path("registration/", include("django.contrib.auth.urls")),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + debug_toolbar_urls()
-
+] + static(
+    settings.STATIC_URL,
+    document_root=settings.STATIC_ROOT
+) + debug_toolbar_urls()

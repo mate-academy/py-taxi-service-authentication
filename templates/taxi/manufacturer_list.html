@@ -4,7 +4,7 @@
   <h1>Manufacturer list</h1>
 
   {% if manufacturer_list %}
-    <ul>
+    <ul class="list-custom">
       {% for manufacturer in manufacturer_list %}
         <li>{{ manufacturer.name }} {{ manufacturer.country }}</li>
       {% endfor %}

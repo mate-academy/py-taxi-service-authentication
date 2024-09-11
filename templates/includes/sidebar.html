@@ -3,7 +3,7 @@
   <p>User: <a href="{% url 'taxi:driver-detail' pk=user.id %}">{{ user.username }}</a></p>
   <p><a href="{% url "logout" %}">Logout</a></p>
   {% else %}
-  <p><a href="{% url "logout" %}">Logout</a></p>
+  <p><a href="{% url "login" %}">Login</a></p>
 {% endif %}
 
 <ul class="sidebar-nav">

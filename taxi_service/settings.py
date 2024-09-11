@@ -108,10 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "taxi.Driver"
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
-
 LOGIN_REDIRECT_URL = "/"
 
 # Internationalization

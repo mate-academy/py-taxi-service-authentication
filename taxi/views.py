@@ -48,14 +48,6 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        for driver in queryset:
-            if driver == self.request.user:
-                driver.is_current_user = True
-            else:
-                driver.is_current_user = False
-        return queryset
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

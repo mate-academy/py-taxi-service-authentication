@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils.decorators import method_decorator
 from django.shortcuts import render
 from django.views import generic
 
@@ -11,10 +10,9 @@ from .models import Driver, Car, Manufacturer
 def index(request):
     """View function for the home page of the site."""
 
-    if "num_visits" not in request.session:
-        request.session["num_visits"] = 0
+    num_visits = request.session.get("num_visits", 0)
 
-    request.session["num_visits"] += 1
+    request.session["num_visits"] = num_visits + 1
 
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()

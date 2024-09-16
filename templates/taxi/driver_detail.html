@@ -1,10 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
- <p><strong>
-    {{ driver.first_name }} {{ driver.last_name }}.</strong>
+ <p>
+   <strong>
+    {% if driver.id == user.id %}
+      (Me)
+      License number: {{ driver.license_number }}
+    {% else %}
+    {{ driver.first_name }} {{ driver.last_name }}.
     License number: {{ driver.license_number }}
-  </p>
+    {% endif %}
+  </strong>
+ </p>
   {% for car in driver.cars.all %}
     <hr>
     <p><strong>Id:</strong>{{ car.id }}

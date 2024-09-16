@@ -1,3 +1,45 @@
+html{
+    background-color: lightgray;
+}
+
 body {
     margin-top: 20px;
+    background-color: lightgray;
+}
+
+.table{
+    border: 1px solid gray;
+}
+
+/* sidebar.html */
+.sidebar-nav{
+    padding: 20px 20px;
+    list-style: none;
+    border: 2px solid darkcyan;
+}
+
+.hover-sidebar-nav:hover{
+    background-color: grey;
+}
+
+.nav-content{
+    color: darkcyan;
+}
+
+.login-logout{
+    color: blue;
+}
+
+.user-li-name{
+    display: flex;
+    color: blue;
+}
+
+.user-name{
+    padding-left: 10px;
+    color: darkslateblue;
+}
+
+.user-name:hover{
+    text-decoration: underline;
 }

@@ -1,3 +1,35 @@
 body {
     margin-top: 20px;
+    background-color: #333;
+    color: white;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+p {
+    margin: 0;
+}
+
+.sidebar-nav {
+    list-style: none;
+}
+.sidebar-nav li {
+    width: 75%;
+    transition: background-color ease-in-out 0.2s, width linear 0.3s;
+}
+.sidebar-nav li:hover {
+    background: #555;
+    width: 100%;
+}
+.sidebar-nav li a {
+    color: white;
+    text-decoration: none;
+}
+
+.no_transform:hover{
+    transform: none;
+}
+.side_name {
+    color: red;
 }

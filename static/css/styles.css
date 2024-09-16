@@ -1,3 +1,36 @@
-body {
-    margin-top: 20px;
+
+.sidebar-nav {
+  padding: 10px 0;
+  background-color: lightblue;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.sidebar-nav li {
+  margin: 0;
+  padding: 0;
+}
+
+
+.sidebar-nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 20px;
+}
+
+
+.sidebar-nav a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.mt-90 {
+  margin-top: 90px;
 }

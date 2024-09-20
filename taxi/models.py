@@ -29,5 +29,8 @@ class Car(models.Model):
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
     drivers = models.ManyToManyField(Driver, related_name="cars")
 
+    class Meta:
+        ordering = ["model"]
+
     def __str__(self):
         return self.model

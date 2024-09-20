@@ -1,5 +1,5 @@
 from argparse import Namespace
-from django.urls import path, include
+from django.urls import path
 from django.contrib.auth import views as auth_views
 
 from taxi.views import (
@@ -9,7 +9,6 @@ from taxi.views import (
     DriverListView,
     DriverDetailView,
     ManufacturerListView,
-    user_logout
 )
 
 
@@ -51,7 +50,7 @@ urlpatterns = [
     ),
     path(
         "logout/",
-        user_logout,
+        auth_views.LogoutView.as_view(),
         name="logout"
     ),
 ]

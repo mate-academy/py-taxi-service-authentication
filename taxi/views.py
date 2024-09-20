@@ -1,7 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from taxi.models import Driver, Car, Manufacturer
@@ -16,8 +15,6 @@ def index(request):
 
     num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
-
-    request.session.save()
 
     context = {
         "num_drivers": num_drivers,
@@ -54,10 +51,3 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
-
-
-@login_required
-def user_logout(request):
-    """View function to log out the user."""
-    logout(request)
-    return redirect("taxi:index")

@@ -10,4 +10,9 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+    <p>You have visited this page 
+        {{ num_visits }}
+        {% if num_visits == 1 %} time 
+        {% else %} times
+        {% endif %}</p>
 {% endblock %}

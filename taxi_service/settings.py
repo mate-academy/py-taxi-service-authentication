@@ -52,6 +52,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+LOGIN_REDIRECT_URL = "/cars/"
+
 ROOT_URLCONF = "taxi_service.urls"
 
 TEMPLATES = [

@@ -1,3 +1,62 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  height: 15px;
+}
+
 body {
-    margin-top: 20px;
+  margin: 0;
+  padding-top: 30px;
+  background-color: white;
+}
+
+.link {
+  color: cornsilk;
+  text-decoration: none;
+  display: block;
+  padding: 10px 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-top: 10px;
+}
+
+.sidebar-nav a {
+  color: whitesmoke;
+}
+
+.sidebar{
+    color: white;
+}
+
+.col-sm-2 {
+  background-color: rgb(25%, 25%, 25%);
+  width: 150px;
+  height: 100%;
+  position: fixed;
+  top: 15px;
+  text-align: left;
+}
+
+.col-sm-10 {
+  margin: 10px auto auto 170px;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  height: 15px;
+  color: white;
+  text-align: center;
 }

@@ -3,7 +3,7 @@
 {% block content %}
  <p><strong>
     {{ driver.first_name }} {{ driver.last_name }}.</strong>
-    License number: {{ driver.license_number }}
+    License number: {{ driver.license_number }} {% if driver.username == user.username %}(Me){% endif %}
   </p>
   {% for car in driver.cars.all %}
     <hr>

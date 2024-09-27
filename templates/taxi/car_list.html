@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Car list</h1>
+  <h2 class="subtitle">Car List</h2>
+  
   {% if car_list %}
-    <ul>
+    <ul class="list-group list-group-flush">
       {% for car in car_list %}
-        <li>
-          <a href="{% url "taxi:car-detail" pk=car.id %} ">{{ car.id }}</a>
-          {{ car.model }} ({{ car.manufacturer.name }})
-        </li>
+        <a href="{{ car.get_absolute_url }}" class="list-group-item list-group-item-action">
+          {{ car.model }}
+        </a>    	
       {% endfor %}
     </ul>
-  {% else %}
-    <p>There are no cars in taxi</p>
+    {% else %}
+    <p>No data</p>
   {% endif %}
 {% endblock %}

@@ -9,6 +9,7 @@ from .views import (
     ManufacturerListView,
 )
 
+
 urlpatterns = [
     path("", index, name="index"),
     path(

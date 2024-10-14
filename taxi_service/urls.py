@@ -27,7 +27,6 @@ from taxi.views import (
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include(("taxi.urls", "taxi"), namespace="taxi")),
     path("", index, name="index"),
     path("drivers/", DriverListView.as_view(), name="driver-list"),
     path("cars/", CarListView.as_view(), name="car-list"),
@@ -37,4 +36,5 @@ urlpatterns = [
          name="driver-detail"),
     path("cars/<int:pk>/", CarDetailView.as_view(), name="car-detail"),
     path("accounts/", include("django.contrib.auth.urls")),
+    path("", include(("taxi.urls", "taxi"), namespace="taxi")),
 ]

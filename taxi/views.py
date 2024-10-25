@@ -1,3 +1,4 @@
+from django.conf.global_settings import LOGIN_URL
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
@@ -54,7 +55,7 @@ class CarDetailView(generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
-    login_url = "/accounts/login/"
+    login_url = LOGIN_URL
 
 
 class DriverDetailView(generic.DetailView):

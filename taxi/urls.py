@@ -24,7 +24,6 @@ urlpatterns = [
         DriverDetailView.as_view(),
         name="driver-detail"
     ),
-    path("test-session", DriverDetailView.as_view(), name="driver-detail"),
 ]
 
 app_name = "taxi"

@@ -27,6 +27,8 @@ def get_env_variable(var_name):
         return os.environ[var_name]
     except KeyError:
         raise ImproperlyConfigured(f"Set the {var_name} environment variable.")
+
+
 SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don"t run with debug turned on in production!
 DEBUG = False

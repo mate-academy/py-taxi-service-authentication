@@ -11,12 +11,13 @@
             ({{ driver.first_name }} {{ driver.last_name }})
             <span style="color: orange">(Me)</span>
           </li>
+          
+          {% else %}
+          <li>
+            <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
+            ({{ driver.first_name }} {{ driver.last_name }})
+          </li>
         {% endif %}
-        
-        <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-          ({{ driver.first_name }} {{ driver.last_name }})
-        </li>
       {% endfor %}
     </ul>
   {% else %}

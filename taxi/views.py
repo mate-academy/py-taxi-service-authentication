@@ -42,6 +42,7 @@ class CarListView(LoginRequiredMixin, generic.ListView):
 
 class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
+    queryset = Car.objects.select_related("manufacturer")
 
 
 class DriverListView(LoginRequiredMixin, generic.ListView):

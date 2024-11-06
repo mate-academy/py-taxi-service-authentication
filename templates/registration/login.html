@@ -2,16 +2,13 @@
 
 {% block content %}
   <h1>Login</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
-
-  {% if user.is_authenticated %}
-    <form method="post" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <button type="submit">Logout</button>
+  {% if not user.is_authenticated %}
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Login</button>
     </form>
+  {% else %}
+    <p><a href="{% url 'home' %}">Home page</a></p>
   {% endif %}
 {% endblock %}

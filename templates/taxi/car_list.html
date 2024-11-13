@@ -2,19 +2,18 @@
 
 {% block content %}
   <h1 class="taxi-title">Cars</h1>
-  
-    {% if car_list %}
-      <ul class="car-list">
-        {% for car in car_list %}
-          <a href="{{ car.get_absolute_url }}" class="car-item">
-            <li>
-              <p class="car-info">ID: {{ car.id }}</p>
-              <p class="car-info">Manufacturer: {{ car.manufacturer.name }}</p>
-              <p class="car-info">Model: {{ car.model }}</p>
-            </li>
+
+  {% if car_list %}
+    <ul class="car-list">
+      {% for car in car_list %}
+        <li class="car-item">
+          <a href="{{ car.get_absolute_url }}">
+            <p class="car-info">ID: {{ car.id }}</p>
+            <p class="car-info">Manufacturer: {{ car.manufacturer.name }}</p>
+            <p class="car-info">Model: {{ car.model }}</p>
           </a>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 {% endblock %}

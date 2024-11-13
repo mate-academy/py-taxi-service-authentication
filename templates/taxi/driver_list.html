@@ -4,15 +4,19 @@
   <h1 class="taxi-title">Drivers</h1>
   {% if driver_list %}
     <ul class="driver-list">
-    {% for driver in driver_list %}
-      <a href="{{ driver.get_absolute_url }}" class="driver-item">
-        <li>
-          <p class="driver-info">ID: {{ driver.id }}</p>
-          <p class="driver-info">Name: {{ driver.first_name }}</p>
-          <p class="driver-info">Surname: {{ driver.last_name }}</p>
+      {% for driver in driver_list %}
+        <li class="driver-item">
+          <a href="{{ driver.get_absolute_url }}">
+            <p class="driver-info">ID: {{ driver.id }}</p>
+            {% if driver.id == user.id %}
+              <p class="driver-info">Name: {{ driver.first_name }} (Me)</p>
+            {% else %}
+              <p class="driver-info">Name: {{ driver.first_name }}</p>
+            {% endif %}
+            <p class="driver-info">Surname: {{ driver.last_name }}</p>
+          </a>
         </li>
-      </a>
-    {% endfor %}
+      {% endfor %}
     </ul>
   {% endif %}
 {% endblock %}

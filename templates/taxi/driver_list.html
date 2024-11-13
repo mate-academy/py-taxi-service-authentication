@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Driver list</h1>
+  <h1 class="taxi-title">Drivers</h1>
   {% if driver_list %}
-    <ul>
-      {% for driver in driver_list%}
+    <ul class="driver-list">
+    {% for driver in driver_list %}
+      <a href="{{ driver.get_absolute_url }}" class="driver-item">
         <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-          ({{ driver.first_name }} {{ driver.last_name }})
+          <p class="driver-info">ID: {{ driver.id }}</p>
+          <p class="driver-info">Name: {{ driver.first_name }}</p>
+          <p class="driver-info">Surname: {{ driver.last_name }}</p>
         </li>
-      {% endfor %}
+      </a>
+    {% endfor %}
     </ul>
-  {% else %}
-    <p>There are no drivers in taxi</p>
   {% endif %}
 {% endblock %}

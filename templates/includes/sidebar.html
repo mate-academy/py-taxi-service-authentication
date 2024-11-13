@@ -1,6 +1,23 @@
 <ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
+  {% if user.is_authenticated %}
+    <li class="aside-item">
+      <p class="username">User: {{ user.username }}</p>
+      <a href="{% url "logout" %}" class="logout-link">LogOut</a>
+    </li>
+  {% else %}
+    <a href="{% url "login" %}" class="login-link">Please LogIn</a>
+  {% endif %}
+  <br></br>
+  <li class="aside-item">
+    <a href="{% url "taxi:index" %}" class="aside-link">Home page</a>
+  </li>
+  <li class="aside-item">
+    <a href="{% url "taxi:manufacturer-list" %}" class="aside-link">Manufactures</a>
+  </li>
+  <li class="aside-item">
+    <a href="{% url "taxi:car-list" %}" class="aside-link">Cars</a>
+  </li>
+  <li class="aside-item">
+    <a href="{% url "taxi:driver-list" %}" class="aside-link">Drivers</a>
+  </li>
 </ul>

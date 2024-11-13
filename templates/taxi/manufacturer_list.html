@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Manufacturer list</h1>
-
+  <h1 class="taxi-title">Manufacturer List</h1>
+  <ul class="manufacturer-list">
   {% if manufacturer_list %}
-    <ul>
-      {% for manufacturer in manufacturer_list %}
-        <li>{{ manufacturer.name }} {{ manufacturer.country }}</li>
-      {% endfor %}
-    </ul>
+    {% for manufacturer in manufacturer_list %}
+      <li class="manufacturer-item">
+        <p class="manufacturer-info">Brand: {{ manufacturer.name }}</p>
+        <p class="manufacturer-info">Country: {{ manufacturer.country }}</p>
+      </li>
+    {% endfor %}
   {% endif %}
+  </ul>
 {% endblock %}

@@ -1,40 +1,62 @@
-# Taxi service authentication 
+# Taxi service home page
 
-Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
+- Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
 - Use the following command to load prepared data from fixture to test and debug your code:
-  `python manage.py loaddata taxi_service_db_data.json`.
-- After loading data from fixture you can use following superuser (or create another one by yourself):
-  - Login: `admin.user`
-  - Password: `1qazcde3`
-- Make sure that you change the settings for [html-files](https://github.com/mate-academy/py-task-guideline/blob/main/html_settings/README.MD).
+
+  ```python manage.py loaddata taxi_service_db_data.json```.
 
 Feel free to add more data using admin panel, if needed.
 
-In this task, you will implement a visit counter, login/logout functionality, and make your site available only 
-authenticated users.
+In this task, you should implement the home page of the site.
 
-1. Implement a visit counter on the home screen (use the `num_visits` variable name). It should show how many times a user visited the home page before.
+1. Inside `taxi_service.urls` add path to the `taxi.urls`. Don't forget to specify `namespace`.
+2. Inside `taxi.urls` create a path for the home page. This
+page should open when you are accessing `http://127.0.0.1:8000/`. Give this
+path the name `index`.
+3. Inside `taxi.views` create function `index`. In this function:
+    - count the number of all drivers with `num_drivers` variable
+    - count the number of all manufacturers with `num_manufacturers` variable
+    - count the number of all cars with `num_cars` variable 
+    - return `HttpResponse` with rendered template. Pass received data to this template (don't import `HttpResponse` if you use `render`, this import is unnecessary).
 
-2. Create login/logout screens. Provide authentication to your project using built-in Django authentication.
+4. Before you create a template you have to create styles for the 
+template. Create directory `static` next to the directory `taxi`. Inside this 
+directory create a file with the following path `css/styles.css`. Don't forget to do all necessary steps so that Django can serve these static files.
+5. Create directory `templates` next to the directory `taxi`. There you will
+store templates for pages. Edit settings so that engine knows where to look for template source files.
+6. Inside directory `templates` create template `base.html`, it is a parent 
+template, other templates will extend `base.html`. Inside `base.html`:
+   - Inside `<head>`:
+      - Create block `title` with `Taxi Service` title inside
+      - Load static and import `styles.css`
+   - Inside `<body>`:
+      - Create block `sidebar`
+      - Create block `content`
+7. Inside `templates` create a directory `taxi`. There you will store templates
+for the app `taxi`. Create `index.html` there. Inside `index.html`:
+    - Override block `content` and place (as a list) information about:
+        - Number of cars
+        - Number of drivers
+        - Number of manufacturers
+8. Inside `templates` create a directory `includes`. There you will store includes. 
+Create `sidebar.html` there. Inside `sidebar.html`:
+    - Write realization of `sidebar` include that must have a list of empty links:
+        - Home page
+        - Manufacturers
+        - Cars
+        - Drivers
+    - Anchor tags can serve as placeholder links for this task, meaning the actual destination of the link is not a concern.
+      For example, you can use `href="#"` as the link destination.
 
-3. Display the username on the top of the sidebar and login/logout button depending on if the user is authenticated.
-If the driver clicks on username - the corresponding Driver detail page must open.
+    - In `base.html` include `sidebar.html`, so all these links will be accessible on all pages.
+9. Check that you put empty lines at the end of each HTML file.
+10. Run server, open `http://127.0.0.1:8000/`, check if the information is there and if it is correct.
+11. Run `python manage.py test` to check your code results.
+12. Avoid adding unnecessary files (like `venv`, `pycache`, `.idea`, `db.sqlite3`) and remember to include a `.gitignore` file in your PR.
 
-4. Protect all your views from unauthenticated users.
+### Note: Attach screenshots of all created or modified pages to pull request. 
 
-5. In Driver's list view add (Me), if this is a current user:
-    
-Example:
-```
-- Admin User (Me)
-- Joyce Byers
-- Jim Hopper
-```
-
-NOTE: Attach screenshots of all created or modified pages to pull request. It's important to attach images not links to them. See example:
+1) Attach screenshots to the comment, NOT in commit. 
+2) It's important to **attach images** not links to them. See example:
 
 ![image](https://mate-academy-images.s3.eu-central-1.amazonaws.com/python_pr_with_images.png)
-
-**Note:** we use the `-` hyphen in URLs names in our Django course, whilst we use the `_` underscore in our DRF course.
-
-### Note: Check your code using this [checklist](checklist.md) before pushing your solution.

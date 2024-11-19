@@ -140,4 +140,4 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-LOGIN_REDIRECT_URL = "/"  # Перенаправляє на головну сторінку після входу
+LOGIN_REDIRECT_URL = "/"

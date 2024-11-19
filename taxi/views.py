@@ -14,13 +14,8 @@ def index(request):
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
 
-    # request.session["test"] = "second test session"
-
     num_visits = request.session.get("num_visits", 0) + 1
     request.session["num_visits"] = num_visits
-
-    # print(request.session._session_cache)
-    # print(request.session.items())
 
     context = {
         "num_drivers": num_drivers,

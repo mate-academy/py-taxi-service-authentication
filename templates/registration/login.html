@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+	<a href="{% url 'taxi:index' %}">Home page</a>
+{% endblock %}
+
+{% block content %}
+	<form method="post" class="form-group">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Login" class="btn btn-primary">
+	</form>
+{% endblock %}

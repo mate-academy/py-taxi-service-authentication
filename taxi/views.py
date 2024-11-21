@@ -47,7 +47,8 @@ def login_view(request):
     else:
         form = AuthenticationForm()
 
-    return render(request, "taxi/login.html", {"form": form})
+    return render(request, "taxi/../templates/registration/login.html",
+                  {"form": form})
 
 
 def logout_view(request):

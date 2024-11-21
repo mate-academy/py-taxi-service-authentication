@@ -21,6 +21,7 @@ class Driver(AbstractUser):
         verbose_name_plural = "drivers"
 
     def __str__(self):
+
         return f"{self.username} ({self.first_name} {self.last_name})"
 
 
@@ -31,3 +32,11 @@ class Car(models.Model):
 
     def __str__(self):
         return self.model
+
+
+class VisitCounter(models.Model):
+    num_visits = models.PositiveIntegerField(default=0)
+
+    def increment(self):
+        self.num_visits += 1
+        self.save()

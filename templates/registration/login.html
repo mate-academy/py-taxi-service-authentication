@@ -3,7 +3,7 @@
 {% block content %}
   <div>
     <h5>Login in your account</h5>
-    {% if error %}
+    {% if form.errors %}
       <p style="color: red">{{ form.errors }}Login or password is wrong</p>
     {% endif %}
     <form action="{% url 'login' %}" method="post">

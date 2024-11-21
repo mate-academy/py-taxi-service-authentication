@@ -3,7 +3,7 @@
 {% block content %}
   <h2>Login</h2>
   {% if form.errors %}
-    <p style="color: blue">Invalid credentials</p>
+    <p style="color: darkred">Invalid credentials</p>
   {% endif %}
   <form action="{% url 'login' %}" method="post">
   {% csrf_token %}

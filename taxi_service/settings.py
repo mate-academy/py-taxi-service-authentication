@@ -105,6 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
         "NumericPasswordValidator",
     },
 ]
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "taxi:index"
+LOGOUT_REDIRECT_URL = "login"
 
 AUTH_USER_MODEL = "taxi.Driver"
 

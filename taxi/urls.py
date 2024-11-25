@@ -1,9 +1,4 @@
-from mailcap import lookup
-
-from django.contrib.auth import logout
 from django.urls import path
-
-from registration.views import logout_view, login_view
 from .views import (
     index,
     CarListView,

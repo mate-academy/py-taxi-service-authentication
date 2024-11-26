@@ -1,3 +1,14 @@
 body {
     margin-top: 20px;
 }
+.p_error{
+    color: red;
+    font-size: 20px;
+}
+.user_login_sidebar{
+   text-decoration: none;
+    list-style: none;
+    font-size: 17px;
+    color: #441313;
+    font-weight: bold;
+}

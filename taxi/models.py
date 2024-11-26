@@ -32,11 +32,3 @@ class Car(models.Model):
 
     def __str__(self):
         return self.model
-
-
-class VisitCounter(models.Model):
-    num_visits = models.PositiveIntegerField(default=0)
-
-    def increment(self):
-        self.num_visits += 1
-        self.save()

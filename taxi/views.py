@@ -1,25 +1,18 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout
-from django.contrib.auth.forms import AuthenticationForm
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from .models import Driver, Car, Manufacturer
 
 
+@login_required(login_url="taxi:login")
 def index(request):
-    if not request.user.is_authenticated:
-        return redirect("taxi:login")
-
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
 
-    if "num_visits" not in request.session:
-        request.session["num_visits"] = 1
-    else:
-        request.session["num_visits"] += 1
-
-    num_visits = request.session["num_visits"]
+    num_visits = request.session.get("num_visits", 0) + 1
+    request.session["num_visits"] = num_visits
 
     context = {
         "num_drivers": num_drivers,
@@ -31,78 +24,33 @@ def index(request):
     return render(request, "taxi/index.html", context=context)
 
 
-@login_required
-def driver_detail(request, pk):
-    driver = Driver.objects.get(pk=pk)
-    return render(request, "taxi/driver_detail.html", {"driver": driver})
-
-
-def login_view(request):
-    if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect("taxi:index")
-    else:
-        form = AuthenticationForm()
-
-    return render(request, "taxi/../templates/registration/login.html",
-                  {"form": form})
-
-
-def logout_view(request):
-    logout(request)
-    return redirect("taxi:index")
-
-
-class ManufacturerListView(generic.ListView):
+class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     model = Manufacturer
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"
     paginate_by = 5
-
-    def get(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return redirect("taxi:login")
-        return super().get(request, *args, **kwargs)
+    login_url = "taxi:login"
 
 
-class CarListView(generic.ListView):
+class CarListView(LoginRequiredMixin, generic.ListView):
     model = Car
     paginate_by = 5
     queryset = Car.objects.select_related("manufacturer").order_by("id")
-
-    def get(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return redirect("taxi:login")
-        return super().get(request, *args, **kwargs)
+    login_url = "taxi:login"
 
 
-class CarDetailView(generic.DetailView):
+class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
-
-    def get(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return redirect("taxi:login")
-        return super().get(request, *args, **kwargs)
+    login_url = "taxi:login"
 
 
-class DriverListView(generic.ListView):
+class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
-
-    def get(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return redirect("taxi:login")
-        return super().get(request, *args, **kwargs)
+    login_url = "taxi:login"
 
 
-class DriverDetailView(generic.DetailView):
+class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
-
-    def get(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return redirect("taxi:login")
-        return super().get(request, *args, **kwargs)
+    login_url = "taxi:login"

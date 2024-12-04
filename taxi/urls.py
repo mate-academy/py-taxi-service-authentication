@@ -1,10 +1,7 @@
-from django.contrib.auth.views import LoginView
 from django.urls import path
 
-from django.contrib.auth import views as auth_views
 from django.urls.conf import include
 
-from . import views
 from .views import (
     index,
     CarListView,

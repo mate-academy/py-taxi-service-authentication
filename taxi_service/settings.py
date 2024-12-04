@@ -29,6 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = "/accounts/login/"  # URL для входу
+LOGIN_REDIRECT_URL = "/"       # Куди перенаправляти після успішного входу
+LOGOUT_REDIRECT_URL = "/"
 
 # Application definition
 

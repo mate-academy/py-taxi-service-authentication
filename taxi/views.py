@@ -5,6 +5,7 @@ from django.views import generic
 
 from .models import Driver, Car, Manufacturer
 
+
 @login_required
 def index(request):
     """View function for the home page of the site."""
@@ -25,7 +26,7 @@ def index(request):
     return render(request, "taxi/index.html", context=context)
 
 
-class ManufacturerListView(LoginRequiredMixin ,generic.ListView):
+class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     model = Manufacturer
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"

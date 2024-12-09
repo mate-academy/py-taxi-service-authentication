@@ -106,7 +106,7 @@ class PrivateDriverTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             list(response.context["driver_list"]),
-            list(drivers[0 : len(list(response.context["driver_list"]))]),
+            list(drivers[0: len(list(response.context["driver_list"]))]),
         )
         self.assertTemplateUsed(response, "taxi/driver_list.html")
 

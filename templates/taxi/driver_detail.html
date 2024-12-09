@@ -1,9 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
- <p><strong>
-    {{ driver.first_name }} {{ driver.last_name }}.</strong>
-    License number: {{ driver.license_number }}
+  <p>
+    {% if driver.first_name and driver.last_name %}
+      <strong>{{ driver.first_name }} {{ driver.last_name }}.</strong>
+    {% else %}
+      Driver doesn't have fullname in DB.
+    {% endif %}
+    <br>
+    {% if driver.license_number %}
+      License number: {{ driver.license_number }}
+    {% else %}
+      No license number
+    {% endif %}
   </p>
   {% for car in driver.cars.all %}
     <hr>

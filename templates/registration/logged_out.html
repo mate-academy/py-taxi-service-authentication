@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+	<a href="{% url 'taxi:index' %}">Home page</a>
+{% endblock %}
+
+{% block content %}
+	<div class="text-center">
+		<h1 class="mb-4">You're Logged Out</h1>
+		<a href="{% url 'login' %}" class="btn btn-primary btn-lg">Log in</a>
+	</div>
+{% endblock %}

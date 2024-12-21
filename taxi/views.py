@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.views import generic
-
+from django.contrib.auth.decorators import login_required
 from .models import Driver, Car, Manufacturer
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+@login_required
 def index(request):
     """View function for the home page of the site."""
     num_visits = request.session.get("num_visits", 0)
@@ -41,11 +43,16 @@ class CarDetailView(generic.DetailView):
     model = Car
 
 
-class DriverListView(generic.ListView):
+class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["current_user"] = self.request.user
+        return context
 
-class DriverDetailView(generic.DetailView):
+
+class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")

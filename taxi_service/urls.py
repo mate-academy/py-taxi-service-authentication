@@ -23,3 +23,4 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("taxi.urls", namespace="taxi")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

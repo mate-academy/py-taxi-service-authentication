@@ -8,6 +8,7 @@ class Manufacturer(models.Model):
 
     class Meta:
         ordering = ["name"]
+        app_label = "taxi"
 
     def __str__(self):
         return f"{self.name} {self.country}"

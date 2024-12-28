@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
-from taxi.models import Car, Manufacturer, Driver
+from taxi.models import Car, Driver, Manufacturer
 
 TestCase.fixtures = ["taxi_service_db_data.json"]
 
@@ -64,11 +64,7 @@ class PrivateManufacturerTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             list(response.context["manufacturer_list"]),
-            list(
-                manufacturers[
-                    0 : len(list(response.context["manufacturer_list"]))
-                ]
-            ),
+            list(manufacturers[0 : len(list(response.context["manufacturer_list"]))]),
         )
         self.assertTemplateUsed(response, "taxi/manufacturer_list.html")
 
@@ -122,8 +118,6 @@ class LogInTest(TestCase):
         self.credentials = {"username": "admin.user", "password": "1qazcde3"}
 
     def test_login(self):
-        response = self.client.post(
-            reverse("login"), self.credentials, follow=True
-        )
+        response = self.client.post(reverse("login"), self.credentials, follow=True)
         self.assertTrue(response.context["user"].is_active)
         print(response.context["user"])

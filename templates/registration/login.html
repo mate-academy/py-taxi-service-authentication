@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Login</h1>
-<form action="{% url 'taxi:login' %}" method="post">
+<form action="{% url 'login' %}" method="post">
     {% csrf_token %}
     {% if form.errors %}
         <p style="color:red;">Invalid Credentials</p>

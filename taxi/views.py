@@ -29,7 +29,6 @@ def index(request):
 
 
 class ManufacturerListView(LoginRequiredMixin, generic.ListView):
-    all_drivers = Driver.objects.all()
     model = Manufacturer
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"
@@ -37,24 +36,20 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
 
 
 class CarListView(LoginRequiredMixin, generic.ListView):
-    all_drivers = Driver.objects.all()
     model = Car
     paginate_by = 5
     queryset = Car.objects.select_related("manufacturer")
 
 
 class CarDetailView(generic.DetailView):
-    all_drivers = Driver.objects.all()
     model = Car
 
 
 class DriverListView(LoginRequiredMixin, generic.ListView):
-    all_drivers = Driver.objects.all()
     model = Driver
     paginate_by = 5
 
 
 class DriverDetailView(generic.DetailView):
-    all_drivers = Driver.objects.all()
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")

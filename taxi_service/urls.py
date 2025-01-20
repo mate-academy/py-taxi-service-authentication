@@ -1,40 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    {% block title %}
-    <title>Taxi Service</title>
-    {% endblock %}
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <!-- Add additional CSS in static file -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-  </head>
+"""taxi_service URL Configuration
 
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-2">
-          {% block sidebar %}
-          {% include "includes/sidebar.html" %}
-          {% endblock%}
-        </div>
-        <div class="col-sm-10">
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.0/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path("", views.home, name="home")
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path("", Home.as_view(), name="home")
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path("blog/", include("blog.urls"))
+"""
+from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
-          {% block content %}
-          {% endblock %}
 
-          {% block pagination %} 
-          {% include "includes/pagination.html" %}
-          {% endblock %}
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include("taxi.urls", namespace="taxi")),
+    path("accounts/", include("django.contrib.auth.urls")),
+
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

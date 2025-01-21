@@ -133,3 +133,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_URL = "taxi:login"  # This is the path for the login view.
+LOGIN_REDIRECT_URL = "taxi:index"  # This is the path users go after logging in.
+LOGOUT_REDIRECT_URL = "taxi:login"  # This is the path users go after logging out.

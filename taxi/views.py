@@ -1,6 +1,6 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import generic
@@ -22,7 +22,7 @@ def index(request):
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
-        "num_visits": num_visits + 1,
+        "num_visits": num_visits,
     }
 
     return render(request, "taxi/index.html", context=context)
@@ -59,7 +59,7 @@ class RegisterForm:
     pass
 
 
-def login(request) -> HttpResponse:
+def user_login(request) -> HttpResponse:
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -67,12 +67,13 @@ def login(request) -> HttpResponse:
         form = RegisterForm(request.POST)
         if user:
             login(request, user)
+            return redirect(reverse("taxi:index"))
         else:
             error_context ={
                 "error": "Invalid credenticals."
             }
-    return HttpResponse(reverse(taxi.index), context=error_context)
+            return render(request, "registration/login.html", context=error_context)
 
-def logout(request) -> HttpResponse:
+def logout_view(request: HttpRequest) -> HttpResponse:
     logout(request)
     return render(request, "registration/logout.html")

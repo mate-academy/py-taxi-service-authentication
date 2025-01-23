@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import generic
@@ -6,6 +7,7 @@ from taxi.models import Driver, Car, Manufacturer
 from taxi.mixins.paginator_mixin import PaginatorMixin
 
 
+@login_required
 def index(request):
     """View function for the home page of the site."""
 

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views import generic
 
 from taxi.models import Driver, Car, Manufacturer
-from taxi.mixins.paginator_mixin import PaginatorMixin
+from taxi.mixins.paginator_mixin import PaginationMixin
 
 
 @login_required
@@ -27,7 +27,7 @@ def index(request):
     return render(request, "taxi/index.html", context=context)
 
 
-class ManufacturerListView(LoginRequiredMixin, PaginatorMixin, generic.ListView):
+class ManufacturerListView(LoginRequiredMixin, PaginationMixin, generic.ListView):
     model = Manufacturer
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"
@@ -36,7 +36,7 @@ class ManufacturerListView(LoginRequiredMixin, PaginatorMixin, generic.ListView)
         context = super().get_context_data(**kwargs)
         return context
 
-class CarListView(LoginRequiredMixin, PaginatorMixin, generic.ListView):
+class CarListView(LoginRequiredMixin, PaginationMixin, generic.ListView):
     model = Car
     queryset = Car.objects.select_related("manufacturer")
 
@@ -45,7 +45,7 @@ class CarDetailView(generic.DetailView):
     model = Car
 
 
-class DriverListView(LoginRequiredMixin, PaginatorMixin, generic.ListView):
+class DriverListView(LoginRequiredMixin, PaginationMixin, generic.ListView):
     model = Driver
 
 

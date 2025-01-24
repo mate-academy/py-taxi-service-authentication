@@ -7,3 +7,8 @@ venv/
 .venv/
 .pytest_cache/
 **__pycache__/
+/screenshots/
+/db.sqlite3
+/user_data
+*.sqlite
+*.db3

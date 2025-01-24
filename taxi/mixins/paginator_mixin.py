@@ -21,9 +21,9 @@ class PaginationMixin:
 
     def get_paginate_by(self, queryset):
         per_page = (
-                self.request.GET.get('per_page', 0) or
-                self.request.session.get('per_page') or
-                self.paginate_by
+            self.request.GET.get("per_page", 0)
+            or self.request.session.get("per_page")
+            or self.paginate_by
         )
 
         try:
@@ -33,7 +33,10 @@ class PaginationMixin:
 
         new_per_page = per_page
 
-        new_per_page = max(self.MIN_PER_PAGE, min(new_per_page, self.MAX_PER_PAGE))
+        new_per_page = max(
+            self.MIN_PER_PAGE,
+            min(new_per_page, self.MAX_PER_PAGE)
+        )
 
         self.request.session["per_page"] = new_per_page
 

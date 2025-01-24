@@ -27,7 +27,11 @@ def index(request):
     return render(request, "taxi/index.html", context=context)
 
 
-class ManufacturerListView(LoginRequiredMixin, PaginationMixin, generic.ListView):
+class ManufacturerListView(
+    LoginRequiredMixin,
+    PaginationMixin,
+    generic.ListView
+):
     model = Manufacturer
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"
@@ -35,6 +39,7 @@ class ManufacturerListView(LoginRequiredMixin, PaginationMixin, generic.ListView
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
 
 class CarListView(LoginRequiredMixin, PaginationMixin, generic.ListView):
     model = Car

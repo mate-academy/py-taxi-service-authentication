@@ -25,16 +25,16 @@ urlpatterns = [
     path("drivers/", DriverListView.as_view(), name="driver-list"),
     path("cars/", CarListView.as_view(), name="car-list"),
     path("cars/<int:pk>/", CarDetailView.as_view(), name="car-detail"
-    ),
+        ),
     path("drivers/", DriverListView.as_view(), name="driver-list"
          ),
-    path("drivers/<int:pk>/",DriverDetailView.as_view(),
+    path("drivers/<int:pk>/", DriverDetailView.as_view(),
          name="driver-detail"),
     path(
-        "login/",auth_views.LoginView.as_view(), name="login"
+        "login/", auth_views.LoginView.as_view(), name="login"
     ),
     path(
-        "logout/",auth_views.LogoutView.as_view(), name="logout"
+        "logout/", auth_views.LogoutView.as_view(), name="logout"
     ),
 ]
 

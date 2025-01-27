@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.http import HttpRequest
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from django.contrib.auth.decorators import login_required
 
 from .models import Driver, Car, Manufacturer
 
@@ -45,3 +47,26 @@ class DriverListView(generic.ListView):
 class DriverDetailView(generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
+
+
+@login_required
+def home(request: HttpRequest) -> render:
+    if "num_visits" not in request.session:
+        request.session["num_visits"] = 0
+    request.session["num_visits"] += 1
+
+    num_visits = request.session["num_visits"]
+
+    return render(request, "includes/home.html", {"num_visits": num_visits})
+
+
+@login_required
+def driver_list(request):
+    drivers = Driver.objects.all()
+    return render(request, "includes/driver_list.html", {"drivers": drivers})
+
+
+@login_required
+def driver_detail(request, ids):
+    driver = get_object_or_404(Driver, id=ids)
+    return render(request, "includes/driver_detail.html", {"driver": driver})

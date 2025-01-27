@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import generic
 
-from .models import Driver, Car, Manufacturer
+from taxi.models import Driver, Car, Manufacturer
 
 
 @login_required

@@ -38,7 +38,7 @@
 <div class="sidebar">
     {% if user.is_authenticated %}
         <p>Welcome, {{ user.username }}!</p>
-        <a href="{% url "driver-detail" user.id %}">My Profile</a>
+        <a href="{% url "taxi:driver-detail" user.id %}">My Profile</a>
         <a href="{% url "logout" %}">Logout</a>
     {% else %}
         <a href="{% url "login" %}">Login</a>

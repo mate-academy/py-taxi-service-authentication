@@ -7,5 +7,5 @@ venv/
 .venv/
 .pytest_cache/
 **__pycache__/
-.sqlite
-.db3
+*.sqlite
+*.db3

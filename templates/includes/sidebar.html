@@ -4,7 +4,11 @@
       User: {{ user.username }}
     </li>
     <li>
-      <a href="{% url 'logout' %}">Logout</a>
+      <!-- Форма для виходу -->
+      <form id="logout-form" method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
     </li>
   {% else %}
     <li>

@@ -10,4 +10,12 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+  <p>
+    Page visits {{ num_visits }} time{{ num_visits | pluralize }}
+  </p>
+{% endblock %}
+{% block scripts %}
+  <script>
+    console.log("Page loaded successfully.");
+  </script>
 {% endblock %}

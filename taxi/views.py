@@ -47,15 +47,6 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        for driver in context["driver_list"]:
-            if driver.id == self.request.user.id:
-                driver.display_name = f"{driver.username} (you)"
-            else:
-                driver.display_name = driver.username
-        return context
-
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver

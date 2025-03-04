@@ -4,7 +4,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views import generic
 
-from .models import Driver, Car, Manufacturer
+from taxi.models import Driver, Car, Manufacturer
 
 
 @login_required

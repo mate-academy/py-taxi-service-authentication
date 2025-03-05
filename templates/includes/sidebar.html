@@ -4,7 +4,7 @@
       Username: {{ user.username }}
     </li>
     <li>
-      <form id="logout-form" method="post" action="{% url 'accounts/logout' %}">
+      <form id="logout-form" method="post" action="{% url 'logout' %}">
         {% csrf_token %}
       <button type="submit">click to logout</button>
       </form>

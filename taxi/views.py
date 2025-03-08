@@ -1,14 +1,17 @@
 from http.client import HTTPResponse
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Driver, Car, Manufacturer
 
 
+@login_required
 def index(request):
     """View function for the home page of the site."""
 
@@ -46,33 +49,28 @@ def login_view(request: HttpRequest) -> HTTPResponse:
             return  render(request, "accounts/login.html", context=error_context)
 
 
-def logout_view(request: HttpRequest) -> HTTPResponse:
-    logout(request)
-    return  render(request, "accounts/logged_out.html")
-
-
-class ManufacturerListView(generic.ListView):
+class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     model = Manufacturer
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"
     paginate_by = 5
 
 
-class CarListView(generic.ListView):
+class CarListView(LoginRequiredMixin, generic.ListView):
     model = Car
     paginate_by = 5
     queryset = Car.objects.select_related("manufacturer")
 
 
-class CarDetailView(generic.DetailView):
+class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
 
 
-class DriverListView(generic.ListView):
+class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
 
 
-class DriverDetailView(generic.DetailView):
+class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")

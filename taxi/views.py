@@ -1,5 +1,10 @@
+from http.client import HTTPResponse
+
 from django.shortcuts import render
 from django.views import generic
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.urls import reverse
+from django.contrib.auth import authenticate, login, logout
 
 from .models import Driver, Car, Manufacturer
 
@@ -22,6 +27,28 @@ def index(request):
     }
 
     return render(request, "taxi/index.html", context=context)
+
+
+def login_view(request: HttpRequest) -> HTTPResponse:
+    if request.method == "GET":
+        return render(request, "accounts/login.html")
+    elif request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(username=username, password=password)
+        if user:
+            login(request, user)
+            return HttpResponseRedirect(reverse("taxi:index"))
+        else:
+            error_context = {
+               "error": "Invalid credential"
+            }
+            return  render(request, "accounts/login.html", context=error_context)
+
+
+def logout_view(request: HttpRequest) -> HTTPResponse:
+    logout(request)
+    return  render(request, "accounts/logged_out.html")
 
 
 class ManufacturerListView(generic.ListView):

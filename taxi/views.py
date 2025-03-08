@@ -44,9 +44,13 @@ def login_view(request: HttpRequest) -> HTTPResponse:
             return HttpResponseRedirect(reverse("taxi:index"))
         else:
             error_context = {
-               "error": "Invalid credential"
+                "error": "Invalid credential"
             }
-            return  render(request, "accounts/login.html", context=error_context)
+            return render(
+                request,
+                "accounts/login.html",
+                context=error_context
+            )
 
 
 class ManufacturerListView(LoginRequiredMixin, generic.ListView):

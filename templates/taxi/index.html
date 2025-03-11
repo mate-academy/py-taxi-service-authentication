@@ -9,5 +9,7 @@
     <li><strong>Cars:</strong> {{ num_cars }}</li>
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
+    <br>
+    <p style="font-size: small"> You visited this page {{ num_visits }} time{{ num_visits|pluralize }}</p>
   </ul>
 {% endblock %}

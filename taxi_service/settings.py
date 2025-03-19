@@ -134,8 +134,6 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "taxi.Driver"
-
 LOGIN_REDIRECT_URL = "/taxi/"
 
 INTERNAL_IPS = ["127.0.0.1"]

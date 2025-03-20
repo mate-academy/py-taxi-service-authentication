@@ -3,15 +3,53 @@
 {% block content %}
   <h1>Driver list</h1>
   {% if driver_list %}
-    <ul>
-      {% for driver in driver_list%}
+    <ul class="driver-list">
+      {% for driver in driver_list %}
         <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-          ({{ driver.first_name }} {{ driver.last_name }})
+          <a href="{% url "taxi:driver-detail" pk=driver.id %}">
+            {{ driver.first_name }} {{ driver.last_name }}
+            {% if driver == request.user %}(Me){% endif %}
+          </a>
+          (@{{ driver.username }})
         </li>
       {% endfor %}
     </ul>
   {% else %}
-    <p>There are no drivers in taxi</p>
+    <p class="no-drivers">There are no drivers in taxi</p>
   {% endif %}
+
+  <style>
+      .driver-list {
+          list-style: none;
+          padding-left: 0;
+      }
+
+      .driver-item {
+          margin: 10px 0;
+          padding: 15px;
+          background: #f8f9fa;
+          border-radius: 5px;
+      }
+
+      .driver-link {
+          text-decoration: none;
+          color: #212529;
+          font-weight: 500;
+      }
+
+      .me-badge {
+          color: #0d6efd;
+          margin-left: 8px;
+      }
+
+      .driver-username {
+          color: #6c757d;
+          font-size: 0.9em;
+      }
+
+      .no-drivers {
+          color: #6c757d;
+          font-style: italic;
+      }
+  </style>
 {% endblock %}

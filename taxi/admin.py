@@ -7,15 +7,21 @@ from taxi.models import Car, Driver, Manufacturer
 @admin.register(Driver)
 class DriverAdmin(UserAdmin):
     list_display = UserAdmin.list_display + (
-        "license_number", "display_groups",
+        "license_number",
+        "display_groups",
     )
-    list_filter = ("groups", "is_superuser", "is_active",)
+    list_filter = (
+        "groups",
+        "is_superuser",
+        "is_active",
+    )
     fieldsets = UserAdmin.fieldsets + (
         ("Additional info", {"fields": ("license_number",)}),
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
         (
-            "Additional info", {
+            "Additional info",
+            {
                 "fields": (
                     "first_name",
                     "last_name",

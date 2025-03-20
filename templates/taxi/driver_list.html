@@ -19,13 +19,8 @@
         <tr>
           <td><a href="{{ driver.get_absolute_url }}">{{ driver.id }}</a></td>
           <td>
-            <a href="{{ driver.get_absolute_url }}">
-              {% if driver.id == user.id %}
-                (Me) {{ driver.username }}
-              {% else %}
-                {{ driver.username }}
-              {% endif %}
-            </a>
+            <a href="{{ driver.get_absolute_url }}">{{ driver.username }}</a>
+            {% if driver == user %} (Me){% endif %}
           </td>
           <td>{{ driver.first_name }}</td>
           <td>{{ driver.last_name }}</td>

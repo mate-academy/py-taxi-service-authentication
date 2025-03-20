@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-<title>{% block title %}Logout Page | Taxi Service{% endblock %}</title>
+{% block title %}Logout Page | Taxi Service{% endblock %}
 {% block content %}
   <h3>Logged out</h3>
   <a href="{% url 'login' %}">Click here to log in again</a>

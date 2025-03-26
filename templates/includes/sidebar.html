@@ -1,38 +1,17 @@
 <ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
+  <li><a href="{% url 'taxi:index' %}">Home page</a></li>
+  <li><a href="{% url 'taxi:manufacturer-list' %}">Manufacturers</a></li>
+  <li><a href="{% url 'taxi:car-list' %}">Cars</a></li>
+  <li><a href="{% url 'taxi:driver-list' %}">Drivers</a></li>
 </ul>
- {% if user.is_authenticated %}
-      User: <a href="{% url "taxi:driver-detail" user.id %}"> {{ user.username }} </a> <br>
-      <form action="{% url 'logout' %}" method="post" class="d-inline">
-        {% csrf_token %}
-          <button type="submit" class="btn btn-outline-secondary btn-sm mt-3">Logout</button>
-      </form>
-    {% else %}
-      <a class="btn btn-primary btn-sm mt-3" href="{% url 'login' %}">Login</a>
-    {% endif %}
-  <hr>
-  </li>
-  <li>
-    <a href="{% url "taxi:index" %}">
-      Home page
-    </a>
-  </li>
-  <li>
-    <a href="{% url "taxi:manufacturer-list" %}">
-      Manufacturers
-    </a>
-  </li>
-  <li>
-    <a href="{% url "taxi:car-list" %}">
-      Cars
-    </a>
-  </li>
-  <li>
-    <a href="{% url "taxi:driver-list" %}">
-      Drivers
-    </a>
-  </li>
-</ul>
+
+{% if user.is_authenticated %}
+  User: <a href="{% url 'taxi:driver-detail' user.id %}"> {{ user.username }} </a> <br>
+  <form action="{% url 'logout' %}" method="post" class="d-inline">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-outline-secondary btn-sm mt-3">Logout</button>
+  </form>
+{% else %}
+  <a class="btn btn-primary btn-sm mt-3" href="{% url 'login' %}">Login</a>
+{% endif %}
+<hr>

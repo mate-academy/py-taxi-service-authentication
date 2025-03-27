@@ -1,7 +1,7 @@
 <ul class="sidebar-nav">
   {% if user.is_authenticated %}
     <li>
-      <a href="{{ cars.get_absolute_url }}">
+      <a href="{{ user.get_absolute_url }}">
         {{ user.first_name }} {{ user.last_name }}
       </a>
       <p>Admin: <b>{{ user.is_staff }}</b></p>

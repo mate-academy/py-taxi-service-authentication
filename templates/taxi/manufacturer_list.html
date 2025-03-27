@@ -1,13 +1,28 @@
 {% extends "base.html" %}
 
+{% block title %}Manufacturers | Taxi Service{% endblock %}
+
 {% block content %}
-  <h1>Manufacturer list</h1>
+  <h1>Manufacturers</h1>
 
   {% if manufacturer_list %}
-    <ul>
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Country</th>
+      </tr>
+      </thead>
+      <tbody>
       {% for manufacturer in manufacturer_list %}
-        <li>{{ manufacturer.name }} {{ manufacturer.country }}</li>
+        <tr>
+          <td><a href="{{ manufacturer.get_absolute_url }}">{{ manufacturer.name }}</a></td>
+          <td>{{ manufacturer.country }}</td>
+        </tr>
       {% endfor %}
-    </ul>
+      </tbody>
+    </table>
+  {% else %}
+    <p>No manufacturers available.</p>
   {% endif %}
 {% endblock %}

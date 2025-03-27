@@ -4,6 +4,11 @@
 .env
 .DS_Store
 venv/
-.venv/
 .pytest_cache/
 **__pycache__/
+*.pyc
+app/db.sqlite3
+db.sqlite3
+**db.sqlite3
+/pytest.ini
+/pyproject.toml

@@ -3,4 +3,15 @@
   <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
   <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
   <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
+  <hr>
+  {% if user.is_authenticated %}
+    <li>
+      <a href="{% url "taxi:driver-detail" user.pk %}">
+        {{ user.username }}
+      </a>
+    </li>
+    <li><a href="{% url "taxi:logout" %}">Logout</a></li>
+  {% else %}
+    <li><a href="{% url "taxi:login" %}">Login</a></li>
+  {% endif %}
 </ul>

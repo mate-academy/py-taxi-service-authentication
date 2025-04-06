@@ -3,25 +3,18 @@
 {% block content %}
   <h1>Driver list</h1>
   {% if driver_list %}
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-users"></i> Our Drivers
-      </div>
-      <ul class="list-items">
-        {% for driver in driver_list %}
-          <li>
-            <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-            <span class="text-muted">({{ driver.first_name }} {{ driver.last_name }})</span>
-            {% if user.is_authenticated and driver.id == user.id %}
-              <span class="badge-me">Me</span>
-            {% endif %}
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
+    <ul>
+      {% for driver in driver_list%}
+        <li>
+          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
+          ({{ driver.first_name }} {{ driver.last_name }})
+          {% if user.is_authenticated and driver.id == user.id %}
+            <strong>(Me)</strong>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
   {% else %}
-    <div class="alert alert-info">
-      <i class="fas fa-info-circle"></i> There are no drivers in taxi service yet.
-    </div>
+    <p>There are no drivers in taxi</p>
   {% endif %}
 {% endblock %}

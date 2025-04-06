@@ -3,20 +3,15 @@
 {% block content %}
   <h1>Login</h1>
   {% if form.errors %}
-    <div style="color: red;">Your username and password didn't match. Please try again.</div>
+    <div style="color: red;">
+      Your username and password didn't match. Please try again.
+    </div>
   {% endif %}
   <form method="post">
-    {% csrf_token %}    
-    <label>Username:
-      <input type="text" name="username" placeholder="Username">
-    </label>
-    <label>Password:
-      <input type="password" name="password" placeholder="Password">
-    </label>
+    {% csrf_token %}
+    {{ form.as_p }}
     <input type="hidden" name="next" value="{{ next }}">
     <br>
     <button type="submit" value="submit">Login</button>
   </form>
 {% endblock %}
-
-

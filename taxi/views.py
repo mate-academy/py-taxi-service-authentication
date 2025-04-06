@@ -7,6 +7,8 @@ from django.views import generic
 from .models import Driver, Car, Manufacturer
 
 
+# i cn not remove it, it fails tests if do
+@login_required
 def index(request: HttpRequest) -> HttpResponse:
     """View function for the home page of the site."""
 

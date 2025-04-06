@@ -1,6 +1,20 @@
+{% if user.is_authenticated %}
+<div class="user-info">
+  <strong>{{ user.username }}</strong>
+  <p class="text-muted mb-0">Logged in</p>
+  <a href="{% url "logout" %}" class="btn btn-outline-primary btn-sm mt-2">Logout</a>
+</div>
+{% else %}
+<div class="user-info">
+  <p>You are not logged in</p>
+  <a href="{% url "login" %}" class="btn btn-primary btn-sm">Login</a>
+</div>
+{% endif %}
+
+<h4>Navigation</h4>
 <ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
+  <li><a href="{% url "taxi:index" %}"><i class="fa fa-home"></i> Home page</a></li>
+  <li><a href="{% url "taxi:manufacturer-list" %}"><i class="fa fa-industry"></i> Manufacturers</a></li>
+  <li><a href="{% url "taxi:car-list" %}"><i class="fa fa-car"></i> Cars</a></li>
+  <li><a href="{% url "taxi:driver-list" %}"><i class="fa fa-user"></i> Drivers</a></li>
 </ul>

@@ -1,3 +1,178 @@
 body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 20px;
+}
+
+.container-fluid {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+h1 {
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* Sidebar styles */
+.sidebar-nav {
+    list-style-type: none;
+    padding-left: 0;
     margin-top: 20px;
+}
+
+.sidebar-nav li {
+    margin-bottom: 12px;
+}
+
+.sidebar-nav li a {
+    color: #3498db;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+
+.sidebar-nav li a:hover {
+    background-color: #e7f2fa;
+    color: #2980b9;
+    text-decoration: none;
+    padding-left: 15px;
+}
+
+/* User info in sidebar */
+.user-info {
+    background-color: #e7f2fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Card styles for lists */
+.card {
+    margin-bottom: 20px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+.card-header {
+    background-color: #3498db;
+    color: white;
+    font-weight: 600;
+}
+
+/* Style for lists */
+ul.list-items {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul.list-items li {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+ul.list-items li:last-child {
+    border-bottom: none;
+}
+
+ul.list-items li a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+ul.list-items li a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Forms styling */
+.form-control {
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+    margin-bottom: 15px;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+button, .btn {
+    padding: 8px 16px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+/* Badge for "Me" marker */
+.badge-me {
+    background-color: #3498db;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-left: 5px;
+}
+
+/* Pagination styling */
+.pagination {
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pagination .page-item .page-link {
+    color: #3498db;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+/* Highlight for session counts */
+.count-highlight {
+    background-color: #e7f2fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.count-highlight p {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.count-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3498db;
+    display: block;
 }

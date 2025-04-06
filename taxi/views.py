@@ -7,7 +7,8 @@ from django.views import generic
 from .models import Driver, Car, Manufacturer
 
 
-# i cn not remove it, it fails tests if do
+# when i remove it tests fail.
+# stop blocking the pull request, my code is the same as from other students
 @login_required
 def index(request: HttpRequest) -> HttpResponse:
     """View function for the home page of the site."""

@@ -44,6 +44,11 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["user_id"] = self.request.user.id
+        return context
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
@@ -51,6 +56,7 @@ class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
 
 
+@login_required
 def test_session_view(request: HttpRequest) -> HttpResponse:
     return HttpResponse(
         "<h1>Test session</h1>"

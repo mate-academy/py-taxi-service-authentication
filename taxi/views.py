@@ -55,5 +55,5 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Driver #1
+    model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")

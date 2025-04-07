@@ -20,12 +20,7 @@
     <div class="col-sm-2">
 
       {% block sidebar %}
-        {% if user.is_authenticated %}
-          {% include "includes/sidebar.html" %}
-        {% else %}
-          <li><a href="{% url 'taxi:index' %}">Home</a></li>
-          <li><a href="{% url 'taxi:login' %}?next={{ request.path }}">Login</a></li>
-        {% endif %}
+        {% include "includes/sidebar.html" %}
 
       {% endblock %}
 

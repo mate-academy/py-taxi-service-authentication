@@ -46,6 +46,18 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
+    template_name = 'taxi/driver_list.html'
+    context_object_name = 'drivers'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        user = self.request.user
+        # Додаємо додаткове поле до кожного об'єкта
+        for driver in queryset:
+            driver.display_name = (
+                f"{driver.username} (Me)" if driver == user else driver.username
+            )
+        return queryset
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

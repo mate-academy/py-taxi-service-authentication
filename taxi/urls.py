@@ -24,7 +24,7 @@ urlpatterns = [
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
     ),
-    path('<int:pk>/', DriverInfo.as_view(), name='user-detail'),
+    path('drivers/profile/<int:pk>/', DriverInfo.as_view(), name='user-detail'),
 
 ]
 

@@ -46,9 +46,7 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
-
-    def get_queryset(self):
-        return Driver.objects.all().order_by("id")
+    queryset = Driver.objects.order_by("id")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

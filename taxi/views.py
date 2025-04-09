@@ -7,6 +7,7 @@ from django.views import generic
 
 from .models import Driver, Car, Manufacturer
 
+
 @login_required
 def index(request):
     """View function for the home page of the site."""
@@ -73,6 +74,6 @@ def login_view(request: HttpRequest) -> HttpResponse:
 
 
 @login_required
-def logout(request: HttpRequest) -> HttpResponse:
+def logout_view(request: HttpRequest) -> HttpResponse:
     logout(request)
     return render(request, "registration/logout.html")

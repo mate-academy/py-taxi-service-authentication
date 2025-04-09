@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count
 
 from .models import Driver, Car, Manufacturer
 
@@ -10,9 +9,7 @@ from .models import Driver, Car, Manufacturer
 @login_required
 def index(request):
     """View function for the home page of the site."""
-    # Get current visit count from session, default to 0
     num_visits = request.session.get('num_visits', 0)
-    # Increment the count
     request.session['num_visits'] = num_visits + 1
 
     num_drivers = Driver.objects.count()
@@ -25,7 +22,6 @@ def index(request):
         "num_manufacturers": num_manufacturers,
         "num_visits": num_visits,
     }
-
     return render(request, "taxi/index.html", context=context)
 
 
@@ -49,14 +45,13 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        return queryset.annotate(num_cars=Count('cars'))
+    context_object_name = "driver_list"
+    template_name = "taxi/driver_list.html"
+    ordering = ["username"]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['current_user'] = self.request.user
+        context['current_user_pk'] = self.request.user.pk
         return context
 
 

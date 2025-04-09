@@ -1,66 +1,25 @@
-<ul class="sidebar-nav">
-  <li><a href="{% url 'taxi:index' %}">Home page</a></li>
-  <li><a href="{% url 'taxi:manufacturer-list' %}">Manufacturers</a></li>
-  <li><a href="{% url 'taxi:car-list' %}">Cars</a></li>
-  <li><a href="{% url 'taxi:driver-list' %}">Drivers</a></li>
+<ul class="sidebar-nav list-unstyled">
+  <li class="py-1"><a href="{% url 'taxi:index' %}">Home page</a></li>
+  <li class="py-1"><a href="{% url 'taxi:manufacturer-list' %}">Manufacturers</a></li>
+  <li class="py-1"><a href="{% url 'taxi:car-list' %}">Cars</a></li>
+  <li class="py-1"><a href="{% url 'taxi:driver-list' %}">Drivers</a></li>
 
   {% if user.is_authenticated %}
-    <li class="user-section">
+    <li class="py-1 mt-3 border-top">
       <span>User: </span>
-      {% if user.driver %}
-        <a href="{% url 'taxi:driver-detail' pk=user.driver.id %}">
-          {{ user.username }}
-        </a>
-      {% else %}
-        <span>{{ user.username }}</span>
-      {% endif %}
+      <a href="{% url 'taxi:driver-detail' pk=user.pk %}">
+        {{ user.username }}
+      </a>
     </li>
-    <li>
+    <li class="py-1">
       <form action="{% url 'taxi:logout' %}" method="post">
         {% csrf_token %}
-        <button type="submit" class="logout-btn">Logout</button>
+        <button type="submit" class="btn btn-link p-0">Logout</button>
       </form>
     </li>
   {% else %}
-    <li>
-      <a href="{% url 'taxi:login' %}?next={{ request.path }}" class="login-btn">Login</a>
+    <li class="py-1 mt-3 border-top">
+      <a href="{% url 'taxi:login' %}?next={{ request.path }}" class="btn btn-link p-0">Login</a>
     </li>
   {% endif %}
 </ul>
-
-<style>
-  .sidebar-nav {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .sidebar-nav li {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-  }
-  .sidebar-nav a {
-    text-decoration: none;
-    color: #333;
-    display: block;
-  }
-  .sidebar-nav a:hover {
-    color: #007bff;
-  }
-  .user-section {
-    margin-top: 20px;
-    padding-top: 10px;
-    border-top: 2px solid #ddd;
-  }
-  .logout-btn, .login-btn {
-    background: none;
-    border: none;
-    color: #333;
-    cursor: pointer;
-    padding: 0;
-    font: inherit;
-  }
-  .logout-btn:hover, .login-btn:hover {
-    color: #007bff;
-    text-decoration: underline;
-  }
-</style>

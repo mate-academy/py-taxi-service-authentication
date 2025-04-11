@@ -22,7 +22,6 @@ def index(request):
         "num_visits": num_visits,
     }
 
-
     return render(request, "taxi/index.html", context=context)
 
 

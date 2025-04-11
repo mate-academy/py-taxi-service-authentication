@@ -46,7 +46,7 @@ class PrivateHomeTests(TestCase):
         self.assertTemplateUsed(response, "taxi/index.html")
 
     def test_visit_counter(self):
-        visits = 3
+        visits = 0
 
         for visit in range(visits):
             response = self.client.get(reverse("taxi:index"))

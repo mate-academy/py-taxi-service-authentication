@@ -46,6 +46,18 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
+    context_object_name = "driver_list"
+
+    def get_queryset(self):
+        queryset = Driver.objects.all()
+        current_user = self.request.user
+        for driver in queryset:
+            if driver.user == current_user:
+                driver.full_name_with_me = f"{driver.username} (Me)"
+            else:
+                driver.full_name_with_me = driver.username
+        return queryset
+
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

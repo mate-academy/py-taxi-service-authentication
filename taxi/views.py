@@ -2,28 +2,26 @@ from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 
 from .models import Driver, Car, Manufacturer
 
 
-@login_required
-def index(request):
-    """View function for the home page of the site."""
+class IndexView(LoginRequiredMixin, TemplateView):
+    template_name = "taxi/index.html"
 
-    num_drivers = Driver.objects.count()
-    num_cars = Car.objects.count()
-    num_manufacturers = Manufacturer.objects.count()
-    num_visits = request.session.get("num_visits", 0)
-    request.session["num_visits"] = num_visits + 1
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["num_drivers"] = Driver.objects.count()
+        context["num_cars"] = Car.objects.count()
+        context["num_manufacturers"] = Manufacturer.objects.count()
 
-    context = {
-        "num_drivers": num_drivers,
-        "num_cars": num_cars,
-        "num_manufacturers": num_manufacturers,
-        "num_visits": num_visits + 1
-    }
+        num_visits = self.request.session.get("num_visits", 0)
+        self.request.session["num_visits"] = num_visits + 1
+        context["num_visits"] = num_visits + 1
 
-    return render(request, "taxi/index.html", context=context)
+        return context
+
 
 
 class ManufacturerListView(LoginRequiredMixin, generic.ListView):

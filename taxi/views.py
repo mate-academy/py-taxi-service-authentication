@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import request
 from django.shortcuts import render
 from django.views import generic
 
@@ -10,7 +9,6 @@ from .models import Driver, Car, Manufacturer
 @login_required
 def index(request):
     """View function for the home page of the site."""
-
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
@@ -21,17 +19,16 @@ def index(request):
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
         "num_visits": num_visits,
-        "user_driver": request.user
+        "user_driver": request.user,
     }
 
     return render(request, "taxi/index.html", context=context)
+
 
 @login_required
 def visit_counter(request):
     num_visits = request.session.get("num_visits", 0) + 1
     request.session["num_visits"] = num_visits
-
-
 
 
 class ManufacturerListView(LoginRequiredMixin, generic.ListView):
@@ -53,6 +50,7 @@ class CarListView(LoginRequiredMixin, generic.ListView):
         except Driver.DoesNotExist:
             context["user_driver"] = None
         return context
+
 
 class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car

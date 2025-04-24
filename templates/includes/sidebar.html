@@ -10,10 +10,6 @@
 </form>
 {% else %}
   <a href="{% url 'login' %}">Log in</a>
-  <form action="{% url 'login' %}" method="post">
-  {% csrf_token %}
-  <button type="submit">Login</button>
-  </form>
 {% endif %}
 <ul class="sidebar-nav">
   <li><a href="{% url "taxi:index" %}">Home page</a></li>

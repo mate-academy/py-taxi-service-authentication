@@ -45,10 +45,7 @@ class CarListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        try:
-            context["user_driver"] = self.request.user
-        except Driver.DoesNotExist:
-            context["user_driver"] = None
+        context["user_driver"] = self.request.user
         return context
 
 

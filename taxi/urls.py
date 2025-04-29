@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import path, include
 
+from taxi import views
 from .views import (
     index,
     CarListView,
@@ -22,6 +23,7 @@ urlpatterns = [
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
     ),
+    path("", views.index, name="index"),
 ]
 
 app_name = "taxi"

@@ -1,3 +1,15 @@
 body {
     margin-top: 20px;
 }
+
+.login {
+    margin-left: 5px;
+}
+
+.sidebar-nav {
+    list-style: none;
+}
+
+.current-user {
+    background-color: #c5c7c9;
+}

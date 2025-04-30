@@ -1,4 +1,18 @@
-<ul class="sidebar-nav">
+<ul class="sidebar-nav" xmlns:taxi="http://www.w3.org/1999/xhtml">
+  {% if user.is_authenticated %}
+    <li>
+      User: {{ user.username }} {{user.num_visits}}
+      <br>
+    </li>
+    <li>
+      <a href="{% url 'logout' %}">Logout</a>
+    </li>
+  {% else %}
+   <li>
+     <a class="" href="{% url 'login' %}">Login</a>
+   </li>
+  {% endif %}
+  <br>
   <li><a href="{% url "taxi:index" %}">Home page</a></li>
   <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
   <li><a href="{% url "taxi:car-list" %}">Cars</a></li>

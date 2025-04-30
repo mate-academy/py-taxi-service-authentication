@@ -3,6 +3,16 @@
 {% block content %}
   <h1>Taxi Service Home</h1>
   <p>Welcome to Best Taxi Ever!</p>
+  {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}</p>
+  {% else %}
+    <h2>Login</h2>
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  {% endif %}
   <h2>Dynamic content</h2>
   <p>The Taxi service has the following record counts:</p>
   <ul>
@@ -10,4 +20,7 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+  
+  <h2>Visit Counter</h2>
+  <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
 {% endblock %}

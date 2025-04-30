@@ -18,6 +18,12 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-2">
+      {% if user.is_authenticated %}
+        <p><a href="{% url "taxi:driver-detail" pk=user.id %}">User: {{ user.username }}</a></p>
+        <p><a href="{% url "logout" %}">Log out</a></p>
+      {% else %}
+        <p><a href="{% url "login" %}">Login</a></p>
+      {% endif %}
 
       {% block sidebar %}
         {% include "includes/sidebar.html" %}

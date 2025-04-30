@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
 
 
 class Manufacturer(models.Model):
@@ -19,6 +20,9 @@ class Driver(AbstractUser):
     class Meta:
         verbose_name = "driver"
         verbose_name_plural = "drivers"
+
+    def get_absolute_url(self):
+        return reverse("taxi:driver-detail", args=[str(self.id)])
 
     def __str__(self):
         return f"{self.username} ({self.first_name} {self.last_name})"

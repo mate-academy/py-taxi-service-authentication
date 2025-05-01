@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Log in</h1>
+  {% if form.errors %}
+  <p style="color: red">Invalid credentials</p>
+  {% endif %}
+  <form action="{% url 'login' %}" method="post">
+  {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" name="submit">
+    <input type="hidden" name="next" value="{{ next }}">
+  </form>
+{% endblock %}
+
+{% block sidebar %}
+  {% if user.is_authenticated %}
+    <h4>User: {{ user.username }}</h4>
+  {% endif %}
+  <ul class="sidebar-nav">
+    <li><a href="{% url 'taxi:index' %}">Home page</a></li>
+    <li><a href="{% url 'taxi:manufacturer-list' %}">Manufacturers</a></li>
+    <li><a href="{% url 'taxi:car-list' %}">Cars</a></li>
+    <li><a href="{% url 'taxi:driver-list' %}">Drivers</a></li>
+  </ul>
+{% endblock %}

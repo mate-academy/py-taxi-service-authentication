@@ -1,8 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import generic
-from django.contrib.auth import get_user_model
-from django.views.generic import ListView
 from .models import Driver, Car, Manufacturer
 
 
@@ -19,6 +17,7 @@ def index(request):
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
+        "num_visits": num_visits,
     }
 
     return render(request, "taxi/index.html", context=context)

@@ -1,6 +1,8 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import generic
-
+from django.contrib.auth import get_user_model
+from django.views.generic import ListView
 from .models import Driver, Car, Manufacturer
 
 
@@ -10,6 +12,8 @@ def index(request):
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
+    num_visits = request.session.get("num_visits", 0)
+    request.session["num_visits"] = num_visits + 1
 
     context = {
         "num_drivers": num_drivers,
@@ -40,8 +44,20 @@ class CarDetailView(generic.DetailView):
 class DriverListView(generic.ListView):
     model = Driver
     paginate_by = 5
+    context_object_name = "driver_list"
+    template_name = "taxi/driver_list.html"
+
+    def get_queryset(self):
+        return Driver.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["current_user_id"] = self.request.user.id
+        return context
 
 
 class DriverDetailView(generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
+    template_name = "taxi/driver_detail.html"
+    context_object_name = "driver"

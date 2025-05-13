@@ -8,15 +8,16 @@
 
         {% if driver.username == user.username %}
           <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }} (Me)</a>
+          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
+          ({{ driver.first_name }} {{ driver.last_name }}) <strong>(Me)</strong>
+        </li>
+          {% else %}
+          <li>
+          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
           ({{ driver.first_name }} {{ driver.last_name }})
         </li>
         {% endif %}
 
-        <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-          ({{ driver.first_name }} {{ driver.last_name }})
-        </li>
       {% endfor %}
     </ul>
   {% else %}

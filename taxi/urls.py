@@ -23,7 +23,7 @@ urlpatterns = [
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
     ),
-    path("logout/", LogoutView.as_view()),
+    path("logout/", LogoutView.as_view(), name="logout"),
 ]
 
 app_name = "taxi"

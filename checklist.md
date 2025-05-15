@@ -29,7 +29,7 @@ When you visit the page for the first time there should be: `You have visited th
 
 ## Code style
 
-Use `-` to split words in URL identification parameter `name`, not the `_`.
+Use hyphens `-` instead of underscores `_` to separate words in the URL’s `name` parameter.
 
 Good example:
 

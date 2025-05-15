@@ -10,4 +10,5 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+  <p>Ви відвідали цю сторінку {{ num_visits }}{% if num_visits == 1 %} раз{% else %} разів{% endif %}</p>
 {% endblock %}

@@ -2,7 +2,7 @@
 	{% if user.is_authenticated %}
 		<li>
 			<strong>User:
-				<a href="{% url 'taxi:driver-detail' user.id %}">{{ user.username }}</a>
+				<a href="{{ user.get_absolute_url }}">{{ user.username }}</a>
 			</strong>
 		</li>
 		<li>

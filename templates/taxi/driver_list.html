@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block content %}
   <h1>Driver list</h1>
   {% if driver_list %}
@@ -8,6 +7,9 @@
         <li>
           <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
           ({{ driver.first_name }} {{ driver.last_name }})
+          {% if user.username == driver.username %}
+            (Me)
+          {% endif %}
         </li>
       {% endfor %}
     </ul>

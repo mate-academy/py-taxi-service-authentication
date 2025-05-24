@@ -1,5 +1,5 @@
 <ul class="sidebar-nav">
-	{% if user.is_authenticated %}
+	{% if user.is_authenticated and user.license_number %}
 		<li>
 			<strong>User:
 				<a href="{{ user.get_absolute_url }}">{{ user.username }}</a>

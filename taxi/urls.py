@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
-    path('driver/<int:pk>/', views.driver_detail, name='driver-detail'),
-    path('drivers/', views.driver_list, name='driver-list'),
+    path("drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"),
+    path('drivers/', DriverListView.as_view(), name='driver-list'),
+    path('home/', views.home, name='home'),
 ]

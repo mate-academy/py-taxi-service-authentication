@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 
 class Manufacturer(models.Model):
@@ -13,7 +13,7 @@ class Manufacturer(models.Model):
         return f"{self.name} {self.country}"
 
 
-class Driver(User):
+class Driver(AbstractUser):
     license_number = models.CharField(max_length=255, unique=True)
 
     class Meta:
@@ -33,7 +33,7 @@ class Car(models.Model):
         return self.model
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(Driver, on_delete=models.CASCADE)
     num_visits = models.IntegerField(default=0)
 
     def __str__(self):

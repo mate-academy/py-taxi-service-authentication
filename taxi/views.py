@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views import generic
-from django.contrib.auth.models import User
 
 from .models import Driver, Car, Manufacturer, UserProfile
 
@@ -15,20 +14,6 @@ def home(request):
         'num_visits': user_profile.num_visits,
     }
     return render(request, 'home.html', context)
-
-@login_required
-def driver_list(request):
-    drivers = Driver.objects.all()
-    context = {
-        'drivers': drivers,
-        'current_user': request.user,
-    }
-    return render(request, 'driver_list.html', context)
-
-@login_required
-def driver_detail(request, pk):
-    driver = get_object_or_404(Driver, pk=pk)
-    return render(request, 'driver_detail.html', {'driver': driver})
 
 
 def index(request):
@@ -67,8 +52,17 @@ class CarDetailView(generic.DetailView):
 class DriverListView(generic.ListView):
     model = Driver
     paginate_by = 5
+    template_name = 'driver_list.html'
+    context_object_name = 'drivers'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['current_user'] = self.request.user
+        return context
 
 
 class DriverDetailView(generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
+    template_name = 'driver_detail.html'
+    context_object_name = 'driver'

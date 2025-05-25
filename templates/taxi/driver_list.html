@@ -4,14 +4,14 @@
   <h1>Driver list</h1>
   {% if driver_list %}
     <ul>
-      {% for driver in drivers%}
+      {% for driver in drivers %}
         <li>
-          {{ driver }}
-            {% if driver.user == current_user %}
+            {{ driver }}
+            {% if driver.user == request.user %}
                 (Me)
             {% endif %}
         </li>
-      {% endfor %}
+    {% endfor %}
     </ul>
   {% else %}
     <p>There are no drivers in taxi</p>

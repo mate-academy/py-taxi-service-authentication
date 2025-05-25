@@ -6,7 +6,7 @@
 </ul>
 <div class="sidebar">
     {% if user.is_authenticated %}
-        <p>Zalogowany jako: <a href="{% url 'driver_detail' user.driver.pk %}">{{ user.first_name }} {{ user.last_name }} (Me)</a></p>
+        <p>Zalogowany jako: <a href="{% url 'taxi:driver-detail' user.driver.pk %}">{{ user.first_name }} {{ user.last_name }} (Me)</a></p>
         <a href="{% url 'logout' %}">Wyloguj</a>
     {% else %}
         <a href="{% url 'login' %}">Zaloguj</a>

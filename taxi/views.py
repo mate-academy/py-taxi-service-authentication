@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views import generic
+from django.contrib.auth.models import User
 
 from .models import Driver, Car, Manufacturer, UserProfile
 
@@ -14,10 +15,6 @@ def home(request):
         'num_visits': user_profile.num_visits,
     }
     return render(request, 'home.html', context)
-
-@login_required
-def some_view(request):
-    return render(request, 'some_template.html')
 
 @login_required
 def driver_list(request):

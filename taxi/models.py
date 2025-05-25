@@ -31,3 +31,10 @@ class Car(models.Model):
 
     def __str__(self):
         return self.model
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(AbstractUser, on_delete=models.CASCADE)
+    num_visits = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.user.username

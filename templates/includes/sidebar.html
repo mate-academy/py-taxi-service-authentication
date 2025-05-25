@@ -4,3 +4,11 @@
   <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
   <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
 </ul>
+<div class="sidebar">
+    {% if user.is_authenticated %}
+        <p>Zalogowany jako: <a href="{% url 'driver_detail' user.driver.pk %}">{{ user.first_name }} {{ user.last_name }} (Me)</a></p>
+        <a href="{% url 'logout' %}">Wyloguj</a>
+    {% else %}
+        <a href="{% url 'login' %}">Zaloguj</a>
+    {% endif %}
+</div>

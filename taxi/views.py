@@ -1,7 +1,37 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.views import generic
 
-from .models import Driver, Car, Manufacturer
+from .models import Driver, Car, Manufacturer, UserProfile
+
+@login_required
+def home(request):
+    user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+    user_profile.num_visits += 1
+    user_profile.save()
+
+    context = {
+        'num_visits': user_profile.num_visits,
+    }
+    return render(request, 'home.html', context)
+
+@login_required
+def some_view(request):
+    return render(request, 'some_template.html')
+
+@login_required
+def driver_list(request):
+    drivers = Driver.objects.all()
+    context = {
+        'drivers': drivers,
+        'current_user': request.user,
+    }
+    return render(request, 'driver_list.html', context)
+
+@login_required
+def driver_detail(request, pk):
+    driver = get_object_or_404(Driver, pk=pk)
+    return render(request, 'driver_detail.html', {'driver': driver})
 
 
 def index(request):

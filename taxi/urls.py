@@ -9,6 +9,9 @@ from .views import (
     ManufacturerListView,
 )
 
+
+app_name = "taxi"
+
 urlpatterns = [
     path("", index, name="index"),
     path("manufacturers/",
@@ -22,5 +25,3 @@ urlpatterns = [
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
     ),
 ]
-
-app_name = "taxi"

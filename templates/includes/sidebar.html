@@ -4,14 +4,14 @@
       <a href="{% url 'taxi:driver-detail' user.id %}">{{ user.username }}</a>
     </li>
     <li>
-      <form method="post" action="{% url 'taxi:logout' %}">
+      <form method="post" action="{% url 'logout' %}">
         {% csrf_token %}
         <button type="submit" name="logout">Logout</button>
       </form>
     </li>
   {% else %}
     <li>
-      <form method="post" action="{% url 'taxi:login' %}">
+      <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
         <button type="submit" name="login">Login</button>
       </form>

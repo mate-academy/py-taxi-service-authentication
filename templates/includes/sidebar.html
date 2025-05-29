@@ -1,8 +1,13 @@
 <ul class="sidebar-nav">
   {% if user.is_authenticated %}
+     <p>{{ user.get_username }}</p>
+    {% if user.driver_profile %}
     <p>
-      <a href="{% url 'taxi:driver-detail' pk=user.id %}">{{ user.get_username }}</a>
-    </p>
+        <a href="{% url 'taxi:driver-detail' pk=user.driver_profile.id %}">My profile</a>
+      </p>
+    {% else %}
+      <p>You have no profile.</p>
+    {% endif %}
     <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Logout</a>
   {% else %}
     <li><a href="{% url 'login' %}">Login</a></li>

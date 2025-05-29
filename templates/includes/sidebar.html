@@ -1,3 +1,15 @@
+<div class="sidebar-header">
+  {% if user.is_authenticated %}
+    <p>
+      <a href="{% url 'taxi:driver-detail' pk=user.id %}">{{ user.get_username }}</a>
+    </p>
+    <a href="{% url 'logout' %}" class="btn btn-danger btn-sm">Logout</a>
+  {% else %}
+    <p>You are not authorized.</p>
+    <a href="{% url 'login' %}" class="btn btn-primary btn-sm">Login</a>
+  {% endif %}
+</div>
+
 <ul class="sidebar-nav">
   <li><a href="{% url "taxi:index" %}">Home page</a></li>
   <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>

@@ -10,4 +10,8 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+  <hr>
+  <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize:"s" }}.</p>
+
+  <p>Use the sidebar to navigate through different sections of the application.</p>
 {% endblock %}

@@ -18,12 +18,12 @@
   {% if user.is_authenticated %}
   <div>
     <a href="{% url 'taxi:driver-detail' request.user.pk %}">{{ request.user.username }}</a>
-    <form action="{% url 'taxi:logout' %}" method="post">{% csrf_token %}
+    <form action="{% url 'logout' %}" method="post">{% csrf_token %}
       <button type="submit">Logout</button>
     </form>
   </div>
 {% else %}
-  <a href="{% url 'taxi:login' %}">Login</a>
+  <a href="{% url 'login' %}">Login</a>
 {% endif %}
 
 <div class="container-fluid">

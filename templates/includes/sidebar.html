@@ -5,7 +5,6 @@
     <button type="submit">Logout</button>
   </form>
 {% else %}
-  {% csrf_token %}
   <a href="{% url "login" %}">Login</a>
 {% endif %}
 <br>

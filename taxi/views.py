@@ -8,7 +8,8 @@ from .models import Driver, Car, Manufacturer
 
 @login_required
 def index(request):
-    """View function for the home page of the site."""
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
 
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()
@@ -18,6 +19,7 @@ def index(request):
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
+        "num_visits": num_visits + 1,  # ← ДОДАНО ЛІЧИЛЬНИК
     }
 
     return render(request, "taxi/index.html", context=context)
@@ -34,7 +36,6 @@ class CarListView(LoginRequiredMixin, generic.ListView):
     model = Car
     paginate_by = 5
     queryset = Car.objects.select_related("manufacturer")
-
 
 class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car

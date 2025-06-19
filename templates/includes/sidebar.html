@@ -2,9 +2,13 @@
     {% if user.is_authenticated %}
         <p class="sidebar-heading">
             Welcome,
-            <a href="{% url 'taxi:driver-detail' pk=user.driver.pk %}">
+            {% if user.driver %}
+                <a href="{% url 'taxi:driver-detail' pk=user.driver.pk %}">
+                    {{ user.username }}
+                </a>
+            {% else %}
                 {{ user.username }}
-            </a>
+            {% endif %}
         </p>
         <a href="{% url 'logout' %}" class="btn btn-outline-secondary">Logout</a>
     {% else %}

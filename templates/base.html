@@ -15,6 +15,17 @@
 </head>
 
 <body>
+{% if user.is_authenticated %}
+  <div class="p-2 bg-light">
+    Привет, <a href="{% url 'taxi:driver-detail' user.driver.id %}">{{ user.username }}</a> |
+    <a href="{% url 'logout' %}">Выйти</a>
+  </div>
+{% else %}
+  <div class="p-2 bg-light">
+    <a href="{% url 'login' %}">Войти</a>
+  </div>
+{% endif %}
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-2">

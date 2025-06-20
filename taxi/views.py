@@ -1,11 +1,15 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views import generic
 
 from .models import Driver, Car, Manufacturer
 
 
+@login_required
 def index(request):
-    """View function for the home page of the site."""
+    num_visits = request.session.get('num_visits', 0) + 1
+    request.session['num_visits'] = num_visits
+    return render(request, 'index.html', {'num_visits': num_visits})
 
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()

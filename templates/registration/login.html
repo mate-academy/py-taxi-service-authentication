@@ -4,7 +4,7 @@
   <h2>Вход в систему</h2>
   <form method="POST">
       {% csrf_token %}
-      {{ from.as_p }}
+      {{ form.as_p }}
       <button type="submit" class="btn btn-primary">Войти</button>
   </form>
 {% endblock %}

@@ -7,13 +7,16 @@ urlpatterns = [
     path("", views.index, name="index"),
 
     # Manufacturer
-    path("manufacturers/", views.ManufacturerListView.as_view(), name="manufacturer-list"),
+    path("manufacturers/", views.ManufacturerListView.as_view(),
+         name="manufacturer-list"),
 
     # Car
     path("cars/", views.CarListView.as_view(), name="car-list"),
     path("cars/<int:pk>/", views.CarDetailView.as_view(), name="car-detail"),
 
     # Driver
-    path("drivers/", views.DriverListView.as_view(), name="driver-list"),
-    path("drivers/<int:pk>/", views.DriverDetailView.as_view(), name="driver-detail"),
+    path("drivers/", views.DriverListView.as_view(),
+         name="driver-list"),
+    path("drivers/<int:pk>/", views.DriverDetailView.as_view(),
+         name="driver-detail"),
 ]

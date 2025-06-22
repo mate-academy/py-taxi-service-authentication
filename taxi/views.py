@@ -7,8 +7,8 @@ from .models import Driver, Car, Manufacturer
 
 @login_required
 def index(request):
-    num_visits = request.session.get('num_visits', 0) + 1
-    request.session['num_visits'] = num_visits
+    num_visits = request.session.get("num_visits", 0) + 1
+    request.session["num_visits"] = num_visits
 
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()

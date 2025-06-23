@@ -6,7 +6,7 @@
         <button type="submit">Log Out</button>
       </form>
     {% else %}
-      <form action="{% url 'login' %}" method="post">
+      <form action="{% url 'login' %}" method="get">
         {% csrf_token %}
         <button type="submit">Login</button>
       </form>

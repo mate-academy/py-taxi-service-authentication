@@ -1,6 +1,37 @@
-<ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-</ul>
+<div class="p-3 border rounded" style="width: 240px">
+  {% if user.is_authenticated %}
+    <ul class="list-unstyled">
+      <li class="list-grop-item">User:
+        <a href="{% url 'taxi:driver-detail' user.id %}">
+          {{ user.first_name }}
+        </a>
+      </li>
+      <li class="list-group-item">
+        <form action="{% url 'logout' %}" method="POST" class="m-0 p-0">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-link p-0 m-0">Logout</button>
+        </form>
+      </li>
+    </ul>
+  {% else %}
+    <ul class="list-group mb-3">
+      <li class="list-group-item">
+        <a href="{% url 'login' %}" class="btn btn-link p-0 m-0">Login</a>
+      </li>
+    </ul>
+  {% endif %}
+  <ul class="list-group">
+    <li class="list-group-item">
+      <a href="{% url "taxi:index" %}">Home page</a>
+    </li>
+    <li class="list-group-item">
+      <a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a>
+    </li>
+    <li class="list-group-item">
+      <a href="{% url "taxi:car-list" %}">Cars</a>
+    </li>
+    <li class="list-group-item">
+      <a href="{% url "taxi:driver-list" %}">Drivers</a>
+    </li>
+  </ul>
+</div>

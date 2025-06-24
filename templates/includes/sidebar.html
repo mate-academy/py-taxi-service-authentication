@@ -1,7 +1,7 @@
 <div class="p-3 border rounded" style="width: 240px">
   {% if user.is_authenticated %}
     <ul class="list-unstyled">
-      <li class="list-grop-item">User:
+      <li class="list-group-item">User:
         <a href="{% url 'taxi:driver-detail' user.id %}">
           {{ user.first_name }}
         </a>

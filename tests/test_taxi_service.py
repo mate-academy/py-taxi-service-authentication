@@ -121,11 +121,10 @@ class LogInTest(TestCase):
     def setUp(self):
         self.credentials = {"username": "admin.user", "password": "1qazcde3"}
 
-
-def test_login(self):
-    response = self.client.post(
-        reverse("taxi:login"), self.credentials, follow=True
-    )
-    user = response.wsgi_request.user
-    self.assertTrue(user.is_authenticated)
-    self.assertTrue(user.is_active)
+    def test_login(self):
+        response = self.client.post(
+            reverse("taxi:login"), self.credentials, follow=True
+        )
+        user = response.wsgi_request.user
+        self.assertTrue(user.is_authenticated)
+        self.assertTrue(user.is_active)

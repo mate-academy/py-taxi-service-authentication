@@ -126,4 +126,3 @@ class LogInTest(TestCase):
             reverse("login"), self.credentials, follow=True
         )
         self.assertTrue(response.wsgi_request.user.is_active)
-        print(response.wsgi_request.user)

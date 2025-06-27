@@ -25,7 +25,7 @@ def index(request):
 
 class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     model = Manufacturer
-    queryset = Manufacturer.objects.order_by("name")
+    ordering = ["name"]
     paginate_by = 5
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"

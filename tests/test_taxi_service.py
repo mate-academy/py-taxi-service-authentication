@@ -125,5 +125,5 @@ class LogInTest(TestCase):
         response = self.client.post(
             reverse("login"), self.credentials, follow=True
         )
-        self.assertTrue(response.context["user"].is_active)
-        print(response.context["user"])
+        self.assertTrue(response.wsgi_request.user.is_active)
+        print(response.wsgi_request.user)

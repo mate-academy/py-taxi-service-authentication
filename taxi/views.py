@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.decorators import login_required
@@ -38,6 +37,7 @@ class CarListView(LoginRequiredMixin, generic.ListView):
     model = Car
     paginate_by = 5
     queryset = Car.objects.select_related("manufacturer")
+    context_object_name = "car_list"
 
 
 class CarDetailView(LoginRequiredMixin, generic.DetailView):

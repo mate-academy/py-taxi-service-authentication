@@ -15,7 +15,7 @@ def index(request):
     num_manufacturers = Manufacturer.objects.count()
     num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
-    if  request.session.get("num_visits"):
+    if request.session.get("num_visits"):
         num_visits += 1
 
     context = {

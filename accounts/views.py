@@ -1,20 +1,22 @@
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.shortcuts import render, redirect
 
-from taxi.models import Driver
-
-
-@login_required
 def login_view(request):
-    return HttpResponse
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect("index")
+    else:
+        form = AuthenticationForm()
+    return render(request, "registration/login.html",
+                  {"form": form})
 
-
-@login_required
-def driver_list(request):
-    drivers = Driver.objects.all()
-    context = {
-        "drivers": drivers,
-        "current_user": request.user,
-    }
-    return render(request, "drivers/driver_list.html", context)
+def logout_view(request):
+    logout(request)
+    return redirect("login")

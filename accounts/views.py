@@ -14,7 +14,7 @@ def login_view(request):
 def driver_list(request):
     drivers = Driver.objects.all()
     context = {
-        'drivers': drivers,
-        'current_user': request.user,
+        "drivers": drivers,
+        "current_user": request.user,
     }
-    return render(request, 'drivers/driver_list.html', context)
+    return render(request, "drivers/driver_list.html", context)

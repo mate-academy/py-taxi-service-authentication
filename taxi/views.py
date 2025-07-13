@@ -18,7 +18,7 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
 class CarListView(LoginRequiredMixin, generic.ListView):
     model = Car
     paginate_by = 5
-    queryset = Car.objects.select_related("manufacturer").order_by("model")  # Додано сортування
+    queryset = Car.objects.select_related("manufacturer").order_by("model")
 
 
 class CarDetailView(LoginRequiredMixin, generic.DetailView):
@@ -36,7 +36,6 @@ class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
 
 
-# Оновити функцію index
 @login_required
 def index(request):
     num_drivers = Driver.objects.count()

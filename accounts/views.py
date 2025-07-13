@@ -15,9 +15,7 @@ def login_view(request):
                 return redirect("index")
     else:
         form = AuthenticationForm()
-    return render(request, "registration/login.html",
-                  {"form": form})
-
+    return render(request, "registration/login.html", {"form": form})
 
 def logout_view(request):
     logout(request)

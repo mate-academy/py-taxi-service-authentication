@@ -6,7 +6,6 @@ from django.views import generic
 from taxi.models import Manufacturer, Car, Driver
 
 
-# Додати LoginRequiredMixin до всіх класів
 class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     model = Manufacturer
     context_object_name = "manufacturer_list"

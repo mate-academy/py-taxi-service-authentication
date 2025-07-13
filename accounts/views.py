@@ -9,6 +9,7 @@ from taxi.models import Driver
 def login_view(request):
     return HttpResponse
 
+
 @login_required
 def driver_list(request):
     drivers = Driver.objects.all()

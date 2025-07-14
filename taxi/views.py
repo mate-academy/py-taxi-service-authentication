@@ -39,6 +39,7 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
     ordering = ["username"]
 
+
     def get_queryset(self):
         queryset = super().get_queryset()
         return queryset.order_by("username")
@@ -46,7 +47,6 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 
 class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
-
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

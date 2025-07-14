@@ -12,7 +12,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("taxi:home")
+                return redirect("taxi:index")
     else:
         form = AuthenticationForm()
     return render(request, "registration/login.html", {"form": form})

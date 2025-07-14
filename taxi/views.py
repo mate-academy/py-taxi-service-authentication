@@ -11,7 +11,7 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"
     paginate_by = 5
-    ordering = ["name"]  # Додано сортування
+    ordering = ["name"]
 
 
 class CarListView(LoginRequiredMixin, generic.ListView):

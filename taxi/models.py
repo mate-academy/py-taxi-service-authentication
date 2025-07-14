@@ -18,8 +18,8 @@ class Driver(AbstractUser):
     license_number = models.CharField(max_length=255, unique=True)
 
     class Meta:
-        verbose_name = "driver"
         verbose_name_plural = "drivers"
+        verbose_name = "driver"
         ordering = [Case(
             When(username="admin.user", then=Value(0)),
             When(username="joyce.byers", then=Value(1)),

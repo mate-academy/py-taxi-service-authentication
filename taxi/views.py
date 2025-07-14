@@ -21,6 +21,7 @@ def index(request):
     }
     return render(request, "taxi/index.html", context)
 
+
 class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     model = Manufacturer
     paginate_by = 5
@@ -37,7 +38,6 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
     ordering = ["username"]
-
 
     def get_queryset(self):
         queryset = super().get_queryset()

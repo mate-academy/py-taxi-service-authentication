@@ -1,17 +1,39 @@
-{% extends "base.html" %}
+{% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Car list</h1>
-  {% if car_list %}
-    <ul>
-      {% for car in car_list %}
-        <li>
-          <a href="{% url "taxi:car-detail" pk=car.id %} ">{{ car.id }}</a>
-          {{ car.model }} ({{ car.manufacturer.name }})
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no cars in taxi</p>
-  {% endif %}
+    <h1>Car List</h1>
+    
+    {% if car_list %}
+        <ul>
+            {% for car in car_list %}
+                <li>
+                    <a href="{% url 'taxi:car-detail' car.pk %}">
+                        {{ car.model }} ({{ car.manufacturer }})
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no cars available.</p>
+    {% endif %}
+    
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
 {% endblock %}

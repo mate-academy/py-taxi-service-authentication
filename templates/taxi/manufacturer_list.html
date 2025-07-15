@@ -1,13 +1,39 @@
-{% extends "base.html" %}
+{% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Manufacturer list</h1>
-
-  {% if manufacturer_list %}
-    <ul>
-      {% for manufacturer in manufacturer_list %}
-        <li>{{ manufacturer.name }} {{ manufacturer.country }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+    <h1>Manufacturer List</h1>
+    
+    {% if manufacturer_list %}
+        <ul>
+            {% for manufacturer in manufacturer_list %}
+                <li>
+                    <a href="{% url 'taxi:manufacturer-detail' manufacturer.pk %}">
+                        {{ manufacturer.name }} ({{ manufacturer.country }})
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no manufacturers available.</p>
+    {% endif %}
+    
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+                
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
 {% endblock %}

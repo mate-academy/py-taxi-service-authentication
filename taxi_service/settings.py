@@ -133,3 +133,11 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = "/taxi/"
+
+# Redirect to login page if user is not authenticated
+LOGIN_URL = "/accounts/login/"
+
+# Add this if using Django's built-in authentication
+LOGOUT_REDIRECT_URL = "/accounts/login/"

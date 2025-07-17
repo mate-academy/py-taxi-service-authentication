@@ -112,7 +112,7 @@ LOGIN_REDIRECT_URL = "/"
 
 LOGIN_URL = "/registration/login/"
 
-LOGOUT_REDIRECT_URL = "/registration/login/"
+LOGOUT_REDIRECT_URL = "/registration/logout/"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

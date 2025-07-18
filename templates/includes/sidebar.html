@@ -1,7 +1,11 @@
 {% if user.is_authenticated %}
   <li>
     <strong>User:</strong>
-    <a href="{% url 'taxi:driver-detail' pk=user.id %}">{{ user.username }}</a>
+    {% if user.driver %}
+      <a href="{% url 'taxi:driver-detail' pk=user.driver.id %}">{{ user.username }}</a>
+    {% else %}
+      {{ user.username }}
+    {% endif %}
   </li>
   <li><a href="{% url 'taxi:logout' %}">Logout</a></li>
 {% else %}

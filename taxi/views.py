@@ -62,5 +62,9 @@ class DriverDetailView(generic.DetailView):
 def test_session_view(request: HttpRequest) -> HttpResponse:
     return HttpResponse(
         "<h1>Test session</h1>"
-        f"<h4>Session data: {request.session.get('car', 'No car in session')}</h4>"
+        f"<h4>"
+        f"Session data: {
+        request.session.get('car', 'No car in session')
+        }"
+        f"</h4>"
     )

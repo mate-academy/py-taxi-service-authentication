@@ -1,5 +1,5 @@
 <p>User: {{ user.first_name }} {{ user.last_name }}</p>
-{% if user.first_name %}
+{% if is_authenticated %}
   <a href="{% url 'logout' %}">Log out</a>
 {% else %}
   <a href="{% url 'login' %}">Log in</a>

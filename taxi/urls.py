@@ -26,7 +26,7 @@ urlpatterns = [
     path(
         "login/", LoginView.as_view(template_name="account/login.html"),
         name="login"),
-    path("loggout/", LogoutView.as_view(), name="logout"),
+    path("logout/", LogoutView.as_view(), name="logout"),
 ]
 
 app_name = "taxi"

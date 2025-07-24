@@ -75,4 +75,4 @@ def login_view(request: HttpRequest) -> HttpResponse:
 
 def logout_view(request: HttpRequest) -> HttpResponse:
     logout(request)
-    return HttpResponseRedirect(reverse("taxi:logout"))
+    return HttpResponseRedirect(reverse("taxi:login"))

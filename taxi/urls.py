@@ -2,11 +2,13 @@ from django.urls import path
 
 from .views import (
     index,
+    logout_view,
+    login_view,
     CarListView,
     CarDetailView,
     DriverListView,
     DriverDetailView,
-    ManufacturerListView, logout_view, login_view,
+    ManufacturerListView
 )
 
 urlpatterns = [

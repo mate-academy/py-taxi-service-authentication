@@ -61,8 +61,9 @@ def login_view(request: HttpRequest) -> HttpResponse:
         return render(request, "registration/login.html")
     elif request.method == "POST":
         username = request.POST["username"]
-    password = request.POST["password"]
-    user = authenticate(username=username, password=password)
+        password = request.POST["password"]
+        user = authenticate(username=username, password=password)
+
     if user:
         login(request, user)
         return HttpResponseRedirect(reverse("taxi:index"))

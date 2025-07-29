@@ -3,8 +3,8 @@
   <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
   <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
   <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-  <li><a href="{% url "taxi:login" %}">Login</a></li>>
-  <li><a href="{% url "taxi:logout" %}">Log out</a></li>>
+  <li><a href="{% url "login" %}">Login</a></li>>
+  <li><a href="{% url "logout" %}">Log out</a></li>>
 </ul>
 
 <div class="sidebar-user-info">
@@ -14,8 +14,8 @@
         {{ user.username }}
       </a>
     </p>
-    <a href="{% url 'taxi:logout' %}">Logout</a>
+    <a href="{% url 'logout' %}">Logout</a>
   {% else %}
-    <a href="{% url 'taxi:login' %}">Login</a>
+    <a href="{% url 'login' %}">Login</a>
   {% endif %}
 </div>

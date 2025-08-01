@@ -33,22 +33,22 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
 
 
-class CarListView(LoginRequiredMixin ,generic.ListView):
+class CarListView(LoginRequiredMixin, generic.ListView):
     model = Car
     paginate_by = 5
     queryset = Car.objects.select_related("manufacturer").order_by("id")
 
 
-class CarDetailView(LoginRequiredMixin ,generic.DetailView):
+class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
 
 
-class DriverListView(LoginRequiredMixin ,generic.ListView):
+class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
     queryset = Driver.objects.all().order_by("id")
 
 
-class DriverDetailView(LoginRequiredMixin ,generic.DetailView):
+class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")

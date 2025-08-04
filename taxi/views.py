@@ -5,7 +5,8 @@ from django.shortcuts import render
 from django.views import generic
 
 from .models import Driver, Car, Manufacturer
-
+from django.contrib.auth import authenticate, login
+from django.http import JsonResponse
 
 @login_required
 def index(request):
@@ -52,3 +53,15 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
+
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return JsonResponse({'success': True})
+        else:
+            return JsonResponse({'error': 'Invalid credentials'}, status=400)

@@ -1,6 +1,15 @@
 <ul class="sidebar-nav">
+  {% if user.is_authenticated %}
+    <li class="user_login_sidebar">User: <a href="{{ user.get_absolute_url }}">{{ user.first_name }}</a></li>
+    <li class="user_login_sidebar"><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
+  {% else %}
+    <li class="user_login_sidebar"><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+  {% endif %}
+
+  <br>
   <li><a href="{% url "taxi:index" %}">Home page</a></li>
   <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
   <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
   <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
 </ul>
+

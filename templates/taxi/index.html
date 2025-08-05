@@ -3,11 +3,16 @@
 {% block content %}
   <h1>Taxi Service Home</h1>
   <p>Welcome to Best Taxi Ever!</p>
-  <h2>Dynamic content</h2>
+  {% if user.is_authenticated %}
+    <h2>Welcome <a href="{% url "taxi:driver-detail" pk=user.id %}">{{ user.username }}</a>!</h2>
+  {% else %}
+    <h2>For see more information you must <a href="{% url 'login' %}">log in</a>!</h2>
+  {% endif %}
   <p>The Taxi service has the following record counts:</p>
   <ul>
     <li><strong>Cars:</strong> {{ num_cars }}</li>
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+  <p>You visited us {{ num_visits }} time{{ num_visits|pluralize }}.</p>
 {% endblock %}

@@ -8,6 +8,7 @@ from .models import Driver, Car, Manufacturer
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
 
+
 @login_required
 def index(request):
     """View function for the home page of the site."""

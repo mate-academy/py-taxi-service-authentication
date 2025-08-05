@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Username: {{ driver.username }}</h1>
+<p><strong>First_name:</strong> {{ driver.first_name }}</p>
+<p><strong>Last_name:</strong> {{ driver.last_name }}</p>
+<p><strong>Email:</strong> {{ driver.email }}</p>
+<p><strong>Is staff:</strong> {{ driver.is_staff }}</p>
+<a href="{% url 'taxi:index' %}">Back to cars page</a>
+{% endblock %}

@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 
 class Manufacturer(models.Model):
@@ -8,6 +8,7 @@ class Manufacturer(models.Model):
 
     class Meta:
         ordering = ["name"]
+        app_label = "taxi"
 
     def __str__(self):
         return f"{self.name} {self.country}"

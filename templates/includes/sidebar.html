@@ -1,6 +1,58 @@
-<ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-</ul>
+<section class="sidebar">
+  <div class="username">
+    <svg
+      fill="none"
+      stroke="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      class="users-icon"
+    >
+      <path d="M17.457 14.1846C19.3674 14.1846 20.9159 12.636 20.9159 10.7257C20.9159 9.24795 19.9892 7.98666 18.6853 7.49121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M11.6362 13.4989C13.7069 13.4989 15.3856 11.8202 15.3856 9.74944C15.3856 7.67868 13.7069 6 11.6362 6C9.5654 6 7.88672 7.67868 7.88672 9.74944C7.88672 11.8202 9.5654 13.4989 11.6362 13.4989Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M17.3792 18.7669C19.2132 19.9885 17.9748 22.3444 15.7712 22.3444H7.49603C5.29245 22.3444 4.05402 19.9885 5.88805 18.7669C7.53315 17.6713 9.5088 17.0327 11.6336 17.0327C13.7584 17.0327 15.7341 17.6713 17.3792 18.7669Z" stroke-width="2"></path>
+      <path d="M15.4531 22.3439H20.6981C22.731 22.3439 23.8734 20.1705 22.1815 19.0435C21.7143 18.7324 21.2182 18.4612 20.6981 18.2349" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+
+    {%  if user.username %}
+      <a class="nav-link nav-link_contrast" href="{% url "taxi:driver-detail" pk=user.id %}">
+        {{ user.username }}
+      </a>
+
+      <a href="{% url 'logout' %}" title="Logout">
+        <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8" stroke="#374151" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        </svg>
+      </a>
+
+    {% else %}
+      <a  class="nav-link nav-link_contrast" href="{% url "login" %}">Login</a>
+    {% endif %}
+  </div>
+
+  <nav class="sidebar-nav">
+    <ul class="menu">
+      <li class="menu-item">
+        <a href="{% url "taxi:index" %}" class="nav-link">
+          Home page
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="{% url "taxi:manufacturer-list" %}" class="nav-link">
+          Manufacturers
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="{% url "taxi:car-list" %}" class="nav-link">
+          Cars
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="{% url "taxi:driver-list" %}" class="nav-link">
+          Drivers
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>

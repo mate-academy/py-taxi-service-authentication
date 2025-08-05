@@ -10,4 +10,23 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 text-center">
+        <h6>
+          You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.
+        </h6>
+        <p>
+          <small>
+            Last visit:
+            {% if last_visit %}
+              <span class="text-success">{{ last_visit }}</span>
+            {% else %}
+              <span class="text-danger">It is your first visit for current session!</span>
+            {% endif %}
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
 {% endblock %}

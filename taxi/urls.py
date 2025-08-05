@@ -7,10 +7,12 @@ from .views import (
     DriverListView,
     DriverDetailView,
     ManufacturerListView,
+    test_session_view
 )
 
 urlpatterns = [
     path("", index, name="index"),
+    path("test-sessions/", test_session_view, name="test-session"),
     path(
         "manufacturers/",
         ManufacturerListView.as_view(),

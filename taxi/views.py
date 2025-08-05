@@ -49,6 +49,7 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
+    ordering = ["id"]
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

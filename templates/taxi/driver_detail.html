@@ -8,11 +8,14 @@
   {% for car in driver.cars.all %}
     <hr>
     <p><strong>Id:</strong>{{ car.id }}
-      <strong>Car model:</strong> {{ car.model }}
+      <strong>Car model:</strong> <a href="{{car.get_absolute_url}}">{{ car.model }}</a>
     </p>
 
   {% empty %}
     <p>No cars!</p>
   {% endfor %}
+
+  <hr>
+  <button><a href="{%url "logout"%}">Logout</a></button>
 
 {% endblock %}

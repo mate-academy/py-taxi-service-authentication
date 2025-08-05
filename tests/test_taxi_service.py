@@ -32,7 +32,7 @@ class PublicTests(TestCase):
         response = self.client.get(reverse("login"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "registration/login.html")
+        self.assertTemplateUsed(response, "accounts/login.html")
 
 
 class PrivateHomeTests(TestCase):

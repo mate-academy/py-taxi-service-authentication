@@ -5,9 +5,9 @@
          {{ request.user.username }}
       </a>
     </p>
-{#    <li><a href="{% url "logout" %}">logout</a></li>#}
+
   {% else %}
-{#    <li><a href="{% url "login" %}">Login</a></li>#}
+
   {% endif %}
   <br>
   <li><a href="{% url "taxi:index" %}">Home page</a></li>

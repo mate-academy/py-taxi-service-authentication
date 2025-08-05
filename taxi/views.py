@@ -66,4 +66,4 @@ def login_view(request):
             return JsonResponse({"success": True})
         else:
             return JsonResponse({"error": "Invalid credentials"}, status=400)
-    return None
+    return render(request, "registration/login.html")

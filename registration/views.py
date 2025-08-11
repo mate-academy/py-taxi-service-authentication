@@ -3,8 +3,8 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 
 class TaxiLoginView(LoginView):
-    template_name = "accounts/login.html"
+    template_name = "registration/login.html"
 
 
 class TaxiLogoutView(LogoutView):
-    template_name = "accounts/logout.html"
+    template_name = "registration/logout.html"

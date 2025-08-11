@@ -3,7 +3,7 @@
     {% if user.is_authenticated %}
       <li class="sidebar-item username-label">
         <i class="bi bi-person-circle"></i>
-        <span><strong>{{ user.username }}</strong></span>
+        <span><strong><a href="{% url 'taxi:driver-detail' user.id %}">{{ user.username }}</a></strong></span>
       </li>
       <li class="sidebar-item">
         <form method="post" action="{% url 'logout' %}" class="w-100">

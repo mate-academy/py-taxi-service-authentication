@@ -47,7 +47,13 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
-    paginate_by = 5
+    context_object_name = "driver_list"
+    template_name = "taxi/driver_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["current_user_id"] = self.request.user.id
+        return context
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

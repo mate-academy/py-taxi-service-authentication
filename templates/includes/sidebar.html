@@ -1,6 +1,47 @@
-<ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-</ul>
+<aside id="sidebar" class="bg-dark">
+  <ul class="sidebar-nav p-0">
+    {% if user.is_authenticated %}
+      <li class="sidebar-item username">
+        <i class="bi bi-person-circle"></i>
+        <span class="pl-1">{{ user.username }}</span>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link mt-2" href="{% url 'logout' %}">
+          <i class="bi bi-door-closed-fill"></i>
+          <span>Log out</span>
+        </a>
+      </li>
+    {% else %}
+      <li class="sidebar-item">
+        <a class="sidebar-link mt-2" href="{% url 'logout' %}">
+          <i class="bi bi-door-open-fill"></i>
+          <span>Log in</span>
+        </a>
+      </li>
+    {% endif %}
+    <li class="sidebar-item">
+      <a class="sidebar-link" href="{% url 'taxi:index' %}">
+        <i class="bi bi-house-door-fill"></i>
+        <span>Home page</span>
+      </a>
+    </li>
+    <li class="sidebar-item">
+      <a class="sidebar-link" href="{% url 'taxi:manufacturer-list' %}">
+        <i class="bi bi-building-fill-gear"></i>
+        <span>Manufacturers</span>
+      </a>
+    </li>
+    <li class="sidebar-item">
+      <a class="sidebar-link" href="{% url 'taxi:car-list' %}">
+        <i class="bi bi-car-front-fill"></i>
+        <span>Cars</span>
+      </a>
+    </li>
+    <li class="sidebar-item">
+      <a class="sidebar-link" href="{% url 'taxi:driver-list' %}">
+        <i class="bi bi-person-fill"></i>
+        <span>Drivers</span>
+      </a>
+    </li>
+  </ul>
+</aside>

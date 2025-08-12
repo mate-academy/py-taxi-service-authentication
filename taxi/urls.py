@@ -1,5 +1,4 @@
 from django.urls import path
-from django.contrib.auth import views
 
 from .views import (
     index,
@@ -23,17 +22,6 @@ urlpatterns = [
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
     ),
-    path("login/", views.LoginView.as_view(
-        template_name="registration/login.html"
-    ),
-        name="login",
-    ),
-    path("logout/", views.LogoutView.as_view(
-        template_name="registration/logged_out.html"
-    ),
-        name="logout",
-    ),
 ]
-
 
 app_name = "taxi"

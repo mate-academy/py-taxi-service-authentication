@@ -5,12 +5,12 @@
     </li>
   {% else %}
     <li>
-      <a href="{% url 'taxi:login' %}">Login</a>
+      <a href="{% url 'login' %}">Login</a>
     </li>
   {% endif %}
   {% if user.is_authenticated %}
     <li>
-      <form method="post" action="{% url 'taxi:logout' %}">
+      <form method="post" action="{% url 'logout' %}">
         {% csrf_token %}
         <button type="submit">Log out</button>
       </form>

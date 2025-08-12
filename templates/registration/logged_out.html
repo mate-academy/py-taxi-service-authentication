@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form method="post" action="{% url 'taxi:login' %}">
-    {% csrf_token %}
-    <button type="submit">Log out</button>
-</form>
+  <h1>Logged out.</h1>
+  <p><a href="{% url 'login' %}">Log in</a></p>
 {% endblock %}

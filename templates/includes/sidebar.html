@@ -6,7 +6,6 @@
     <li class="logout-form">
       <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
         <input type="submit" value="Logout">
       </form>
     </li>

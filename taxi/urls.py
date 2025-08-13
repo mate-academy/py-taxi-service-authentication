@@ -16,7 +16,9 @@ urlpatterns = [
     path("", index, name="index"),
 
     # Manufacturers
-    path("manufacturers/", ManufacturerListView.as_view(), name="manufacturer-list"),
+    path("manufacturers/", ManufacturerListView.as_view(),
+         name="manufacturer-list"
+         ),
 
     # Cars
     path("cars/", CarListView.as_view(), name="car-list"),
@@ -24,7 +26,9 @@ urlpatterns = [
 
     # Drivers
     path("drivers/", DriverListView.as_view(), name="driver-list"),
-    path("drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"),
+    path("drivers/<int:pk>/", DriverDetailView.as_view(),
+         name="driver-detail"
+         ),
 
     # Authentication
     path(

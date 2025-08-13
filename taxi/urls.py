@@ -23,7 +23,8 @@ urlpatterns = [
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
     ),
-    path("login/", LoginView.as_view(template_name="registration/login.html"), name="login"),
+    path("login/", LoginView.as_view(
+        template_name="registration/login.html"), name="login"),
     path("logout/", LogoutView.as_view(next_page="/"), name="logout"),
 ]
 

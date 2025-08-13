@@ -9,8 +9,8 @@ from .models import Driver, Car, Manufacturer
 @login_required
 def index(request):
     """View function for the home page of the site."""
-    num_visits = request.session.get("num_visits", 1)
-    request.session["num_visits"] = num_visits + 1
+    num_visits = request.session.get("num_visits", 0) + 1
+    request.session["num_visits"] = num_visits
 
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()

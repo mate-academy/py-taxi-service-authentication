@@ -10,4 +10,9 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+  <p>Visited {{ num_visits }} time{{ num_visits|pluralize }}</p>
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
 {% endblock %}

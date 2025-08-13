@@ -53,9 +53,3 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
-
-
-@login_required
-def logout_view(request):
-    logout(request)
-    return render(request, "registration/logout.html")

@@ -11,5 +11,5 @@
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
   <hr>
-  <h3>Number Of Visits to this webpage: {{ num_visits }}</h3>
+  <h3>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</h3>
 {% endblock %}

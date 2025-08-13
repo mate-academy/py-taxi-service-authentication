@@ -10,9 +10,13 @@
     <hr>
 
     {% if user.is_authenticated %}
-        <p>Welcome, {{ user.username }}!</p>
-        <a href="{% url 'taxi:logout' %}">Logout</a>
+        <p>Welcome,
+            <a href="{% url 'taxi:driver-detail' user.pk %}">
+                {{ user.get_full_name|default:user.username }}
+            </a>!
+        </p>
+        <a href="{% url 'taxi:log-out' %}">Logout</a>
     {% else %}
-        <a href="{% url 'taxi:login' %}">Login</a>
+        <a href="{% url 'taxi:log-in' %}">Login</a>
     {% endif %}
 </div>

@@ -22,11 +22,11 @@
           <a href="{% url 'taxi:driver-detail' user.id %}">{{ user.username }}</a>
         </p>
         <p>
-          <a href="{% url 'logout' %}">Logout</a>
+          <a href="{% url 'log-out' %}">Logout</a>
         </p>
       {% else %}
         <p>
-          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'log-in' %}">Login</a>
         </p>
       {% endif %}
 

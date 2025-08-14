@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Login</h1>
+
+  <form method="post">
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+    <div>{{ form.non_field_errors }}</div>
+    {% endif %}
+
+
+    <label>Username
+    <input type="text" name="username">
+    </label>
+
+    <br>
+
+    <label>Password
+    <input type="password" name="password">
+    </label>
+
+  <button type="submit">Enter</button>
+
+  </form>
+{% endblock %}

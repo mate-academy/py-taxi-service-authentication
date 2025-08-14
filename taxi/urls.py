@@ -23,12 +23,14 @@ urlpatterns = [
     path("cars/<int:pk>/", CarDetailView.as_view(), name="car-detail"),
     path("drivers/", DriverListView.as_view(), name="driver-list"),
     path(
-        "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
+        "drivers/<int:pk>/", DriverDetailView.as_view(),
+        name="driver-detail"
     ),
-    path('login/', views.LoginView.as_view(template_name='registration/login.html'),
-         name='login'),
-    path('logout/', views.LogoutView.as_view(next_page='login'),
-         name='logout'),
+    path("login/", views.LoginView.as_view(
+        template_name="registration/login.html"),
+        name="login"),
+    path("logout/", views.LogoutView.as_view(next_page="login"),
+         name="logout"),
 ]
 
 app_name = "taxi"

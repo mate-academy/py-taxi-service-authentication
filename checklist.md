@@ -1,46 +1,52 @@
-# Check Your Code Against the Following Points
+# Сheck Your Code Against the Following Points
 
-## Code Style
+## Don't Push db files
 
-1. Ensure each file ends with a single blank line.
+Make sure you don't push db files (files with `.sqlite`, `.db3`, etc. extension).
 
-2. Add a blank line between different groups of imports and ensure appropriate ordering of imports.
-    
- Imports should be grouped in the following order:
+## Don't forget to attach all screenshots of created/modified pages.
 
-    1.Standard library imports.
-    2.Related third party imports.
-    3.Local application/library specific imports.
+## Code Efficiency
+1. Make sure you've added a blank line at the end to all your files including `.css`, `.html` and `.gitignore`.
+2. Use `pluralize`.
 
-Good example
-
-```python
-from django.urls import path
-
-from taxi.views import index
-```
-
-Bad example:
-
-```python
-from django.urls import path
-from taxi.views import index
-```
-
-3. Use absolute imports instead of relative imports 
-  
 Good example:
 
-
-```python
-from taxi.views import index
+```html
+    <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</p>
 ```
 
 Bad example:
 
-```python
-from .views import index
+```html
+    <p>You have visited this page {{ num_visits }} {% if num_visits == 1 %} time {% else %} times {% endif %}.</p>
 ```
-## Clean Code
 
-1. Don't forget to delete comments when you are ready to commit and push your code.
+3. Make sure that `num_visits` works as expected.
+When you visit the page for the first time there should be: `You have visited this page 1 time`
+
+4. Make sure you use 2 whitespaces indentations in your `.html` files.
+
+## Code style
+
+Use hyphens `-` instead of underscores `_` to separate words in the URL’s `name` parameter.
+
+Good example:
+
+```python
+urlpatterns = [
+    path("buses/", BusListView.as_view(), name="bus-list"),
+]
+ ```
+
+Bad example:
+
+```python
+urlpatterns = [
+    path("buses/", BusListView.as_view(), name="bus_list"),
+]
+ ```
+
+## Clean Code
+Add comments, prints, and functions to check your solution when you write your code. 
+Don't forget to delete them when you are ready to commit and push your code.

@@ -43,7 +43,7 @@ class PrivateHomeTests(TestCase):
         response = self.client.get(reverse("taxi:index"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "taxi/index.html")
+        self.assertTemplateUsed(response, "taxi/login.html")
 
     def test_visit_counter(self):
         visits = 3

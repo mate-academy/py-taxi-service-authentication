@@ -23,6 +23,7 @@ urlpatterns = [
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
     ),
     path("taxi/", include("django.contrib.auth.urls")),
+    path("login/", auth_views.LoginView.as_view(), name="login"),
 ]
 
 app_name = "taxi"

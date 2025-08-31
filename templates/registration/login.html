@@ -2,7 +2,8 @@
 
 {% block content %}
   <h1>Login</h1>
-  <form action="{% url 'taxi:login' %}" method="post">
+  <form action="{% url 'taxi:log-in' %}" method="post">
+    {% csrf_token %}
     <label>Username:
       <input type="text" name="username">
     </label>

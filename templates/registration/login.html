@@ -3,7 +3,7 @@
 {% block title %}<title>Login</title>{% endblock %}
 
 {% block content %}
-	<h1>Login</h1>
+  <h1>Login</h1>
   {% if form.errors %}
     <p style="color: red;">oopsie, something went wrong</p>
   {% endif %}
@@ -11,7 +11,7 @@
 <form method="post" action="{% url 'login' %}">
   {% csrf_token %}
 
-  {{ form.as_p }}>
+  {{ form.as_p }}
 
   <div>
     <input type="submit" value="Submit">

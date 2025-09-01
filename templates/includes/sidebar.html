@@ -3,7 +3,6 @@
   {% if user.is_authenticated %}
     <li>
       User: <a href="{% url 'taxi:driver-detail' user.pk %}">{{ user.username }}
-      {{ user.username }}
     </a>
     </li>
     <li>

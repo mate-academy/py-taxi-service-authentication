@@ -54,8 +54,8 @@ class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
 
 
-def test_session_view(request: HttpRequest) -> HttpResponse:
+def session_view(request: HttpRequest) -> HttpResponse:
     return HttpResponse(
-        "<h1>Test Session</h1>"
+        "<h1>Session</h1>"
         f"<h4>Session data: {request.session}</h4>"
     )

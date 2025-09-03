@@ -1,5 +1,5 @@
-from django.urls import path
-from django.contrib.auth import views as auth_views
+from django.urls import path, include
+from django.contrib.auth import views
 from .views import (
     index,
     CarListView,
@@ -22,7 +22,8 @@ urlpatterns = [
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
     ),
-    path("login/", auth_views.LoginView.as_view(), name="login"),
+    path("login/", views.LoginView.as_view(), name="login"),
+    path("", include("django.contrib.auth.urls")),
 ]
 
 app_name = "taxi"

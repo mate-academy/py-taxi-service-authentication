@@ -54,5 +54,5 @@ class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
 
 
-def login_view(request: HttpRequest) -> HttpResponse:
-    return render(request, "registration/login.html")
+# def login_view(request: HttpRequest) -> HttpResponse:
+#     return render(request, "registration/login.html")

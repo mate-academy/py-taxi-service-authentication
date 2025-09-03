@@ -29,7 +29,7 @@ class PublicTests(TestCase):
         self.assertNotEqual(response.status_code, 200)
 
     def test_login(self):
-        response = self.client.get(reverse("taxi:login"))
+        response = self.client.get(reverse("taxi:log-in"))
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "registration/login.html")
@@ -123,7 +123,7 @@ class LogInTest(TestCase):
 
     def test_login(self):
         response = self.client.post(
-            reverse("taxi:login"), self.credentials, follow=True
+            reverse("taxi:log-in"), self.credentials, follow=True
         )
         self.assertTrue(response.context["user"].is_active)
-        print(response.context["user"])
+        # print(response.context["user"])

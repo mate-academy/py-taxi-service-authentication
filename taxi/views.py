@@ -46,6 +46,14 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
+    context_object_name = "driver_list"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        for driver in context["driver_list"]:
+            driver.is_me = (driver.pk == user.pk)
+        return context
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

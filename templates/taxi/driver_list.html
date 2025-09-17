@@ -12,7 +12,7 @@ Drivers
     {% for driver in driver_list %}
         <li>
             <a href="{% url "taxi:driver-detail" pk=driver.pk %}">
-                - {{ driver.user.username }}{% if driver.user == request.user %} (Me){% endif %}
+                - {{ driver.username }}{% if driver == request.user %} (Me){% endif %}
             </a>
         </li>
     {% endfor %}

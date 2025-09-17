@@ -6,19 +6,12 @@
       <!-- Authenticated User -->
       <div class="user-info text-center">
         <div style="margin-bottom: 10px;">
-          {% if user.driver %}
-            <!-- If user has driver profile, show clickable username -->
-            <a href="{% url 'taxi:driver-detail' pk=user.driver.pk %}"
-               class="btn btn-link p-0"
-               style="font-size: 16px; font-weight: bold; text-decoration: none;">
-              <i class="fas fa-user"></i> {{ user.username }}
-            </a>
-          {% else %}
-            <!-- If user doesn't have driver profile, show non-clickable username -->
-            <span style="font-size: 16px; font-weight: bold;">
-              <i class="fas fa-user"></i> {{ user.username }}
-            </span>
-          {% endif %}
+          <!-- Username is always clickable now -->
+          <a href="{% url 'taxi:driver-detail' pk=user.pk %}"
+             class="btn btn-link p-0"
+             style="font-size: 16px; font-weight: bold; text-decoration: none;">
+            <i class="fas fa-user"></i> {{ user.username }}
+          </a>
         </div>
 
         <!-- User details -->

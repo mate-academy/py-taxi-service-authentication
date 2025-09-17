@@ -20,17 +20,6 @@
             </span>
           {% endif %}
         </div>
-        {% load driver_extras %}
-
-      <!-- В sidebar.html -->
-      {% user_is_driver user as is_driver %}
-      {% get_user_driver_pk user as driver_pk %}
-
-      {% if is_driver %}
-        <a href="{% url 'taxi:driver-detail' pk=driver_pk %}">{{ user.username }}</a>
-        {% else %}
-        <span>{{ user.username }}</span>
-        {% endif %}
 
         <!-- User details -->
         {% if user.first_name or user.last_name %}

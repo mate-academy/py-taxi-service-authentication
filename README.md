@@ -11,7 +11,7 @@ Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main
 Feel free to add more data using admin panel, if needed.
 
 In this task, you will implement a visit counter, login/logout functionality, and make your site available only 
-authenticated users.
+authenticated users.x
 
 1. Implement a visit counter on the home screen (use the `num_visits` variable name). It should show how many times a user visited the home page before.
 
@@ -20,7 +20,7 @@ authenticated users.
 3. Display the username on the top of the sidebar and login/logout button depending on if the user is authenticated.
 If the driver clicks on username - the corresponding Driver detail page must open.
 
-4. Protect all your views from unauthenticated users.
+4. Protect all your views from unauthenticated users. 
 
 5. In Driver's list view add (Me), if this is a current user:
     

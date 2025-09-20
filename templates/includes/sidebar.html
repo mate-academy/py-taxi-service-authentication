@@ -1,7 +1,7 @@
 <ul class="sidebar-nav">
 	{% if user.is_authenticated %}
 		<li>
-			User: {{ user.username }}
+			<a href="{% url "taxi:driver-detail" request.user.id %}">User: {{ request.user.username }}</a>
 		</li>
 		<li>
 			<form action="{% url 'logout' %}" method="post" style="display:inline;">

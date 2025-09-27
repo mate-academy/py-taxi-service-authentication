@@ -136,5 +136,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Redirecionamentos após login/logout
 LOGIN_REDIRECT_URL = "/"                 # após login vai para a Home
-# Opcional: após logout voltar para a tela de login
-LOGOUT_REDIRECT_URL = "/accounts/login/"
+LOGOUT_REDIRECT_URL = "/login/"

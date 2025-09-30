@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="auth-wrap" aria-labelledby="auth-title">
+    <h1 id="auth-title" class="mb-4">Log in</h1>
+
+    <form method="post" action="{% url 'login' %}" class="auth-form" novalidate>
+      {% csrf_token %}
+      {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+
+      <fieldset class="auth-fieldset">
+        <legend class="visually-hidden">Credentials</legend>
+
+        <div class="auth-stack">
+          <div class="auth-row">
+            <label for="id_username" class="auth-label">Username</label>
+            <input
+                id="id_username"
+                name="username"
+                type="text"
+                class="auth-input"
+                autocomplete="username"
+                autocapitalize="none"
+                spellcheck="false"
+                enterkeyhint="next"
+                maxlength="150"
+                autofocus
+                value="{{ form.username.value|default_if_none:'' }}"
+                {% if has_login_error %}aria-invalid="true" aria-describedby="auth-error"{% endif %}
+                required
+            >
+          </div>
+
+          <div class="auth-row">
+            <label for="id_password" class="auth-label">Password</label>
+            <input
+                id="id_password"
+                name="password"
+                type="password"
+                class="auth-input"
+                autocomplete="current-password"
+                enterkeyhint="done"
+                {% if has_login_error %}aria-invalid="true" aria-describedby="auth-error"{% endif %}
+                required
+            >
+          </div>
+        </div>
+
+        {% if messages %}
+          {% for message in messages %}
+            {% if "error" in message.tags %}
+              <p id="auth-error" class="auth-alert auth-alert--error" role="alert" aria-live="assertive">
+                {{ message }}
+              </p>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        <div class="auth-actions">
+          <button type="submit" class="btn btn-primary auth-submit">Log in</button>
+        </div>
+      </fieldset>
+    </form>
+  </section>
+{% endblock %}

@@ -1,17 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Driver list</h1>
-  {% if driver_list %}
-    <ul>
-      {% for driver in driver_list%}
-        <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-          ({{ driver.first_name }} {{ driver.last_name }})
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no drivers in taxi</p>
-  {% endif %}
+  <section class="drivers" aria-labelledby="drivers-title">
+    <h1 id="drivers-title" class="page-title">Drivers</h1>
+
+    {% if driver_list %}
+      <div class="list-card list-card--drivers">
+        <ul class="items">
+          {% for driver in driver_list %}
+            <li class="item">
+              <a class="item-link" href="{% url 'taxi:driver-detail' pk=driver.id %}">
+                <span class="item-title driver-name">
+                  {{ driver.first_name }} {{ driver.last_name }}
+                </span>
+                {% if user.is_authenticated and driver.id == user.id %}
+                  <span class="item-meta">(Me)</span>
+                {% endif %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% else %}
+      <div class="car-detail car-detail--empty">
+        <p class="empty">No drivers available</p>
+      </div>
+    {% endif %}
+  </section>
 {% endblock %}

@@ -9,13 +9,16 @@
         <ul class="items">
           {% for driver in driver_list %}
             <li class="item">
-              <a class="item-link" href="{% url 'taxi:driver-detail' pk=driver.id %}">
+              <a
+                  class="item-link"
+                  href="{% url 'taxi:driver-detail' pk=driver.pk %}"
+              >
                 <span class="item-title driver-name">
-                  {{ driver.first_name }} {{ driver.last_name }}
+                  {{ driver.get_full_name|default:driver.username }}
+                  {% if user.is_authenticated and driver.pk == user.pk %}
+                    &nbsp;(Me)
+                  {% endif %}
                 </span>
-                {% if user.is_authenticated and driver.id == user.id %}
-                  <span class="item-meta">(Me)</span>
-                {% endif %}
               </a>
             </li>
           {% endfor %}

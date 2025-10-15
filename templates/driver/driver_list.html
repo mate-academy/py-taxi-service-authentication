@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Drivers</title>
+{% endblock %}
+
+{% block content %}
+  <h2 class="mt-4">Driver List</h2>
+  <ul class="list-group mt-3">
+    {% for driver in object_list %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{% url 'taxi:driver-detail' pk=driver.pk %}">
+          {{ driver.get_full_name|default:driver.username }}
+        </a>
+        {% if request.user.is_authenticated and driver.pk == request.user.pk %}
+          <span class="badge badge-info ml-2">(Me)</span>
+        {% endif %}
+      </li>
+    {% empty %}
+      <li class="list-group-item">No drivers found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block pagination %}
+  {% include "includes/pagination.html" %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Driver: {{ object.get_full_name|default:object.username }}</title>
+{% endblock %}
+
+{% block content %}
+  <div class="mt-4">
+    <h2>Driver detail</h2>
+    <ul class="list-group mt-3">
+      <li class="list-group-item">
+        <strong>Username:</strong> {{ object.username }}
+      </li>
+      <li class="list-group-item">
+        <strong>Full name:</strong>
+        {{ object.get_full_name|default:"—" }}
+      </li>
+      <li class="list-group-item">
+        <strong>License number:</strong>
+        {{ object.license_number|default:"—" }}
+      </li>
+      <li class="list-group-item">
+        <strong>Email:</strong>
+        {{ object.email|default:"—" }}
+      </li>
+    </ul>
+    {% if object.cars.all %}
+      <hr>
+      <h4 class="mt-4">Cars:</h4>
+      <ul class="list-group">
+        {% for car in object.cars.all %}
+          <li class="list-group-item">
+            {{ car.model }} ({{ car.manufacturer.name }})
+          </li>
+        {% empty %}
+          <li class="list-group-item">No cars assigned.</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endblock %}

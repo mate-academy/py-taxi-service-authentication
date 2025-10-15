@@ -15,7 +15,7 @@
       </div>
     {% endif %}
 
-    <form method="post" action="{% url 'taxi:login' %}">
+    <form method="post" action="{% url 'login' %}">
       {% csrf_token %}
       <div class="form-group">
         {{ form.username.label_tag }}

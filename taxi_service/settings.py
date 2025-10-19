@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "taxi.Driver"
 
-LOGIN_URL = "registration/login"
+LOGIN_URL = "/registration/login/"
 
 LOGIN_REDIRECT_URL = "/"
 

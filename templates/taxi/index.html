@@ -10,5 +10,5 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
-  <h2>Number of visits: {{num_visits}} </h2>
+  <h2>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</h2>
 {% endblock %}

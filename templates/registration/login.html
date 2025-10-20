@@ -1,20 +1,3 @@
-{#{% extends "base.html" %}#}
-{##}
-{#{% block content %}#}
-{#  <h1>Login</h1>#}
-{#  {% if form.errors %}#}
-{#    <p style="color: red">Invalid credentials</p>#}
-{#  {% endif %}#}
-{#  <form action="{% url 'login' %}" method="post">#}
-{#    {% csrf_token %}#}
-{#    {{ form.ap_p }}#}
-{#    <input type="submit" value="Submit">#}
-{#  <input type="hidden" name="next" value="{{ next }}">#}
-{#  </form>#}
-{#{% endblock %}#}
-{##}
-{#{% extends "base.html" %}#}
-
 {% block content %}
   <h1>Login</h1>
   {% if form.errors %}

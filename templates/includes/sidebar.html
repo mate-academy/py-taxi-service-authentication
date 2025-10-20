@@ -1,11 +1,4 @@
 <ul class="sidebar-nav">
-  <div class="sidelog">
-    <li><a href="{% url "taxi:index" %}">Home page</a></li>
-    <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-    <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-    <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-  </div>
-
   <div class="nav-right">
     {% if user.is_authenticated %}
       <li>
@@ -15,6 +8,12 @@
     {% else %}
       <li><a href="{% url 'login' %}">Login</a></li>
     {% endif %}
+  </div>
+  <div class="sidelog">
+    <li><a href="{% url "taxi:index" %}">Home page</a></li>
+    <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
+    <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
+    <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
   </div>
 
 </ul>

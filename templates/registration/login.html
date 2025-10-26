@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Login</h1>
+  {% if form.errors %}
+    <p style="color: red;">Your username and/or password didn't match. Please try again.</p>
+  {% endif %}
+  <form method="post" action="{% url 'login' %}">
+    <label>Username:<br>{{ form.username }}</label><br>
+    <label>Password:<br>{{ form.password }}</label><br>
+    {% csrf_token %}
+    <input type="submit" value="Submit"/>
+    <input type="hidden" name="next" value="{{ next }}"/>
+  </form>
+{% endblock %}

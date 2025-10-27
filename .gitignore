@@ -10,6 +10,6 @@ venv/
 *.sqlite3
 *.sqlite
 *.db
-*db3
+*.db3
 *-wal
 *-journal

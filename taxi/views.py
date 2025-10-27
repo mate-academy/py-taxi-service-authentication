@@ -57,8 +57,3 @@ class DriverDetailView(LoginRequiredMixin, generic.DetailView):
 
 class CustomLoginView(LoginView):
     template_name = "registration/login.html"
-
-    def form_valid(self, form):
-        login(self.request, form.get_user())
-        context = self.get_context_data(form=form)
-        return self.render_to_response(context)

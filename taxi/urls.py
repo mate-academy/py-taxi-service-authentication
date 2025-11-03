@@ -1,5 +1,5 @@
-from django.urls import path
-
+from django.urls import path, include
+from debug_toolbar.toolbar import debug_toolbar_urls
 from .views import (
     index,
     CarListView,
@@ -22,6 +22,6 @@ urlpatterns = [
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
     ),
-]
+] + debug_toolbar_urls()
 
 app_name = "taxi"

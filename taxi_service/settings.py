@@ -98,7 +98,7 @@ STATIC_URL = "static/"
 
 STATICFILES_DIRS = (BASE_DIR / "static",)
 
-LOGIN_REDIRECT_URL = "/taxi/"
+LOGIN_REDIRECT_URL = "/"
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 

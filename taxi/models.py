@@ -31,7 +31,7 @@ class Car(models.Model):
     drivers = models.ManyToManyField(Driver, related_name="cars")
 
     class Meta:
-         ordering = ["id"]
+        ordering = ["id"]
 
     def __str__(self):
         return self.model

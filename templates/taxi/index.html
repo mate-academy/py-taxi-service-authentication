@@ -7,5 +7,5 @@
   <p>Carros registrados: {{ num_cars }}</p>
   <p>Fabricantes registrados: {{ num_manufacturers }}</p>
 
-  <p>Você visitou esta página {{ num_visits }} vezes.</p>
+  <p>Você visitou esta página {{ num_visits }} vez{{ num_visits|pluralize:"es" }}.</p>
 {% endblock %}

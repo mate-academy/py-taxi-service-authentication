@@ -1,10 +1,19 @@
-{% for driver in driver_list %}
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Lista de Motoristas</h2>
+  <ul>
+  {% for driver in driver_list %}
     <li>
-        <a href="{% url 'taxi:driver-detail' driver.id %}">
-            {{ driver.username }}
-            {% if driver == current_user %}
-                (Eu)
-            {% endif %}
-        </a>
+      <a href="{% url 'taxi:driver-detail' driver.id %}">
+        {{ driver.username }}
+        {% if driver.user == current_user %}
+          (Eu)
+        {% endif %}
+      </a>
     </li>
-{% endfor %}
+  {% empty %}
+    <li>Nenhum motorista encontrado.</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

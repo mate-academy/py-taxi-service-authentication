@@ -24,11 +24,7 @@ class DriverListView(LoginRequiredMixin, ListView):
     context_object_name = "driver_list"
 
     def get_queryset(self):
-        queryset = super().get_queryset()
-        for driver in queryset:
-            if driver.user == self.request.user:
-                driver.username += " (Me)"
-        return queryset
+        return super().get_queryset()
 
 
 class DriverDetailView(LoginRequiredMixin, DetailView):

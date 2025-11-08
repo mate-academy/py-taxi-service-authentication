@@ -22,10 +22,14 @@ urlpatterns = [
     path("drivers/", DriverListView.as_view(), name="driver-list"),
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"),
-    path("login/", LoginView.as_view(template_name="registration/login.html"),
+    path(
+        "login/",
+        LoginView.as_view(template_name="registration/login.html"),
         name="login"
     ),
-    path("logout/", LogoutView.as_view(template_name="registration/logged_out.html"),
+    path(
+        "logout/",
+        LogoutView.as_view(template_name="registration/logged_out.html"),
         name="logout"
     ),
 ]

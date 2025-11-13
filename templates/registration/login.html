@@ -5,7 +5,7 @@
   {% if form.errors %}
     <p style="color: red;">Incorrect data</p>
   {% endif %}
-  <form action="/accounts/login/" method="POST">
+  <form action="{% url "login" %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit">

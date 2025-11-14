@@ -1,5 +1,5 @@
 <ul class="sidebar-nav">
-  {% if user.is_authenticate %}
+  {% if user.is_authenticated %}
     <li>User : {{ user.username }}</li>
   {% else %}
     <li><a href="{% url 'login' %}">Login</a></li>

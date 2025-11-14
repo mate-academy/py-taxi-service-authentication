@@ -1,15 +1,11 @@
-from http.client import HTTPResponse
-
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
 from django.views import generic
 
 from .models import Driver, Car, Manufacturer
 
-
+@login_required
 def index(request):
     """View function for the home page of the site."""
 

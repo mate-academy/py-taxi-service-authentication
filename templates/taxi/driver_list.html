@@ -5,14 +5,14 @@
   {% if driver_list %}
     <ul>
       {% for driver in driver_list%}
-        {% if driver == request.user %}
+        {% if driver.pk == request.user.pk %}
         <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.user.username }}</a>
+          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
           ({{ driver.first_name }} {{ driver.last_name }} (Me))
         </li>
         {% else %}
         <li>
-          <a href="{% url 'taxi:driver-detail' pk=driver.id %}">{{ driver.user.username }}</a>
+          <a href="{% url 'taxi:driver-detail' pk=driver.id %}">{{ driver.username }}</a>
           ({{ driver.first_name }} {{ driver.last_name }})
         </li>
         {% endif %}

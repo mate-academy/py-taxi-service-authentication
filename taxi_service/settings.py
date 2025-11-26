@@ -110,6 +110,8 @@ AUTH_USER_MODEL = "taxi.Driver"
 
 LOGIN_REDIRECT_URL = "/"
 
+LOGIN_URL = "login"
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 

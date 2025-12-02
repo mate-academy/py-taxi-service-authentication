@@ -130,7 +130,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 LOGIN_URL = "taxi:login"
 LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "login"
+LOGOUT_REDIRECT_URL = "taxi:login"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

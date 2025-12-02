@@ -24,7 +24,7 @@ urlpatterns = [
          name="driver-detail"),
     path(
         "login/",
-        auth_views.LoginView.as_view(template_name="taxi/login.html"),
+        auth_views.LoginView.as_view(template_name="templates/registrations/login.html"),
         name="login",
     ),
     path(

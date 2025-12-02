@@ -21,7 +21,7 @@ def index(request):
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
-        "num_visits": num_visits + 1
+        "num_visits": num_visits,
     }
 
     return render(request, "taxi/index.html", context=context)
@@ -37,7 +37,7 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
 class CarListView(LoginRequiredMixin, generic.ListView):
     model = Car
     paginate_by = 5
-    queryset = Car.objects.select_related("manufacturer")
+    queryset = Car.objects.select_related("manufacturer").order_by("id")
 
 
 class CarDetailView(LoginRequiredMixin, generic.DetailView):
@@ -47,6 +47,7 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
+    queryset = Driver.objects.order_by("id")
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

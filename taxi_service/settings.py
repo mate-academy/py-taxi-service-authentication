@@ -30,6 +30,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+LOGIN_REDIRECT_URL = "taxi:driver-list"
+
+
 # Application definition
 
 INSTALLED_APPS = [

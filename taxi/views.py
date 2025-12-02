@@ -5,6 +5,7 @@ from django.views import generic
 
 from .models import Driver, Car, Manufacturer
 
+
 @login_required
 def index(request):
     """View function for the home page of the site."""
@@ -13,8 +14,8 @@ def index(request):
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
 
-    count = request.session.get('num_visits', 0)
-    request.session['num_visits'] = count + 1
+    count = request.session.get("num_visits", 0)
+    request.session["num_visits"] = count + 1
 
     context = {
         "num_drivers": num_drivers,
@@ -51,4 +52,4 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
-    name = 'driver-detail'
+    name = "driver-detail"

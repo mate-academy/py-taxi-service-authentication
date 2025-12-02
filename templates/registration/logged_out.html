@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="alert alert-info">You have been logged out.</div>
+  <a class="btn btn-link" href="{% url 'login' %}">Login again</a>
+{% endblock %}

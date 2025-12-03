@@ -10,4 +10,7 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+  <div class="footer">
+  You've been here {{ num_visits }} time{{ num_visits|pluralize }} {% if num_visits > 10 %} &#128170; {% else %} 	&#128079; {% endif %}.
+  </div>
 {% endblock %}

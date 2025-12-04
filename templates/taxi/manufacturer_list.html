@@ -1,13 +1,61 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Manufacturer list</h1>
+<div class="container mt-4">
+  <h1>Manufacturer List</h1>
 
   {% if manufacturer_list %}
-    <ul>
+    <div class="row">
       {% for manufacturer in manufacturer_list %}
-        <li>{{ manufacturer.name }} {{ manufacturer.country }}</li>
+        <div class="col-md-6 col-lg-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ manufacturer.name }}</h5>
+              <p class="card-text">
+                <strong>Country:</strong> {{ manufacturer.country }}
+              </p>
+              <small class="text-muted">
+                ID: {{ manufacturer.id }}
+              </small>
+            </div>
+          </div>
+        </div>
       {% endfor %}
-    </ul>
+    </div>
+  {% else %}
+    <div class="alert alert-info" role="alert">
+      There are no manufacturers in the system.
+    </div>
   {% endif %}
+
+  {% if is_paginated %}
+    <nav aria-label="Page navigation" class="mt-4">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page=1">First</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+          </li>
+        {% endif %}
+
+        <li class="page-item active">
+          <span class="page-link">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+          </span>
+        </li>
+
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  {% endif %}
+</div>
 {% endblock %}

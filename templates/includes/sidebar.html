@@ -1,6 +1,29 @@
-<ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-</ul>
+<div class="sidebar px-2 py-3 bg-light border-right">
+  <h4 class="mb-3">Navigation</h4>
+  <ul class="list-unstyled mb-3">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'car-list' %}">Cars</a></li>
+    <li><a href="{% url 'manufacturer-list' %}">Manufacturers</a></li>
+    <li><a href="{% url 'driver-list' %}">Drivers</a></li>
+  </ul>
+  <hr>
+  {% if user.is_authenticated %}
+    <div class="mb-2">
+      <strong>
+        <a href="{% url 'driver-detail' pk=user.pk %}">
+          {{ user.get_full_name|default:user.username }}
+        </a>
+      </strong>
+    </div>
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-outline-danger btn-sm w-100">
+        Logout
+      </button>
+    </form>
+  {% else %}
+    <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm w-100">
+      Login
+    </a>
+  {% endif %}
+</div>

@@ -1,18 +1,44 @@
 {% extends "base.html" %}
 
 {% block content %}
- <p><strong>
-    {{ driver.first_name }} {{ driver.last_name }}.</strong>
-    License number: {{ driver.license_number }}
-  </p>
-  {% for car in driver.cars.all %}
-    <hr>
-    <p><strong>Id:</strong>{{ car.id }}
-      <strong>Car model:</strong> {{ car.model }}
-    </p>
+<div class="container mt-4">
+  <h1>Driver Details</h1>
 
-  {% empty %}
-    <p>No cars!</p>
-  {% endfor %}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ driver.first_name }} {{ driver.last_name }}
+        {% if driver == user %}
+          <span class="badge badge-primary ms-2">(Me)</span>
+        {% endif %}
+      </h5>
+      <p class="card-text">
+        <strong>Username:</strong> {{ driver.username }}<br>
+        <strong>First Name:</strong> {{ driver.first_name }}<br>
+        <strong>Last Name:</strong> {{ driver.last_name }}<br>
+        <strong>License Number:</strong> {{ driver.license_number }}
+      </p>
 
+      <h6 class="mt-4">Assigned Cars:</h6>
+      {% if driver.cars.all %}
+        <ul class="list-group list-group-flush">
+          {% for car in driver.cars.all %}
+            <li class="list-group-item">
+              <a href="{% url 'car-detail' pk=car.id %}">
+                {{ car.model }}
+              </a>
+              ({{ car.manufacturer.name }})
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-muted">No cars assigned to this driver.</p>
+      {% endif %}
+
+      <div class="mt-4">
+        <a href="{% url 'driver-list' %}" class="btn btn-secondary">Back to Driver List</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

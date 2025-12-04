@@ -1,6 +1,18 @@
-<ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-</ul>
+<nav class="bg-light rounded">
+  <ul class="list-group">
+    {% if user.is_authenticated %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{% url "taxi:driver-detail" user.id %}" class="text-decoration-none fw-bold">{{ user.username }}</a>
+        <a href="{% url "logout" %}" class="btn btn-danger btn-sm">Logout</a>
+      </li>
+    {% else %}
+      <li class="list-group-item">
+        <a href="{% url "login" %}" class="btn btn-info btn-sm w-100">Login</a>
+      </li>
+    {% endif %}
+    <li class="list-group-item"><a href="{% url "taxi:index" %}" class="text-decoration-none">Home page</a></li>
+    <li class="list-group-item"><a href="{% url "taxi:manufacturer-list" %}" class="text-decoration-none">Manufacturers</a></li>
+    <li class="list-group-item"><a href="{% url "taxi:car-list" %}" class="text-decoration-none">Cars</a></li>
+    <li class="list-group-item"><a href="{% url "taxi:driver-list" %}" class="text-decoration-none">Drivers</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Login - Taxi Service</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Login to Taxi Service</h3>
+          </div>
+          <div class="card-body">
+            {% if form.non_field_errors %}
+              <div class="alert alert-danger" role="alert">
+                {% for error in form.non_field_errors %}
+                  <p>{{ error }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <form method="post">
+              {% csrf_token %}
+
+              <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Username:</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                  <div class="text-danger small mt-2">
+                    {% for error in form.username.errors %}
+                      <p>{{ error }}</p>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">Password:</label>
+                {{ form.password }}
+                {% if form.password.errors %}
+                  <div class="text-danger small mt-2">
+                    {% for error in form.password.errors %}
+                      <p>{{ error }}</p>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+
+            <hr>
+            <p class="text-center text-muted">
+              Don't have an account? <a href="{% url 'taxi:index' %}">Return to home</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+

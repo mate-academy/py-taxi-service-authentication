@@ -1,5 +1,5 @@
 """
-WSGI config for taxi_service project.
+WSGI config for taxi_service project.ok
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

@@ -6,7 +6,7 @@
     <ul>
       {% for driver in driver_list%}
         <li>
-          {% if driver.is_superuser %}
+          {% if driver == user %}
             <a href="{% url "taxi:driver-detail" pk=driver.id %}">
               {{ driver.username }} (Me)
             </a>
@@ -14,7 +14,7 @@
             <a href="{% url "taxi:driver-detail" pk=driver.id %}">
               {{ driver.username }}
             </a>
-            {% endif %}
+          {% endif %}
 
           ({{ driver.first_name }} {{ driver.last_name }})
         </li>

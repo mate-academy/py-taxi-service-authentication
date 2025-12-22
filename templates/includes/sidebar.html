@@ -9,7 +9,7 @@
   <p>
     Welcome,
     <a href="{% url "taxi:driver-detail" pk=user.id %}">
-      **{{ user.username }}**
+      <strong>{{ user.username }}</strong>
     </a>
   </p>
   <a href="{% url 'logout' %}?next={% url 'taxi:index' %}" class="btn btn-danger btn-sm">Logout</a>

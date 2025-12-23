@@ -4,3 +4,21 @@
   <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
   <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
 </ul>
+
+<hr>
+
+
+{% if user.is_authenticated %}
+  <p>
+    <a href="{% url 'taxi:driver-detail' pk=user.id %}">
+      {{ user.username }} (Me)
+    </a>
+  </p>
+  <p>
+    <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+  </p>
+{% else %}
+  <p>
+    <a href="{% url 'login' %}?next={{ request.path }}">Login</a>
+  </p>
+{% endif %}

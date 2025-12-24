@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <p>Logged out</p>
+    <form method="get" action="{% url 'login' %}">
+        <button type="submit">Click here to log in again</button>
+    </form>
+{% endblock %}

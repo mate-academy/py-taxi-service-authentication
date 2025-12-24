@@ -7,6 +7,12 @@
   <ul>
   {% for driver in car.drivers.all %}
     <li>{{ driver.first_name }} {{ driver.last_name }}</li>
+{#    <li>{{ driver.first_name }} {{ driver.last_name }}#}
+{#    <strong>{% if user.username == driver.username %}#}
+{#          (Me)#}
+{#        {% endif %}</strong>#}
+{#    </li>#}
+
   {% endfor %}
   </ul>
 {% endblock %}

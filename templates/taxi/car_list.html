@@ -1,17 +1,55 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-  <h1>Car list</h1>
-  {% if car_list %}
-    <ul>
-      {% for car in car_list %}
-        <li>
-          <a href="{% url "taxi:car-detail" pk=car.id %} ">{{ car.id }}</a>
-          {{ car.model }} ({{ car.manufacturer.name }})
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no cars in taxi</p>
-  {% endif %}
+  <section class="cars" aria-labelledby="cars-title">
+    <h1 id="cars-title" class="page-title">Cars</h1>
+
+    {% if car_list %}
+      <div class="card-table">
+        <table class="cars-table">
+          <caption class="visually-hidden">Cars with manufacturer and driver counts</caption>
+
+          <colgroup>
+            <col class="col-num">
+            <col class="col-model">
+            <col class="col-manu">
+            <col class="col-drivers">
+          </colgroup>
+
+          <thead>
+          <tr>
+            <th scope="col" aria-label="Index">#</th>
+            <th scope="col">Model</th>
+            <th scope="col">Manufacturer</th>
+            <th scope="col">Drivers</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          {% for car in car_list %}
+            <tr data-href="{% url 'taxi:car-detail' pk=car.id %}">
+              <td class="cell-id">{{ forloop.counter }}</td>
+              <td>
+                <a class="row-link" href="{% url 'taxi:car-detail' pk=car.id %}">
+                  <span class="item-title">{{ car.model }}</span>
+                </a>
+              </td>
+              <td class="cell-manu">{{ car.manufacturer.name }}</td>
+              <td class="cell-drivers">{{ car.num_drivers }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="car-detail car-detail--empty">
+        <p class="empty">No cars available</p>
+      </div>
+    {% endif %}
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/table-row-nav.js' %}"></script>
 {% endblock %}

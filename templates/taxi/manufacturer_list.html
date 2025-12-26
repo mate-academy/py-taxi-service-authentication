@@ -1,13 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Manufacturer list</h1>
+  <section class="manufacturers" aria-labelledby="manufacturer-title">
+    <h1 id="manufacturer-title" class="page-title">Manufacturers</h1>
 
-  {% if manufacturer_list %}
-    <ul>
-      {% for manufacturer in manufacturer_list %}
-        <li>{{ manufacturer.name }} {{ manufacturer.country }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+    {% if manufacturer_list %}
+      <div class="card-table">
+        <table class="cars-table is-static">
+          <caption class="visually-hidden">Manufacturers and their countries</caption>
+
+          <colgroup>
+            <col class="col-num">
+            <col class="col-manu">
+            <col class="col-country">
+          </colgroup>
+
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Manufacturer</th>
+            <th scope="col">Country</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          {% for manufacturer in manufacturer_list %}
+            <tr>
+              <td class="cell-id">{{ forloop.counter }}</td>
+              <td class="cell-manu">{{ manufacturer.name }}</td>
+              <td class="cell-country">{{ manufacturer.country }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="car-detail car-detail--empty">
+        <p class="empty">No manufacturers available</p>
+      </div>
+    {% endif %}
+  </section>
 {% endblock %}

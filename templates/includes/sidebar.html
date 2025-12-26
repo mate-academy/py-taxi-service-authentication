@@ -1,6 +1,75 @@
-<ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-</ul>
+<nav aria-label="Primary navigation">
+  {% with current=request.resolver_match.url_name current_pk=request.resolver_match.kwargs.pk %}
+    <section class="sidebar-section">
+      <h2 class="sidebar-section-title">Account</h2>
+      <ul class="nav flex-column">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a
+                class="nav-link sidebar-link {% if current == 'driver-detail' and current_pk|stringformat:'s' == user.id|stringformat:'s' %}is-active{% endif %}"
+                href="{% url 'taxi:driver-detail' user.id %}"
+                {% if current == 'driver-detail' and current_pk|stringformat:'s' == user.id|stringformat:'s' %}aria-current="page"{% endif %}
+            >
+              {{ user.username }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link sidebar-link" href="{% url 'logout' %}">Log out</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a
+                class="nav-link sidebar-link {% if current == 'login' %}is-active{% endif %}"
+                href="{% url 'login' %}"
+                {% if current == 'login' %}aria-current="page"{% endif %}
+            >
+              Log in
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </section>
+
+    <section class="sidebar-section mt-3">
+      <h2 class="sidebar-section-title">Navigation</h2>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a
+              class="nav-link sidebar-link {% if current == 'index' %}is-active{% endif %}"
+              href="{% url 'taxi:index' %}"
+              {% if current == 'index' %}aria-current="page"{% endif %}
+          >
+            Home page
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+              class="nav-link sidebar-link {% if current == 'manufacturer-list' %}is-active{% endif %}"
+              href="{% url 'taxi:manufacturer-list' %}"
+              {% if current == 'manufacturer-list' %}aria-current="page"{% endif %}
+          >
+            Manufacturers
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+              class="nav-link sidebar-link {% if current == 'car-list' %}is-active{% endif %}"
+              href="{% url 'taxi:car-list' %}"
+              {% if current == 'car-list' %}aria-current="page"{% endif %}
+          >
+            Cars
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+              class="nav-link sidebar-link {% if current == 'driver-list' %}is-active{% endif %}"
+              href="{% url 'taxi:driver-list' %}"
+              {% if current == 'driver-list' %}aria-current="page"{% endif %}
+          >
+            Drivers
+          </a>
+        </li>
+      </ul>
+    </section>
+  {% endwith %}
+</nav>

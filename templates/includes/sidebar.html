@@ -1,3 +1,19 @@
+<hr>
+
+{% if user.is_authenticated %}
+  <p>
+    <a href="{{ user.get_absolute_url }}">
+      {{ user.username }}
+    </a>
+  </p>
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-sm btn-danger">Logout</button>
+  </form>
+{% else %}
+  <a href="{% url 'login' %}" class="btn btn-sm btn-primary">Login</a>
+{% endif %}
+
 <ul class="sidebar-nav">
   <li><a href="{% url "taxi:index" %}">Home page</a></li>
   <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>

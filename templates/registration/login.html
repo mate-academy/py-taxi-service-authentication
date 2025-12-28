@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Login</h1>
+  {% if form.errors %}
+    <a style="color: red">Invalid data</a>
+  {% endif %}
+  <form action="{% url "taxi:login" %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="submit">
+    <input type="hidden" name="next" value="{{ next }}">
+  </form>
+{% endblock %}

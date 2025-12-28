@@ -1,3 +1,15 @@
 body {
     margin-top: 20px;
 }
+
+.user-info {
+    margin-bottom: 15px;
+}
+
+.logout-form {
+    display: inline;
+}
+
+.login-form {
+    display: inline;
+}

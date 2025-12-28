@@ -1,6 +1,67 @@
-<ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-</ul>
+<!-- templates/includes/sidebar.html -->
+<div class="sidebar">
+  <!-- User Authentication Section -->
+  <div class="user-section" style="padding: 15px; border-bottom: 2px solid #eee; margin-bottom: 20px; background-color: #f8f9fa;">
+    {% if user.is_authenticated %}
+      <!-- Authenticated User -->
+      <div class="user-info text-center">
+        <div style="margin-bottom: 10px;">
+          <!-- Username is always clickable now -->
+          <a href="{% url 'taxi:driver-detail' pk=user.pk %}"
+             class="btn btn-link p-0"
+             style="font-size: 16px; font-weight: bold; text-decoration: none;">
+            <i class="fas fa-user"></i> {{ user.username }}
+          </a>
+        </div>
+
+        <!-- User details -->
+        {% if user.first_name or user.last_name %}
+          <div style="font-size: 12px; color: #6c757d; margin-bottom: 8px;">
+            {{ user.first_name }} {{ user.last_name }}
+          </div>
+        {% endif %}
+
+        <!-- Logout button -->
+        <a href="{% url 'logout' %}" class="btn btn-outline-danger btn-sm">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </div>
+    {% else %}
+      <!-- Non-authenticated User -->
+      <div class="text-center">
+        <div style="margin-bottom: 10px; font-size: 14px; color: #6c757d;">
+          Welcome, Guest
+        </div>
+        <a href="{% url 'login' %}" class="btn btn-primary btn-sm">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Navigation Menu -->
+  <div class="nav-menu">
+    <ul class="list-unstyled">
+      <li class="nav-item">
+        <a href="{% url 'taxi:index' %}" class="nav-link">
+          <i class="fas fa-home"></i> Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{% url 'taxi:car-list' %}" class="nav-link">
+          <i class="fas fa-car"></i> Cars
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{% url 'taxi:driver-list' %}" class="nav-link">
+          <i class="fas fa-users"></i> Drivers
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{% url 'taxi:manufacturer-list' %}" class="nav-link">
+          <i class="fas fa-industry"></i> Manufacturers
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

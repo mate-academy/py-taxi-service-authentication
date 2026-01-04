@@ -24,7 +24,7 @@ SECRET_KEY = (
     "django-insecure-8ovil3xu6=eaoqd#-#&ricv159p0pypoh5_lgm*)-dfcjqe=yc"
 )
 
-# SECURITY WARNING: don"t run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -108,6 +108,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "taxi.Driver"
 
+LOGIN_URL = "/registration/login/"
+
+LOGIN_REDIRECT_URL = "taxi:index"
+
+LOGOUT_REDIRECT_URL = "/registration/login/"
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -124,6 +130,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 STATICFILES_DIRS = (BASE_DIR / "static",)
 

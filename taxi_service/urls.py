@@ -21,5 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    # LOGIN/LOGOUT URLs
+    path("accounts/", include("django.contrib.auth.urls")),
+    # taxi app URLs
     path("", include("taxi.urls", namespace="taxi")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

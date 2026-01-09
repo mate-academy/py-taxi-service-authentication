@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'driver',
-                'verbose_name_plural': 'drivers',
+                'verbose_name_plural': 'registration',
             },
             managers=[
                 ('objects', django.contrib.auth.models.UserManager()),
@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('model', models.CharField(max_length=255)),
-                ('drivers', models.ManyToManyField(related_name='cars', to=settings.AUTH_USER_MODEL)),
+                ('registration', models.ManyToManyField(related_name='cars', to=settings.AUTH_USER_MODEL)),
                 ('manufacturer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='taxi.manufacturer')),
             ],
         ),

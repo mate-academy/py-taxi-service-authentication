@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Login</h1>
+
+  {% if form.errors %}
+  <p style="color: red">Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Login">
+</form>
+
+{% endblock %}

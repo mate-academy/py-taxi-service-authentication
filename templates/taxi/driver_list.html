@@ -2,6 +2,7 @@
 
 {% block content %}
   <h1>Driver list</h1>
+  <a href="{% url "taxi:driver-detail" pk=user.id %}">ME</a>
   {% if driver_list %}
     <ul>
       {% for driver in driver_list%}

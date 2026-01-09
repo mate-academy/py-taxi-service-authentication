@@ -3,11 +3,13 @@
 {% block content %}
   <h1>Driver list</h1>
   {% if driver_list %}
-    <ul>
+    <ul class="list-group col-4 col-md-6 mb-3">
       {% for driver in driver_list%}
-        <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-          ({{ driver.first_name }} {{ driver.last_name }})
+        <li class="list-group-item list-group-item-action">
+          <a href="{% url "taxi:driver-detail" pk=driver.id %}" class="link-dark text-decoration-none">{{ driver.username }} ({{ driver.first_name }} {{ driver.last_name }})
+          {% if driver.id == user.id %}
+            (Me)
+          {% endif %}</a>
         </li>
       {% endfor %}
     </ul>

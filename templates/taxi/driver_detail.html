@@ -1,18 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
- <p><strong>
-    {{ driver.first_name }} {{ driver.last_name }}.</strong>
-    License number: {{ driver.license_number }}
-  </p>
-  {% for car in driver.cars.all %}
-    <hr>
-    <p><strong>Id:</strong>{{ car.id }}
-      <strong>Car model:</strong> {{ car.model }}
+  <div class="d-flex align-items-center mb-2 mt-3">
+    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">
+      airline_seat_recline_extra
+    </span>
+    <p class="m-0"><strong>
+      {{ driver.first_name }} {{ driver.last_name }}</strong>
     </p>
+  </div>
+  <i>License number: {{ driver.license_number }}</i>
 
-  {% empty %}
-    <p>No cars!</p>
-  {% endfor %}
+  <table class="table table-striped w-50">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Car model</th>
+      <th scope="col">Manufacturer</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for car in driver.cars.all %}
+      <tr>
+        <th scope="row">{{ car.id }}</th>
+        <td>{{ car.model }}</td>
+        <td>{{ car.manufacturer.name }}</td>
+      </tr>
+    {% empty %}
+      <p>No cars!</p>
+    {% endfor %}
+    </tbody>
+  </table>
 
 {% endblock %}

@@ -4,9 +4,9 @@
   <h1>Manufacturer list</h1>
 
   {% if manufacturer_list %}
-    <ul>
+    <ul class="list-group col-4 col-md-6 mb-3">
       {% for manufacturer in manufacturer_list %}
-        <li>{{ manufacturer.name }} {{ manufacturer.country }}</li>
+        <li class="list-group-item list-group-item-action">{{ manufacturer.name }} {{ manufacturer.country }}</li>
       {% endfor %}
     </ul>
   {% endif %}

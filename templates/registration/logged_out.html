@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{{request.path}}
+{% block content %}
+<p>Ooops... again missclick? Log in again and enjoy. <a href="{% url 'login' %}">
+    <button type="button">Log in</button>
+  </a>
+</p>
+{% endblock content %}

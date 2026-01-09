@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% block title %}<title>Taxi Service</title>{% endblock %}
 {% block content %}
   <h1>Taxi Service Home</h1>
   <p>Welcome to Best Taxi Ever!</p>
@@ -10,4 +10,5 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+  <h4>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</h4>
 {% endblock %}

@@ -6,7 +6,13 @@
   <hr>
   <ul>
   {% for driver in car.drivers.all %}
-    <li>{{ driver.first_name }} {{ driver.last_name }}</li>
+    <li>
+      {% if request.user.is_authenticated and driver == request.user %}
+          {{ driver.first_name }} {{ driver.last_name }} (Me)
+        {% else %}
+          {{ driver.first_name }} {{ driver.last_name }}
+        {% endif %}
+    </li>
   {% endfor %}
   </ul>
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.urls import path
-
+from django.contrib.auth import views as auth_views
 from .views import (
     index,
     CarListView,
@@ -7,10 +7,14 @@ from .views import (
     DriverListView,
     DriverDetailView,
     ManufacturerListView,
+    CustomLoginView,
 )
 
 urlpatterns = [
     path("", index, name="index"),
+    path("login/", CustomLoginView.as_view(), name="login"),
+    path("logout/", auth_views.LogoutView.as_view(
+        template_name="taxi/logout.html"), name="logout"),
     path(
         "manufacturers/",
         ManufacturerListView.as_view(),
@@ -22,6 +26,7 @@ urlpatterns = [
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
     ),
+
 ]
 
 app_name = "taxi"

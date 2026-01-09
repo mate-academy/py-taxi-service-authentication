@@ -1,17 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Driver list</h1>
-  {% if driver_list %}
-    <ul>
-      {% for driver in driver_list%}
-        <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-          ({{ driver.first_name }} {{ driver.last_name }})
-        </li>
+  <h1>Driver List</h1>
+  {% if object_list %}
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>Full Name</th>
+      </tr>
+      {% for driver in object_list %}
+        <tr>
+          <td>
+            <a href="{% url 'taxi:driver-detail' driver.pk %}">{{ driver.username }}</a>
+            {% if driver == user %}(Me){% endif %}
+          </td>
+          <td>{{ driver.first_name }} {{ driver.last_name }}</td>
+        </tr>
       {% endfor %}
-    </ul>
+    </table>
   {% else %}
-    <p>There are no drivers in taxi</p>
+    <p>There are no drivers in the taxi service.</p>
   {% endif %}
 {% endblock %}

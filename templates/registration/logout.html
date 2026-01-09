@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="logout-container">
+    <h2>You have been successfully logged out</h2>
+    <p>Thank you for using our service.</p>
+    <div class="login-again">
+        <a href="{% url 'taxi:login' %}" class="btn btn-primary">
+            Log in again
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .logout-container {
+        text-align: center;
+        margin-top: 50px;
+    }
+    .login-again {
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}

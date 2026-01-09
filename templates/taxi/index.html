@@ -2,7 +2,19 @@
 
 {% block content %}
   <h1>Taxi Service Home</h1>
-  <p>Welcome to Best Taxi Ever!</p>
+
+  {% if user.is_authenticated %}
+    <div class="alert alert-info">
+      Welcome back, <strong>{{ user.username }}</strong>!
+    </div>
+  {% else %}
+    <p>Welcome to Best Taxi Ever! Please <a href="{% url 'taxi:login' %}">log in</a> to access all features.</p>
+  {% endif %}
+
+  <div class="visits-counter">
+    <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+  </div>
+
   <h2>Dynamic content</h2>
   <p>The Taxi service has the following record counts:</p>
   <ul>
@@ -10,4 +22,41 @@
     <li><strong>Drivers:</strong> {{ num_drivers }}</li>
     <li><strong>Manufacturers:</strong> {{ num_manufacturers }}</li>
   </ul>
+
+  {% if not user.is_authenticated %}
+    <div class="login-prompt">
+      <a href="{% url 'taxi:login' %}?next={{ request.path }}" class="btn btn-primary">
+        Login to access all features
+      </a>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block styles %}
+<style>
+  .visits-counter {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  .login-prompt {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    text-align: center;
+  }
+  .alert {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  .alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+  }
+</style>
 {% endblock %}

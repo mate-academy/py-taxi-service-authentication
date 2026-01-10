@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="title-centered">Login</h1>
+
+  <form action="{% url 'login' %}" method="post" class="login-form">
+    {% csrf_token %}
+
+    {% if form.errors %}
+      <p class="error-message">Invalid credentials</p>
+    {% endif %}
+
+    {{ form.as_p }}
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+{% endblock %}

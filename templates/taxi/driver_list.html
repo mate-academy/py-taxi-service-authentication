@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Driver list</h1>
+  <h1 class="page-title">Driver list</h1>
   {% if driver_list %}
-    <ul>
+    <ul class="entities-list">
       {% for driver in driver_list%}
-        <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-          ({{ driver.first_name }} {{ driver.last_name }})
+        <li class="list-item">
+          <a href="{% url "taxi:driver-detail" pk=driver.id %}" class="entity-link">{{ driver.username }}</a>
+          {{ driver.first_name }} {{ driver.last_name }}
+          {% if driver.id == user.id %}
+            (Me)
+          {% endif %}
         </li>
       {% endfor %}
     </ul>

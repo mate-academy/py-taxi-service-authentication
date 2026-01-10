@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="logged-out">
+    <h1 class="title-centered">You have been logged out</h1>
+    <a href="{% url "login" %}" class="menu-item nav-link login-again">Click here to login again</a>
+  </section>
+{% endblock %}

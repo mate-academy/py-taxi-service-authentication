@@ -1,3 +1,15 @@
 body {
-    margin-top: 20px;
+    margin-top: 10px;
+}
+
+.sidebar-nav {
+    list-style: none;
+}
+
+.alert {
+    width: 50%;
+}
+
+.form-control {
+    width: 25%;
 }

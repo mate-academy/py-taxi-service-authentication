@@ -3,14 +3,28 @@
 {% block content %}
   <h1>Driver list</h1>
   {% if driver_list %}
-    <ul>
-      {% for driver in driver_list%}
-        <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-          ({{ driver.first_name }} {{ driver.last_name }})
-        </li>
-      {% endfor %}
-    </ul>
+      <table>
+        <tr>
+          <th>Username</th>
+          <th>License</th>
+          <th>Cars</th>
+        </tr>
+        {% for driver in driver_list %}
+          <tr>
+            {% if driver.id == user.id %}
+            <td><a href="{% url 'taxi:driver-detail' driver.id %}">{{ driver.username }} (Me)</a></td>
+            {% else %}
+            <td><a href="{% url 'taxi:driver-detail' driver.id %}">{{ driver.username }}</a></td>
+            {% endif %}
+            <td>{{ driver.license_number }}</td>
+            <td>
+              {% for car in driver.cars.all %}
+                {{ car.model }} ||
+              {% endfor %}
+              </td>
+          </tr>
+        {% endfor %}
+      </table>
   {% else %}
     <p>There are no drivers in taxi</p>
   {% endif %}

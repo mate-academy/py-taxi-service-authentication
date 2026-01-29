@@ -1,6 +1,42 @@
-<ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-</ul>
+{% load static %}
+<nav class="sidebar-nav">
+    {% if user.is_authenticated %}
+        <!-- Exibir nome de usuário, link para Detalhes do Motorista -->
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                {% if user.driver %}
+                    <!-- Assumindo que 'driver-detail' é o nome da URL e user.driver.pk é válido -->
+                    <a class="nav-link" href="{% url 'driver-detail' pk=user.driver.pk %}">
+                        <strong>Olá, {{ user.username }}</strong>
+                    </a>
+                {% else %}
+                    <a class="nav-link" href="#">
+                        <strong>Olá, {{ user.username }}</strong>
+                    </a>
+                {% endif %}
+            </li>
+            <li class="nav-item">
+                <!-- Botão de Logout -->
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+        </ul>
+    {% else %}
+        <!-- Botão de Login -->
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+        </ul>
+    {% endif %}
+    
+    <hr>
+    
+    <!-- Links de navegação principais (você pode ter aqui os links para Model Lists) -->
+    <ul class="nav nav-pills flex-column">
+        <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'manufacturers' %}">Fabricantes</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'cars' %}">Carros</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'drivers' %}">Motoristas</a></li>
+    </ul>
+
+</nav>

@@ -1,11 +1,16 @@
+from django.contrib.auth.decorators import login_required
+from django.db.models import Prefetch
 from django.shortcuts import render
-from django.views import generic
+from django.utils.decorators import method_decorator
+from django.views.generic import DetailView, ListView
 
-from .models import Driver, Car, Manufacturer
+from taxi.models import Car, Driver, Manufacturer
 
 
+@login_required
 def index(request):
-    """View function for the home page of the site."""
+    num_visits = request.session.get("num_visits", 0) + 1
+    request.session["num_visits"] = num_visits
 
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()
@@ -15,33 +20,47 @@ def index(request):
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
+        "num_visits": num_visits,
     }
+    return render(request, "taxi/index.html", context)
 
-    return render(request, "taxi/index.html", context=context)
 
-
-class ManufacturerListView(generic.ListView):
+@method_decorator(login_required, name="dispatch")
+class ManufacturerListView(ListView):
     model = Manufacturer
-    context_object_name = "manufacturer_list"
-    template_name = "taxi/manufacturer_list.html"
+    queryset = Manufacturer.objects.all().order_by("name")
     paginate_by = 5
 
 
-class CarListView(generic.ListView):
+@method_decorator(login_required, name="dispatch")
+class CarListView(ListView):
     model = Car
     paginate_by = 5
-    queryset = Car.objects.select_related("manufacturer")
+    queryset = Car.objects.select_related("manufacturer").all()
 
 
-class CarDetailView(generic.DetailView):
+@method_decorator(login_required, name="dispatch")
+class CarDetailView(DetailView):
     model = Car
 
 
-class DriverListView(generic.ListView):
+@method_decorator(login_required, name="dispatch")
+class DriverListView(ListView):
     model = Driver
     paginate_by = 5
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["current_user_id"] = self.request.user.id
+        return context
 
-class DriverDetailView(generic.DetailView):
+
+@method_decorator(login_required, name="dispatch")
+class DriverDetailView(DetailView):
     model = Driver
-    queryset = Driver.objects.prefetch_related("cars__manufacturer")
+    queryset = Driver.objects.prefetch_related(
+        Prefetch(
+            "cars",
+            queryset=Car.objects.select_related("manufacturer"),
+        )
+    )

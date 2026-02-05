@@ -1,9 +1,29 @@
+# IDE
 .idea/
 .vscode/
 *.iml
+
+# Environment
 .env
+
+# System
 .DS_Store
+
+# Virtual environments
 venv/
 .venv/
+
+# Caches
 .pytest_cache/
 **__pycache__/
+
+# Database
+db.sqlite3
+
+# Logs
+*.log
+
+# Migration caches
+*/migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/*.pyo

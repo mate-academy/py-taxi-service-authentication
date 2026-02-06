@@ -1,4 +1,11 @@
 <ul class="sidebar-nav">
+  {% if user.is_authenticated %}
+  <li class="list-unstyled">Username: <a href="{% url "taxi:driver-detail" pk=user.id %}" class="font-weight-bold text-uppercase">{{ user.username }}</a></li>
+  <li class="list-unstyled"><a href="{% url 'logout' %}">Log out</a></li>
+  {% else %}
+    <li class="list-unstyled"><a href="{% url 'login' %}">log in</a></li>
+  {% endif %}
+  <br>
   <li><a href="{% url "taxi:index" %}">Home page</a></li>
   <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
   <li><a href="{% url "taxi:car-list" %}">Cars</a></li>

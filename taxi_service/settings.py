@@ -106,6 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+LOGIN_REDIRECT_URL = "/"
+
 AUTH_USER_MODEL = "taxi.Driver"
 
 # Internationalization

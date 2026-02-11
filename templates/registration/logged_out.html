@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Logout | Taxi Service</title>{% endblock %}
+
+{% block content %}
+  <h3>Logged out!</h3>
+  <br>
+  <a class="btn btn-secondary" href="{% url 'login' %}">Click here to login again</a>
+{% endblock %}

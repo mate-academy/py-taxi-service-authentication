@@ -1,3 +1,112 @@
+/* Основний фон */
 body {
-    margin-top: 20px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ff69b4);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+    color: #fff;
+    text-align: center;
+    padding: 50px 0;
+}
+
+/* Анімація градієнта */
+@keyframes gradientShift {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Контейнер форми */
+form {
+    background: rgba(255, 182, 193, 0.8);
+    border: 3px dashed #ff69b4;
+    padding: 30px;
+    width: 320px;
+    margin: 20px auto;
+    border-radius: 25px;
+    box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Блискітки */
+form::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 2%, transparent 2%) repeat;
+    background-size: 20px 20px;
+    animation: sparkle 5s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes sparkle {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+/* Заголовок */
+h1 {
+    font-size: 36px;
+    color: #ff1493;
+    text-shadow: 2px 2px 5px #fff, 0 0 10px #ff69b4;
+    margin-bottom: 20px;
+}
+
+/* Поля вводу */
+input[type="text"],
+input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 15px;
+    border: 2px solid #ff69b4;
+    outline: none;
+    background: rgba(255, 182, 193, 0.5);
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Placeholder */
+input::placeholder {
+    color: #fff;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+/* Кнопка */
+input[type="submit"] {
+    width: 50%;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff69b4, 0 0 30px #ff1493;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+input[type="submit"]:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 0 25px #ff69b4, 0 0 50px #ff1493;
+}
+
+/* Посилання */
+a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #ff1493;
+    text-shadow: 0 0 10px #fff;
 }

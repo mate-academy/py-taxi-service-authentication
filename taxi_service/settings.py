@@ -108,6 +108,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "taxi.Driver"
 
+LOGIN_URL = "/registration/login/"
+
+LOGIN_REDIRECT_URL = "/"
+
+INTERNAL_IPS = ["127.0.0.1"]
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 

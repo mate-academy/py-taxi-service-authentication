@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+    {% block content %}
+
+        {% if form.errors %}
+            <p>Invalid password or username</p>
+        {% endif %}
+        <p><strong>Sign in</strong></p>
+       <form method="post" action="{% url 'login' %}">
+           {% csrf_token %}
+           {{ form.as_p }}
+           <input type="submit" value="Log in"  class="btn btn-primary">
+           <input type="hidden" name="next" value="{{ next }}">
+       </form>
+
+    {% endblock %}

@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block title %}
+  <title>Taxi Service - Drivers - {{ driver.first_name }} {{ driver.last_name }}</title>
+{% endblock %}
+
 {% block content %}
  <p><strong>
     {{ driver.first_name }} {{ driver.last_name }}.</strong>
@@ -8,7 +12,8 @@
   {% for car in driver.cars.all %}
     <hr>
     <p><strong>Id:</strong>{{ car.id }}
-      <strong>Car model:</strong> {{ car.model }}
+      <strong>Car model:</strong>
+      <a href="{{ car.get_absolute_url }}"> {{ car }}</a>
     </p>
 
   {% empty %}

@@ -1,6 +1,26 @@
 <ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
+  <div class="card">
+    <div class="card-body">
+      {% if user.is_authenticated %}
+      <h6 class="card-title">
+        Your username:
+        <a href="{{ user.get_absolute_url }}">
+          <span class="badge badge-primary">{{ user.username }}</span>
+        </a>
+      </h6>
+      {% else %}
+        <h6 class="text-left">Logged out</h6>
+      {% endif %}
+    </div>
+  </div>
+    <li><a href="{% url "taxi:index" %}">Home page</a></li>
+    <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
+    <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
+    <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
+  <br>
+  {% if not user.is_authenticated %}
+    <a href="{% url "login" %}" class="btn btn-primary btn-block">Log in</a>
+  {% else %}
+    <a href="{% url "logout" %}" class="btn btn-danger btn-block">Log out</a>
+  {% endif %}
 </ul>

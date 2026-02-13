@@ -1,3 +1,18 @@
 body {
     margin-top: 20px;
 }
+
+.stylised {
+    width: 60%;
+    min-width: 350px;
+    padding: 15px 10px 0 10px;
+    margin: 10px 10px 15px;
+    box-shadow: 10px 10px lightblue;
+    border-style: solid;
+}
+
+.sidebar-nav {
+    width: 70%;
+    box-shadow: 10px 10px lightblue;
+    border-style: solid;
+}

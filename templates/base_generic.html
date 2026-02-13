@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>Serviço de Táxi</title>
+  </head>
+  <body>
+    <div>
+      {% if user.is_authenticated %}
+        <p>
+          Logado como
+          <a href="{% url 'taxi:driver-detail' user.driver.id %}">
+            {{ user.username }}
+          </a>
+        </p>
+        <p><a href="{% url 'logout' %}">Logout</a></p>
+      {% else %}
+        <p><a href="{% url 'login' %}">Login</a></p>
+      {% endif %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

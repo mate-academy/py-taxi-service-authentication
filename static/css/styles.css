@@ -1,3 +1,50 @@
 body {
-    margin-top: 20px;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f9fafb;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 8px;
+}
+
+.sidebar-nav a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.sidebar-nav a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  background: white;
+  padding: 20px;
+  border-right: 1px solid #e5e7eb;
+  min-width: 200px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.count-list li {
+  margin-bottom: 5px;
+}
+
+.count-list strong {
+  color: #111827;
 }

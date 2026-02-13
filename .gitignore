@@ -7,3 +7,7 @@ venv/
 .venv/
 .pytest_cache/
 **__pycache__/
+/db.sqlite3
+*.pyc
+*.sqlite3
+db.sqlite3

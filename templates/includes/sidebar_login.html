@@ -1,0 +1,12 @@
+<div class="text-end">
+
+  {% if user.is_authenticated %}
+    <button type="button" class="btn btn-outline-primary">
+      <a href="{% url 'logout' %}" class="custom-btn">Logout</a>
+    </button>
+  {% else %}
+    <button type="button" class="btn btn-outline-primary me-2">
+      <a href="{% url 'login' %}" class="custom-btn">Login</a>
+    </button>
+  {% endif %}
+</div>

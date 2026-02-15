@@ -1,0 +1,44 @@
+[33m6b838a0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m solution
+[33me4d52bc[m Update .gitignore
+[33m9963351[m Update .flake8
+[33m46d9023[m Merge pull request #159 from mate-academy/fix_underscore_in_tests
+[33m47b70e4[m changed a note in readme
+[33mf96beaf[m deleted unnecessary info from templates
+[33m679a9cf[m fix underscores in tests
+[33m266a774[m Update checklist.md
+[33m1a0004d[m Merge pull request #138 from mate-academy/redundant_all_deleted
+[33ma8bad2a[m redundant all deleted
+[33m0b3ac86[m Merge pull request #135 from mate-academy/checklist_added
+[33m3d7a602[m add a note about num visits
+[33m5b315a4[m checklist added
+[33m33f7fe4[m Update requirements.txt
+[33m35b5470[m Update test.yml
+[33m60a3ec5[m Added flake8 plugins
+[33m46bbe62[m Update requirements.txt
+[33m5aae000[m Update requirements.txt
+[33m2db8daf[m Merge pull request #68 from mate-academy/pagination-5
+[33m578fa6d[m swich to pagination 5
+[33m472baec[m Update views.py
+[33m85e9772[m Update test_taxi_service.py
+[33ma1670bd[m Merge pull request #60 from mate-academy/add-tests
+[33m56cd975[m Update test_taxi_service.py
+[33m3e9c151[m Update and rename test_taxi_service_forms.py to test_taxi_service.py
+[33m29d4915[m Update README.md
+[33mf4ebbff[m Update test.yml
+[33meca54d7[m tests auth and more
+[33m65b494a[m Merge pull request #59 from mate-academy/dev_html_fixing
+[33md36d676[m Update base.html
+[33m5593053[m Merge pull request #57 from mate-academy/add-fixture
+[33m770c85b[m Update README.md
+[33m97132b9[m small coment added to README
+[33m66ef24e[m fixture added, how to load fixtuse and superuser info added to README
+[33m0221573[m Merge pull request #20 from mate-academy/edit-readme
+[33m53478ce[m Remove some instructions from README; ask to attach screenshots
+[33mc795a18[m Merge pull request #18 from mate-academy/fix-manufacturer-model
+[33mfbab108[m update manufacturer model `models.py`
+[33m18e0880[m Merge pull request #1 from mate-academy/add-task
+[33m8600be7[m provide task changez
+[33mf0c006e[m provide task changez
+[33mf2828d3[m provide task changez
+[33m4585fdf[m add task
+[33m3d4a5ee[m Initial commit

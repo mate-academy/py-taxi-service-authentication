@@ -1,6 +1,30 @@
+<!-- Добавь это в верхней части sidebar, перед <ul class="sidebar-nav"> -->
+<div class="user-section" style="padding: 15px; border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+    {% if user.is_authenticated %}
+        <div class="user-info">
+            <p style="margin: 0 0 10px 0;">
+                <strong>
+                    <a href="{% url 'taxi:driver-detail' user.pk %}" style="text-decoration: none; color: #333;">
+                        {{ user.username }}
+                    </a>
+                </strong>
+            </p>
+            <a href="{% url 'logout' %}" style="background-color: #dc3545; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 14px;">
+                Logout
+            </a>
+        </div>
+    {% else %}
+        <div class="auth-section">
+            <a href="{% url 'login' %}" style="background-color: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; display: block; text-align: center;">
+                Login
+            </a>
+        </div>
+    {% endif %}
+</div>
+
 <ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
+    <li><a href="{% url "taxi:index" %}">Home page</a></li>
+    <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
+    <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
+    <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
 </ul>

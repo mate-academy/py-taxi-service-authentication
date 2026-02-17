@@ -77,4 +77,4 @@ def login_view(request: HttpRequest) -> HttpResponse | None:
 @login_required
 def log_out(request) -> HttpResponseRedirect:
     logout(request)
-    return redirect("taxi/login.html")
+    return redirect("taxi:login.html")

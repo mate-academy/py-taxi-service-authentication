@@ -1,6 +1,30 @@
-<ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-</ul>
+<div class="sidebar-container">
+  <ul class="sidebar-nav">
+    {% if user.is_authenticated %}
+      <li class="sidebar-item username-label">
+        <i class="bi bi-person-circle"></i>
+        <span><strong><a href="{% url 'taxi:driver-detail' user.id %}">{{ user.username }}</a></strong></span>
+      </li>
+      <li class="sidebar-item">
+        <form method="post" action="{% url 'logout' %}" class="w-100">
+          {% csrf_token %}
+          <button type="submit" class="sidebar-link btn btn-link">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Log Out</span>
+          </button>
+        </form>
+      </li>
+    {% else %}
+      <li class="sidebar-item">
+        <a href="{% url 'login' %}" class="sidebar-link">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Log In</span>
+        </a>
+      </li>
+    {% endif %}
+    <li class="sidebar-item"><a href="{% url 'taxi:index' %}" class="sidebar-link"><i class="bi bi-house-door"></i><span>Home page</span></a></li>
+    <li class="sidebar-item"><a href="{% url 'taxi:manufacturer-list' %}" class="sidebar-link"><i class="bi bi-building"></i><span>Manufacturers</span></a></li>
+    <li class="sidebar-item"><a href="{% url 'taxi:car-list' %}" class="sidebar-link"><i class="bi bi-truck-front"></i><span>Cars</span></a></li>
+    <li class="sidebar-item"><a href="{% url 'taxi:driver-list' %}" class="sidebar-link"><i class="bi bi-person-badge"></i><span>Drivers</span></a></li>
+  </ul>
+</div>

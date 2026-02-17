@@ -57,8 +57,8 @@ def login_view(request: HttpRequest) -> HttpResponse | None:
     if request.method == "GET":
         return render(request, "taxi/login.html")
     elif request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
+        username = request.POST.get("username")
+        password = request.POST.get("password")
 
         user = authenticate(request, username=username, password=password)
 
@@ -74,6 +74,7 @@ def login_view(request: HttpRequest) -> HttpResponse | None:
             return render(request, "taxi/login.html", context=context)
 
 
+@login_required
 def log_out(request) -> HttpResponseRedirect:
     logout(request)
-    return redirect(request, "taxi/logout.html")
+    return redirect("taxi/login.html")

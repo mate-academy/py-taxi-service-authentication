@@ -5,6 +5,7 @@ from django.views import generic
 
 from .models import Driver, Car, Manufacturer
 
+
 @login_required
 def index(request):
     """View function for the home page of the site."""

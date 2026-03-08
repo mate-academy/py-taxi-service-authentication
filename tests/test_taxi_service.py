@@ -50,7 +50,7 @@ class PrivateHomeTests(TestCase):
 
         for visit in range(visits):
             response = self.client.get(reverse("taxi:index"))
-            self.assertEqual(response.context["num_visits"], visit)
+            self.assertEqual(response.context["num_visits"], visit + 1)
 
 
 class PrivateManufacturerTests(TestCase):

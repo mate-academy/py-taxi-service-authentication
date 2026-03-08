@@ -21,19 +21,10 @@ def index(request):
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
-        "num_visits": num_visits
+        "num_visits": num_visits + 1
     }
 
     return render(request, "taxi/index.html", context=context)
-
-
-@login_required()
-def test_session_view(request: HttpRequest) -> HttpResponse:
-    request.session["driver"] = "test drivers session"
-    return HttpResponse(
-        "<h1>Test Session</h1>"
-        f"<h4>Session data: {request.session['driver']}"
-    )
 
 
 class ManufacturerListView(LoginRequiredMixin, generic.ListView):

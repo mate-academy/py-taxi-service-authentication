@@ -1,6 +1,26 @@
 <ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
+  {% if user.is_authenticated %}
+    <li class="nav-item">
+      User: <a href="{% url 'taxi:driver-detail' pk=user.id %}"><b>{{ user.username }}</b></a>
+    </li>
+    <li class="nav-item">
+      <form action="{% url 'logout' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-link p-0" style="vertical-align: baseline; text-decoration: none;">
+          Logout
+        </button>
+      </form>
+    </li>
+  {% else %}
+    <li class="nav-item">
+      <a href="{% url 'login' %}">Login</a>
+    </li>
+  {% endif %}
+
+  <hr>
+
+  <li><a href="{% url 'taxi:index' %}">Home page</a></li>
+  <li><a href="{% url 'taxi:manufacturer-list' %}">Manufacturers</a></li>
+  <li><a href="{% url 'taxi:car-list' %}">Cars</a></li>
+  <li><a href="{% url 'taxi:driver-list' %}">Drivers</a></li>
 </ul>

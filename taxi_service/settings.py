@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+from django.urls import reverse_lazy
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / "subdir".
@@ -107,6 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = "taxi.Driver"
+
+LOGIN_REDIRECT_URL = reverse_lazy("taxi:index")
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

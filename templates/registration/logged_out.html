@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Logged out</h2>
+<a href="{% url 'login' %}">Click here to log in again</a>
+{% endblock %}
+{% block sidebar %}
+  <ul class="sidebar-nav">
+    <li><a href="{% url "taxi:index" %}">Home page</a></li>
+    <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
+    <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
+    <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
+  </ul>
+{% endblock %}

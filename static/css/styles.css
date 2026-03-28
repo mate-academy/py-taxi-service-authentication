@@ -1,3 +1,16 @@
 body {
     margin-top: 20px;
 }
+
+.sidebar-nav {
+    list-style-type: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a.username:visited {
+    color: red;
+}
+

@@ -1,4 +1,5 @@
-from django.urls import path
+from django.urls import path, include
+import django.contrib.auth.urls
 
 from .views import (
     index,

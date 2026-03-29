@@ -1,4 +1,18 @@
 <ul class="sidebar-nav">
+    {% if user.username %}
+    <spnan class="badge badge-info">
+      <a href="{% url 'taxi:driver-detail' pk=user.pk %}">Hi, {{ user.username }}!
+      </a>
+    </spnan>
+  {% else %}
+    <spnan class="badge badge-warning">
+      <a href="{% url "login" %}">Login to view content</a>
+    </spnan>
+  {% endif %}
+  <br>
+  <span class="badge badge-light">
+    <a href="{% url "logout" %}">logout</a>
+  </span>
   <li><a href="{% url "taxi:index" %}">Home page</a></li>
   <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
   <li><a href="{% url "taxi:car-list" %}">Cars</a></li>

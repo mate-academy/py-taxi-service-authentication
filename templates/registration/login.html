@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="login-container">
+    <h1 class="login-heading">Login page</h1>
+
+    {% if form.errors %}
+      <p class="error-message">Invalid credentials</p>
+    {% endif %}
+
+    <form class="login-form" method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input class="login-button" type="submit" value="Login">
+      <input type="hidden" name="next" value="{{ next }}">
+    </form>
+  </div>
+{% endblock %}

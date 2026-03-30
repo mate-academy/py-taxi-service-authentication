@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
+import taxi_service
 from taxi.models import Car, Manufacturer, Driver
 
 TestCase.fixtures = ["taxi_service_db_data.json"]

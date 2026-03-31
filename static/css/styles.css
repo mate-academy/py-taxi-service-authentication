@@ -1,3 +1,31 @@
 body {
     margin-top: 20px;
 }
+
+.sidebar-nav {
+    list-style: none;
+    height: 100vh;
+    background: gainsboro;
+    padding-left: 5px;
+
+}
+
+
+.list_item {
+    list-style: none;
+}
+
+.user {
+    color: lightseagreen;
+}
+
+.logout{
+    color: red;
+}
+.error {
+    color: red;
+}
+
+.me {
+   color: lightseagreen;
+}

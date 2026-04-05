@@ -1,3 +1,12 @@
 body {
     margin-top: 20px;
 }
+
+
+#logout-button{
+    background: lightgray;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px
+}

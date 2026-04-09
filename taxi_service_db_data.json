@@ -134,7 +134,7 @@
     "model": "taxi.driver",
     "pk": 2,
     "fields": {
-      "password": "pbkdf2_sha256$320000$73Z1Y57bcoscZ37s9rE9v0$4SEQ0TtXwJKzO5/CRdFSrTifatiPjkZ38gM2H8Kqsdg=",
+        "password": "pbkdf2_sha256$320000$73Z1Y57bcoscZ37s9rE9v0$4SEQ0TtXwJKzO5/CRdFSrTifatiPjkZ38gM2H8Kqsdg=",
       "last_login": null,
       "is_superuser": false,
       "username": "joyce.byers",

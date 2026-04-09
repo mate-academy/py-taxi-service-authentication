@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "taxi",
+    "crispy_bootstrap4",
+   "crispy_forms",
 ]
 
 MIDDLEWARE = [
@@ -124,6 +126,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+CRISPY_TEMPLATE_PACK="bootstrap4"
+
+LOGIN_REDIRECT_URL = "/"
 
 STATICFILES_DIRS = (BASE_DIR / "static",)
 

@@ -1,11 +1,17 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
+from django import forms
 
 from .models import Driver, Car, Manufacturer
 
 
+@login_required
 def index(request):
-    """View function for the home page of the site."""
+    num_visits = request.session.get("num_visits", 0)
+    request.session["num_visits"] = num_visits + 1
 
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()
@@ -15,33 +21,85 @@ def index(request):
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
+        "num_visits": num_visits + 1
     }
 
     return render(request, "taxi/index.html", context=context)
 
 
-class ManufacturerListView(generic.ListView):
+class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     model = Manufacturer
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"
     paginate_by = 5
 
 
-class CarListView(generic.ListView):
+class CarListView(LoginRequiredMixin, generic.ListView):
     model = Car
     paginate_by = 5
     queryset = Car.objects.select_related("manufacturer")
 
 
-class CarDetailView(generic.DetailView):
+class CarDetailView(LoginRequiredMixin, generic.DetailView):
     model = Car
 
 
-class DriverListView(generic.ListView):
+class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
 
 
-class DriverDetailView(generic.DetailView):
+class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
+
+
+class CarForm(forms.ModelForm):
+    class Meta:
+        model = Car
+        fields = "__all__"
+
+
+class ManufacturerForm(forms.ModelForm):
+    class Meta:
+        model = Manufacturer
+        fields = "__all__"
+
+
+class CarCreate(LoginRequiredMixin, generic.CreateView):
+    model = Car
+    fields = "__all__"
+    success_url = reverse_lazy("taxi:car-list")
+    template_name = "taxi/car-form.html"
+
+
+class CarUpdate(LoginRequiredMixin, generic.UpdateView):
+    model = Car
+    fields = "__all__"
+    success_url = reverse_lazy("taxi:car-list")
+    template_name = "taxi/car-form.html"
+
+
+class CarDelete(LoginRequiredMixin, generic.DeleteView):
+    model = Car
+    template_name = "taxi/car-form-delete.html"
+
+
+class ManufacturerCreate(LoginRequiredMixin, generic.CreateView):
+    model = Manufacturer
+    fields = "__all__"
+    success_url = reverse_lazy("taxi:manufacturer-list")
+    template_name = "taxi/manufacturer-form.html"
+
+
+class ManufacturerUpdate(LoginRequiredMixin, generic.UpdateView):
+    model = Manufacturer
+    fields = "__all__"
+    success_url = reverse_lazy("taxi:manufacturer-list")
+    template_name = "taxi/manufacturer-form.html"
+
+
+class ManufacturerDelete(LoginRequiredMixin, generic.DeleteView):
+    model = Manufacturer
+    template_name = "taxi/manufacturer-form-delete.html"
+

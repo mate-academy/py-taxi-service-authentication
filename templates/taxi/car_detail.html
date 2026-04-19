@@ -1,12 +1,35 @@
 {% extends "base.html" %}
-
 {% block content %}
-  <p>Manufacturer: ({{ car.manufacturer.name }}, {{ car.manufacturer.country }})</p>
-  <h1>Drivers</h1>
-  <hr>
-  <ul>
-  {% for driver in car.drivers.all %}
-    <li>{{ driver.first_name }} {{ driver.last_name }}</li>
-  {% endfor %}
-  </ul>
+  <div class="container mt-4">
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h3 class="card-title">
+          {{ car.model }}
+        </h3>
+        <p class="mb-0 text-muted">
+          Manufacturer:
+          <strong>{{ car.manufacturer.name }}</strong>
+          ({{ car.manufacturer.country }})
+        </p>
+      </div>
+    </div>
+    <h4 class="mb-3">Drivers</h4>
+    {% if car.drivers.all %}
+      <div class="list-group shadow-sm">
+        {% for driver in car.drivers.all %}
+          <div class="list-group-item d-flex align-items-center">
+            <div>
+              <div class="fw-bold">
+                {{ driver.first_name }} {{ driver.last_name }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="alert alert-warning">
+        No drivers assigned to this car
+      </div>
+    {% endif %}
+  </div>
 {% endblock %}

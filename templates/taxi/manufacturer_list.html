@@ -1,13 +1,63 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Manufacturer list</h1>
+  <div class="container">
 
-  {% if manufacturer_list %}
-    <ul>
-      {% for manufacturer in manufacturer_list %}
-        <li>{{ manufacturer.name }} {{ manufacturer.country }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+    <h1 class="mb-4">Manufacturer list</h1>
+    {% if manufacturer_list %}
+      <div class="list-group">
+        {% for manufacturer in manufacturer_list %}
+          <div class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong>{{ manufacturer.name }}</strong>
+              <span class="text-muted">({{ manufacturer.country }})</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="alert alert-warning">
+        No manufacturers available
+      </div>
+    {% endif %}
+    {% if is_paginated %}
+      <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                Previous
+              </a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">Previous</span>
+            </li>
+          {% endif %}
+          {% for num in paginator.page_range %}
+            {% if page_obj.number == num %}
+              <li class="page-item active">
+                <span class="page-link">{{ num }}</span>
+              </li>
+            {% else %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+          {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                Next
+              </a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <span class="page-link">Next</span>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
+  </div>
 {% endblock %}

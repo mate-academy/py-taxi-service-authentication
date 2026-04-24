@@ -1,7 +1,7 @@
 <ul class="sidebar-nav" style="list-style: none">
   {% if user.is_authenticated %}
     <li>
-      User: {{ user.username }}
+      User: <a href="{% url 'taxi:driver-detail' pk=user.id %}">{{ user.username }}</a>
     </li>
     <li>
       <form method="post" action="{% url 'logout' %}">
@@ -15,8 +15,8 @@
     </li>
   {% endif %}
   <br>
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
+  <li><a href="{% url 'taxi:index' %}">Home page</a></li>
+  <li><a href="{% url 'taxi:manufacturer-list' %}">Manufacturers</a></li>
+  <li><a href="{% url 'taxi:car-list' %}">Cars</a></li>
+  <li><a href="{% url 'taxi:driver-list' %}">Drivers</a></li>
 </ul>

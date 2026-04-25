@@ -11,10 +11,7 @@
     </li>
   {% else %}
     <li>
-      <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Login</button>
-      </form>
+      <button type="button" onclick="window.location.href='{% url 'login' %}'">Login</button>
     </li>
   {% endif %}
 <br>

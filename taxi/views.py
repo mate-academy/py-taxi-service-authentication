@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -10,6 +11,7 @@ def logout_view(request):
     return render(request, "registration/logout.html")
 
 
+@login_required
 def index(request):
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()

@@ -1,3 +1,42 @@
 body {
-    margin-top: 20px;
+  margin-top: 20px;
+}
+
+.sidebar-user {
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.sidebar-username {
+  margin-bottom: 8px;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 10px;
+}
+
+.logout-form {
+  margin: 0;
+}
+
+.sidebar-link-button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.sidebar-link-button:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: red;
 }

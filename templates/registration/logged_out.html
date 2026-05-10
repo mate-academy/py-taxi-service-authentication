@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>YOU NEED TO LOGIN</h3>
+<form method="post">
+  {% csrf_token %}
+  <a href="{% url 'login' %}">Login</a>
+</form>
+{% endblock %}

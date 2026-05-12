@@ -126,4 +126,3 @@ class LogInTest(TestCase):
             reverse("login"), self.credentials, follow=True
         )
         self.assertTrue(response.context["user"].is_active)
-        print(response.context["user"])

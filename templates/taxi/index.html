@@ -3,6 +3,11 @@
 {% block content %}
   <h1>Taxi Service Home</h1>
   <p>Welcome to Best Taxi Ever!</p>
+  
+  <div class="alert alert-secondary">
+    <p>You have visited this page <strong>{{ num_visits }}</strong> time{{ num_visits|pluralize }} before.</p>
+  </div>  
+
   <h2>Dynamic content</h2>
   <p>The Taxi service has the following record counts:</p>
   <ul>

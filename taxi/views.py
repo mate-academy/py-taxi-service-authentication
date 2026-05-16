@@ -36,7 +36,6 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
 class CarListView(LoginRequiredMixin, generic.ListView):
     model = Car
     paginate_by = 5
-    # Прибрано .order_by("model")
     queryset = Car.objects.select_related("manufacturer")
 
 
@@ -48,7 +47,6 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
-    # Прибрано .order_by("username")
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

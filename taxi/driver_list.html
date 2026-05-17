@@ -1,0 +1,7 @@
+<a href="{% url 'taxi:driver-detail' pk=driver.id %}">
+  {{ driver.username }}
+</a>
+
+{% if driver.id == user.id %}
+  (Me)
+{% endif %}

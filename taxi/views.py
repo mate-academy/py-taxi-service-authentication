@@ -10,7 +10,8 @@ from .models import Driver, Car, Manufacturer
 def index(request):
     """View function for the home page of the site."""
     num_visits = request.session.get("num_visits", 0)
-    request.session["num_visits"] = num_visits + 1
+    num_visits += 1
+    request.session["num_visits"] = num_visits
 
     num_drivers = Driver.objects.count()
     num_cars = Car.objects.count()
@@ -20,7 +21,7 @@ def index(request):
         "num_drivers": num_drivers,
         "num_cars": num_cars,
         "num_manufacturers": num_manufacturers,
-        "num_visits": num_visits + 1,
+        "num_visits": num_visits,
     }
 
     return render(request, "taxi/index.html", context=context)
@@ -37,7 +38,6 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
 class CarListView(LoginRequiredMixin, generic.ListView):
     model = Car
     paginate_by = 5
-    # Прибираємо .order_by("model"), щоб відповідати очікуванням тесту
     queryset = Car.objects.all().select_related("manufacturer")
 
 
@@ -48,7 +48,6 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 class DriverListView(LoginRequiredMixin, generic.ListView):
     model = Driver
     paginate_by = 5
-    # Прибираємо .order_by("username")
     queryset = Driver.objects.all()
 
 

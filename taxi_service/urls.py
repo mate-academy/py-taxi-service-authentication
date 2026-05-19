@@ -6,6 +6,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("taxi.urls", namespace="taxi")),
-    # Цей рядок обов'язково має бути тут, без нього логін не знайдеться:
     path("accounts/", include("django.contrib.auth.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

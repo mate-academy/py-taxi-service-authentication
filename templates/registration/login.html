@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Login — Taxi Service</title>{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+      <h1 class="mb-4">Login</h1>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary w-100">
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div style="max-width: 400px; margin: 20px;">
+    <h2>Login</h2>
+
+    {% if form.non_field_errors %}
+      <div style="color: red; margin-bottom: 15px;">
+        {{ form.non_field_errors }}
+      </div>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+{% endblock %}

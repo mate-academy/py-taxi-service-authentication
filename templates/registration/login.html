@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Login to Taxi Service</h4>
+        </div>
+        <div class="card-body">
+          
+          {% if form.errors %}
+            <div class="alert alert-danger">
+              Your username and password didn't match. Please try again.
+            </div>
+          {% endif %}
+
+          <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            
+            <div class="form-group">
+              {{ form.as_p }}
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

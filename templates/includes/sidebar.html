@@ -1,6 +1,33 @@
 <ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
+  {% if user.is_authenticated %}
+    <li class="nav-item mb-3">
+      <span class="text-muted">Logged in as:</span>
+      <br>
+      <a href="{% url 'taxi:driver-detail' pk=user.id %}" class="font-weight-bold">
+        {{ user.username }}
+      </a>
+    </li>
+  {% endif %}
+
+  <li><a href="{% url 'taxi:index' %}">Home page</a></li>
+  <li><a href="{% url 'taxi:manufacturer-list' %}">Manufacturers</a></li>
+  <li><a href="{% url 'taxi:car-list' %}">Cars</a></li>
+  <li><a href="{% url 'taxi:driver-list' %}">Drivers</a></li>
+
+  <hr>
+
+  {% if user.is_authenticated %}
+    <li>
+      <form method="post" action="{% url 'logout' %}" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-link text-danger p-0 font-weight-bold" style="vertical-align: top; text-decoration: none;">
+          Logout
+        </button>
+      </form>
+    </li>
+  {% else %}
+    <li>
+      <a href="{% url 'login' %}" class="text-success">Login</a>
+    </li>
+  {% endif %}
 </ul>

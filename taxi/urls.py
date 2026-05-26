@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import (
+    logout_view,
     index,
     CarListView,
     CarDetailView,
@@ -22,6 +23,7 @@ urlpatterns = [
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
     ),
+    path("accounts/logout/", logout_view, name="logout"),
 ]
 
 app_name = "taxi"

@@ -1,3 +1,18 @@
+<ul class="button">
+  {% if user.is_authenticated %}
+    <li>User: <a href="{% url 'taxi:driver-detail' pk=user.id %}">{{ user.get_username }}</a></li>
+    <li><form action="{% url 'logout' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <button type="submit" style="background: none; border: none; color: inherit; font: inherit; cursor: pointer; padding: 0;">
+          Logout
+        </button>
+      </form></li>
+  {% else %}
+    <li><a href="{% url "login"%}?next={{request.path}}">Login</a></li>
+  {% endif %}
+</ul>
+
 <ul class="sidebar-nav">
   <li><a href="{% url "taxi:index" %}">Home page</a></li>
   <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>

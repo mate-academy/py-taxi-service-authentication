@@ -11,6 +11,10 @@
     <p>Please login to see this page.</p>
   {% endif %}
 
+  <p>
+    You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}
+  </p>
+
   <form method="post">
     {% csrf_token %}
 

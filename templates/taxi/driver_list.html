@@ -3,6 +3,10 @@
 {% block content %}
   <h1>Driver list</h1>
 
+  <p>
+    You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}
+  </p>
+
   {% if driver_list %}
     <ul>
       {% for driver in driver_list %}

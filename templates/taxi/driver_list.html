@@ -2,16 +2,26 @@
 
 {% block content %}
   <h1>Driver list</h1>
+
+  <p>
+    You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}
+  </p>
+
   {% if driver_list %}
     <ul>
-      {% for driver in driver_list%}
+      {% for driver in driver_list %}
         <li>
-          <a href="{% url "taxi:driver-detail" pk=driver.id %}">{{ driver.username }}</a>
-          ({{ driver.first_name }} {{ driver.last_name }})
+          <a href="{% url 'taxi:driver-detail' pk=driver.id %}">
+            {{ driver.username }}
+          </a>
+
+          {% if driver == user %}
+            (Me)
+          {% endif %}
         </li>
       {% endfor %}
     </ul>
   {% else %}
-    <p>There are no drivers in taxi</p>
+    <p>There are no drivers.</p>
   {% endif %}
 {% endblock %}

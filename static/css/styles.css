@@ -1,3 +1,20 @@
 body {
     margin-top: 20px;
 }
+
+.sidebar-nav {
+    list-style-type: none;
+}
+
+#sidebar-logout {
+    color: #007bff;
+    border: 0 white none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+#sidebar-logout:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

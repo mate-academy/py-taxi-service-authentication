@@ -5,6 +5,7 @@ from django.views import generic
 
 from .models import Driver, Car, Manufacturer
 
+
 @login_required
 def index(request):
     """View function for the home page of the site."""
@@ -50,6 +51,3 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
-
-
-

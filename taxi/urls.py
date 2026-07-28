@@ -1,3 +1,6 @@
+from xml.etree.ElementInclude import include
+
+from django.template.backends import django
 from django.urls import path
 
 from .views import (
@@ -20,8 +23,9 @@ urlpatterns = [
     path("cars/<int:pk>/", CarDetailView.as_view(), name="car-detail"),
     path("drivers/", DriverListView.as_view(), name="driver-list"),
     path(
-        "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
-    ),
+        "drivers/<int:pk>/",
+        DriverDetailView.as_view(),
+        name="driver-detail"),
 ]
 
 app_name = "taxi"

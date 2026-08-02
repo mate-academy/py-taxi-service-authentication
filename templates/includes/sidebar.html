@@ -1,5 +1,5 @@
 {% if user.is_authenticated %}
-<ul>User: <a href="{% url 'taxi:driver-detail' user.id %}">{{ user.get_username }}</a></ul>
+<ul>User: <a href="{% url 'taxi:driver-detail' user.id %}">{{ user.get_username }}</a> (Me)</ul>
 <ul>
   <form id="logout-form" method="post" action="{% url 'logout' %}">
     {% csrf_token %}
@@ -15,4 +15,3 @@
   <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
   <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
 </ul>
-

@@ -125,6 +125,13 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+LOGIN_REDIRECT_URL = "/"
+
+
 STATICFILES_DIRS = (BASE_DIR / "static",)
 
 STATIC_ROOT = BASE_DIR / "staticfiles"

@@ -2,7 +2,7 @@
 
 {% block content %}
   {% if user.is_authenticated %}
-    <p>You have visited this page {{ num_visits|pluralize }}</p>
+    <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</p>
   {% endif %}
 
   <h1>Taxi Service Home</h1>

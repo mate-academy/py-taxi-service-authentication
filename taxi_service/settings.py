@@ -34,7 +34,7 @@ ROOT_URLCONF = "taxi_service.urls"
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.DjangoTemplates",
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -47,7 +47,6 @@ TEMPLATES = [
         },
     },
 ]
-
 WSGI_APPLICATION = "taxi_service.wsgi.application"
 
 DATABASES = {

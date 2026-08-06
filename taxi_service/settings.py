@@ -2,9 +2,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = (
-    "django-insecure-test-key-change-this-in-production-1234567890"
-)
+SECRET_KEY = "django-insecure-test-key-change-this-in-production-1234567890"
 
 DEBUG = True
 
@@ -65,8 +63,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         "NAME": (
-            "django.contrib.auth.password_validation."
-            "MinimumLengthValidator"
+            "django.contrib.auth.password_validation." "MinimumLengthValidator"
         ),
     },
     {

@@ -1,16 +1,16 @@
 <div class="sidebar">
   {% if user.is_authenticated %}
-    <p>
-      Logged in as:
-      <a href="{% url 'taxi:driver-detail' pk=user.id %}">
-        {{ user.username }}
-      </a>
-    </p>
-    <form method="post" action="{% url 'logout' %}">
-      {% csrf_token %}
-      <button type="submit">Logout</button>
-    </form>
-  {% else %}
-    <a href="{% url 'login' %}">Login</a>
-  {% endif %}
+  <p>
+    Logged in as:
+    <a href="{% url 'taxi:driver-detail' pk=user.pk %}">
+      {{ user.username }}
+    </a>
+  </p>
+  <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+  </form>
+{% else %}
+  <a href="{% url 'login' %}">Login</a>
+{% endif %}
 </div>

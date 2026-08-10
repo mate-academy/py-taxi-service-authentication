@@ -14,7 +14,6 @@ def index(request):
     num_cars = Car.objects.count()
     num_manufacturers = Manufacturer.objects.count()
 
-    # Лічильник відвідувань головної сторінки
     num_visits = request.session.get("num_visits", 0) + 1
     request.session["num_visits"] = num_visits
 

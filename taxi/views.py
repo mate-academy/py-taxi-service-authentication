@@ -6,6 +6,7 @@ from django.views import generic
 from taxi.models import Car, Driver, Manufacturer
 
 
+# Authentication protects the home page; the session tracks its visit count.
 @login_required
 def index(request):
     num_visits = request.session.get("num_visits", 0) + 1

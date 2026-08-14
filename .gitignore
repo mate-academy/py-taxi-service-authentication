@@ -1,3 +1,4 @@
+# Here is .gitignore file for Python projects
 .idea/
 .vscode/
 *.iml

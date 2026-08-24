@@ -1,3 +1,25 @@
 body {
     margin-top: 20px;
 }
+
+.sidebar-user p {
+  margin: 0 0 8px;
+}
+
+.sidebar-user form {
+  margin-bottom: 12px;
+}
+
+.logout-button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: #007bff;
+  cursor: pointer;
+  font: inherit;
+}
+
+.logout-button:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}

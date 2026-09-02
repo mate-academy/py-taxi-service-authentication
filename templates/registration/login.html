@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+  <form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" name="username" class="form-control" id="username">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" name="password" class="form-control" id="password">
+    </div>
+    {% if form.errors %}
+      <P class="text-danger">Invalid credentials.</P>
+    {% endif %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+{% endblock %}

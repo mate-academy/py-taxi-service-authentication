@@ -65,4 +65,3 @@ class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     redirect_field_name = "redirect_to"
     model = Driver
     queryset = Driver.objects.prefetch_related("cars__manufacturer")
-

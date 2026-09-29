@@ -108,8 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "taxi.Driver"
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
+LOGIN_REDIRECT_URL = "/"
+
+LOGOUT_REDIRECT_URL = "/"
 
 LANGUAGE_CODE = "en-us"
 

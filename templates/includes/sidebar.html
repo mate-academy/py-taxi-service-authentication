@@ -1,7 +1,7 @@
 <div class="sidebar-auth">
     {% if user.is_authenticated %}
         <p class="mb-2">User:
-            <a href="{% url 'taxi:driver-detail' user.taxi_profile.id %}">
+            <a href="{% url 'taxi:driver-detail' user.id %}">
                 <strong>{{ user.username }}</strong>
             </a>
         </p>

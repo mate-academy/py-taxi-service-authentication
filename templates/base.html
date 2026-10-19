@@ -20,7 +20,43 @@
     <div class="col-sm-2">
 
       {% block sidebar %}
-        {% include "includes/sidebar.html" %}
+        <div class="sidebar">
+          <h5>Taxi Service</h5>
+          <hr>
+          {% if user.is_authenticated %}
+            <div class="mb-3">
+              <strong>Welcome,</strong><br>
+              {% if user.driver %}
+                <a href="{% url 'taxi:driver-detail' user.driver.pk %}">
+                  {{ user.username }}
+                </a>
+              {% else %}
+                {{ user.username }}
+              {% endif %}
+            </div>
+            <form method="post" action="{% url 'taxi:logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm w-100">Logout</button>
+            </form>
+          {% else %}
+            <a href="{% url 'taxi:login' %}" class="btn btn-primary btn-sm w-100">Login</a>
+          {% endif %}
+          <hr>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'taxi:index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'taxi:driver-list' %}">Drivers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'taxi:car-list' %}">Cars</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'taxi:manufacturer-list' %}">Manufacturers</a>
+            </li>
+          </ul>
+        </div>
       {% endblock %}
 
     </div>

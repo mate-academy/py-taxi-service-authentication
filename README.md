@@ -1,40 +1,82 @@
-# Taxi service authentication 
+<div align="center">
 
-Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
-- Use the following command to load prepared data from fixture to test and debug your code:
-  `python manage.py loaddata taxi_service_db_data.json`.
-- After loading data from fixture you can use following superuser (or create another one by yourself):
-  - Login: `admin.user`
-  - Password: `1qazcde3`
-- Make sure that you change the settings for [html-files](https://github.com/mate-academy/py-task-guideline/blob/main/html_settings/README.MD).
+# 🚕 Taxi Service — Autenticação
+### Controle de acesso e login com Django
 
-Feel free to add more data using admin panel, if needed.
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![Study](https://img.shields.io/badge/Tipo-Projeto%20educacional-475569?style=for-the-badge)
 
-In this task, you will implement a visit counter, login/logout functionality, and make your site available only 
-authenticated users.
+</div>
 
-1. Implement a visit counter on the home screen (use the `num_visits` variable name). It should show how many times a user visited the home page before.
+## 🎯 Sobre o projeto
 
-2. Create login/logout screens. Provide authentication to your project using built-in Django authentication.
+Projeto de estudo para incorporar **autenticação** às páginas de um sistema Django de motoristas e veículos.
 
-3. Display the username on the top of the sidebar and login/logout button depending on if the user is authenticated.
-If the driver clicks on username - the corresponding Driver detail page must open.
+**Código relevante:** branch [`feature/authentication`](https://github.com/WalterMatheusgg/py-taxi-service-authentication/tree/feature/authentication). Desenvolvido como parte de exercícios práticos com Django; não representa um sistema comercial de transporte.
 
-4. Protect all your views from unauthenticated users.
+## ✨ Funcionalidades e estrutura
 
-5. In Driver's list view add (Me), if this is a current user:
-    
-Example:
+| Área | Recurso presente na implementação |
+|:--|:--|
+| **Login** | Fluxo de entrada por views e templates Django. |
+| **Sessão** | Integração com autenticação nativa do framework. |
+| **Proteção** | Restrições de acesso a páginas selecionadas. |
+| **Interface** | Ajustes no menu e nas telas de autenticação. |
+
+## 🏗️ Arquitetura
+
+```mermaid
+flowchart LR
+A["Navegador"] --> B["Django URLs + Views"]
+B --> C["Models e regras"]
+C --> D[("SQLite")]
+B --> E["Templates HTML"]
 ```
-- Admin User (Me)
-- Joyce Byers
-- Jim Hopper
+
+Organização principal da aplicação:
+
+```text
+taxi/             # Models, views, admin e rotas
+taxi_service/     # Configuração Django
+templates/        # Páginas HTML (quando aplicável)
+manage.py         # Comandos do Django
 ```
 
-NOTE: Attach screenshots of all created or modified pages to pull request. It's important to attach images not links to them. See example:
+## 🚀 Executar localmente
 
-![image](https://mate-academy-images.s3.eu-central-1.amazonaws.com/python_pr_with_images.png)
+Use um ambiente Python isolado, com versão compatível com as dependências do projeto.
 
-**Note:** we use the `-` hyphen in URLs names in our Django course, whilst we use the `_` underscore in our DRF course.
+```bash
+git clone -b feature/authentication https://github.com/WalterMatheusgg/py-taxi-service-authentication.git
+cd py-taxi-service-authentication
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python manage.py migrate
+python manage.py check
+python manage.py runserver
+```
 
-### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
+Acesse **http://127.0.0.1:8000/**.
+
+Para testar funcionalidades existentes:
+
+```bash
+python manage.py test
+```
+
+**Observação:** não executei o projeto ou a suíte nesta revisão. Em algumas etapas, os testes são fornecidos como parte do enunciado do curso e podem exigir configuração adicional.
+
+## 🔒 Limites e cuidados
+
+Credenciais presentes em enunciados ou fixtures de exercícios não devem ser usadas em ambientes públicos.
+
+Use somente dados de teste. Não reutilize senhas presentes em fixtures, mantenha `DEBUG` desabilitado em servidores públicos e revise dependências antes de qualquer implantação externa.
+
+## 👨‍💻 Repositório
+
+**Walter Matheus Soares da Silva** · [GitHub](https://github.com/WalterMatheusgg)
+
+Outros projetos do portfólio: [NEXUS CRM](https://github.com/WalterMatheusgg/NEXUS) · [Biblioteca Digital](https://github.com/WalterMatheusgg/library-service/tree/develop)

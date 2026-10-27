@@ -113,6 +113,8 @@ AUTH_USER_MODEL = "taxi.Driver"
 
 LANGUAGE_CODE = "en-us"
 
+LOGIN_REDIRECT_URL = "/"
+
 TIME_ZONE = "Europe/Kyiv"
 
 USE_I18N = True

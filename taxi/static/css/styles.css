@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar-nav {
+    padding-left: 0;
+    list-style: none;
+}
+
+.sidebar-nav li a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+}
+
+.sidebar-nav li a:hover {
+    color: #0056b3;
+    background-color: #f8f9fa;
+}

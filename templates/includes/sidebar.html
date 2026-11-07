@@ -10,7 +10,7 @@
     <button type="submit">Logout</button>
   </form>
 {% else %}
-  <a href="{% url 'login' %}">Login</a>
+  <a href="{% url 'taxi:login' %}">Login</a>
 {% endif %}
 <ul class="sidebar-nav">
   <li><a href="{% url "taxi:index" %}">Home page</a></li>

@@ -1,4 +1,21 @@
 <ul class="sidebar-nav">
+    {% if user.is_authenticated %}
+    <li>
+      <a href="{% url 'taxi:driver-detail' user.pk %}">
+        <strong>{{ user.username }}</strong>
+      </a>
+    </li>
+    <li>
+      <form action="{% url 'logout' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-link"
+                style="padding: 0; border: none; background: none; color: inherit;">Logout
+        </button>
+      </form>
+    </li>
+  {% else %}
+    <li><a href="{% url 'login' %}">Login</a></li>
+  {% endif %}
   <li><a href="{% url "taxi:index" %}">Home page</a></li>
   <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
   <li><a href="{% url "taxi:car-list" %}">Cars</a></li>

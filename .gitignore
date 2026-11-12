@@ -10,4 +10,5 @@ venv/
 *.sqlite3
 *.sqlite
 *.db
+*.db3
 db.sqlite3

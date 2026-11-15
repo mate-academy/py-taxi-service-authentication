@@ -1,6 +1,43 @@
-<ul class="sidebar-nav">
-  <li><a href="{% url "taxi:index" %}">Home page</a></li>
-  <li><a href="{% url "taxi:manufacturer-list" %}">Manufacturers</a></li>
-  <li><a href="{% url "taxi:car-list" %}">Cars</a></li>
-  <li><a href="{% url "taxi:driver-list" %}">Drivers</a></li>
-</ul>
+<div class="sidebar">
+  <div class="sidebar-header mb-4">
+    {% if user.is_authenticated %}
+      <div class="card bg-light">
+        <div class="card-body">
+          <h6 class="card-title">User:</h6>
+          <a href="{% url 'taxi:driver-detail' user.pk %}" class="btn btn-sm btn-info btn-block">
+            {{ user.first_name }} {{ user.last_name }}
+          </a>
+          <a href="{% url 'logout' %}" class="btn btn-sm btn-danger btn-block mt-2">
+            Logout
+          </a>
+        </div>
+      </div>
+    {% else %}
+      <div class="card bg-light">
+        <div class="card-body">
+          <p class="text-muted small">Not authenticated</p>
+          <a href="{% url 'login' %}" class="btn btn-sm btn-primary btn-block">
+            Login
+          </a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  <h6 class="sidebar-title">Menu</h6>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'taxi:index' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'taxi:driver-list' %}">Drivers</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'taxi:car-list' %}">Cars</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'taxi:manufacturer-list' %}">Manufacturers</a>
+    </li>
+  </ul>
+</div>
+

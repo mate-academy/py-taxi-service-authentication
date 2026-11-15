@@ -1,3 +1,52 @@
 body {
     margin-top: 20px;
 }
+
+/* Sidebar Styles */
+.sidebar {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.sidebar-header {
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 15px;
+    margin-bottom: 4px;
+}
+
+.sidebar-title {
+    font-weight: 700;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.nav-link {
+    color: #495057;
+    padding: 0.5rem 0;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+/* Login Form Styles */
+.form-group label {
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 0.25rem;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Driver, Car, Manufacturer
+
+from .models import Car, Driver, Manufacturer
 
 
 @admin.register(Driver)
@@ -31,4 +32,6 @@ class CarAdmin(admin.ModelAdmin):
     list_filter = ("manufacturer",)
 
 
-admin.site.register(Manufacturer)
+@admin.register(Manufacturer)
+class ManufacturerAdmin(admin.ModelAdmin):
+    list_display = ("name", "country")

@@ -32,6 +32,17 @@
         {% include "includes/pagination.html" %}
       {% endblock %}
 
+    {% if user.is_authenticated %}
+      {{ user.username }}
+      <form method="post" action="{% url 'taxi:logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
+    {% else %}
+      <a href="{% url 'taxi:login' %}">Login</a>
+    {% endif %}
+
+
     </div>
   </div>
 </div>

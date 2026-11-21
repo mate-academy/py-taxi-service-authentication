@@ -33,7 +33,13 @@
       {% endblock %}
 
     {% if user.is_authenticated %}
-      {{ user.username }}
+      {% if user.driver %}
+      <a href="{% url 'taxi:driver-detail' pk=user.driver.pk %}">
+        {{ user.username }}
+      </a>
+      {% else %}
+        {{ user.username }}
+      {% endif %}
       <form method="post" action="{% url 'taxi:logout' %}">
         {% csrf_token %}
         <button type="submit">Logout</button>
@@ -41,6 +47,7 @@
     {% else %}
       <a href="{% url 'taxi:login' %}">Login</a>
     {% endif %}
+
 
 
     </div>

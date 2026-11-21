@@ -36,12 +36,12 @@
       <a href="{% url 'taxi:driver-detail' pk=user.pk %}">
         {{ user.username }}
       </a>
-      <form method="post" action="{% url 'taxi:logout' %}">
+      <form method="post" action="{% url 'logout' %}">
         {% csrf_token %}
         <button type="submit">Logout</button>
       </form>
     {% else %}
-      <a href="{% url 'taxi:login' %}">Login</a>
+      <a href="{% url 'login' %}">Login</a>
     {% endif %}
     </div>
   </div>

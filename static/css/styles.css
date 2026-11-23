@@ -1,3 +1,141 @@
 body {
     margin-top: 20px;
+    background-color: #e9ece8;
+    color: #333;
+    font-family: Arial, sans-serif;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    margin: 0 0 12px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #bbb;
+    padding: 8px;
+}
+
+th {
+    background-color: #b6d77a;
+}
+
+.pager-compact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.pager-btn, .pager-label {
+    padding: 6px 12px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    background-color: #ccc;
+    text-decoration: none;
+    color: #000;
+}
+
+.sidebar {
+    margin-top: 20px;
+    background-color: #d7dbd2;
+    padding: 15px;
+    min-height: 100vh;
+    border: 1px solid #cbd3c1;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+}
+
+.sidebar a {
+    display: block;
+    padding: 6px 0;
+    color: #333;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+}
+
+.auth-card {
+    background: #f2f4ef;
+    border: 1px solid #cbd3c1;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+}
+
+.auth-card .username {
+    font-weight: 600;
+}
+
+.auth-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #9fb97a;
+    background-color: #b6d77a;
+    color: #1b1b1b;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    filter: brightness(0.95);
+}
+
+.btn-outline {
+    background: transparent;
+    border-color: #9fb97a;
+}
+
+.visit-counter {
+    color: #4d5a3e;
+    font-size: 0.95rem;
+    margin: 6px 0 16px;
+    background: #eef4e4;
+    border: 1px dashed #c7d7b0;
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+.badge-me {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-weight: 600;
+    background: #cfe7a3;
+    border: 1px solid #a9c27a;
+    color: #2b2b2b;
+    font-size: 0.85em;
+}
+
+.link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.link-list li {
+    margin: 6px 0;
+}
+
+.link-list a {
+    text-decoration: none;
+}
+
+.link-list a:hover {
+    text-decoration: underline;
 }
